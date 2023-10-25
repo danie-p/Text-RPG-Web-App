@@ -1,0 +1,366 @@
+.title {
+    position: inherit;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -60%);
+    font-family: "Playfair Display", serif;
+    font-size: 10vh;
+    font-weight: bold;
+    padding-left: 2vh;
+    padding-right: 2vh;
+    text-align: center;
+}
+
+.title-light {
+    color: white;
+    border: 1px solid white;
+}
+
+.title-dark {
+    color: #151F27;
+    border: 1px solid #151F27;
+}
+
+.floatie {
+    animation: floating 2s ease-in-out  infinite;
+}
+
+.wrapper-center {
+    position: absolute;
+    left: 50%;
+    bottom: 1%;
+    transform: translate(-50%, 0);
+}
+
+.feather-small {
+    font-size: 2vh;
+    transform: rotate(-80deg);
+}
+
+.feather-big {
+    transform: scaleY(-1);
+    font-size: 4vh;
+    margin-left: 2vh;
+    margin-right: 2.5vh;
+}
+
+.floatie-item {
+    display: inline-block;
+}
+
+@keyframes floating {
+    0% { transform: translate(0, 0) }
+    50% { transform: translate(0, -2vh) }
+    100% { transform: translate(0, 0) }
+}
+
+.navbar-custom {
+    background-color: transparent;
+}
+
+.nav-link-custom {
+    font-size: 110%;
+    color: white;
+}
+
+.nav-link-custom:hover, #drop a:focus {
+    color: #E0AC52;
+}
+
+.nav-item a:focus {
+    color: white;
+}
+
+.nav-item-custom {
+    margin: 0.3vw;
+    background-color: rgba(21, 31, 39, 0.7);
+    border-radius: 10px;
+    padding-left: 0.5vh;
+    padding-right: 0.5vh;
+}
+
+.nav-item-custom:hover {
+    background-color: rgba(36, 53, 66, 0.7);
+}
+
+.navbar-toggler-custom {
+    background-color: rgba(21, 31, 39, 0.7);
+}
+
+.navbar-toggler-custom:hover {
+    background-color: rgba(36, 53, 66, 0.7);
+}
+
+.nav-item-highlight {
+    background-color: #D09125;
+}
+
+.nav-item-highlight:hover {
+    background-color: #DDA440;
+}
+
+.nav-link-highlight:hover {
+    color: #151F27;
+}
+
+.active {
+    color: #E0AC52 !important;
+}
+
+.footer-custom {
+    color: white;
+}
+
+.search-bar {
+    position: relative;
+    left: 50%;
+    transform: translate(-50%, 0);
+    padding-bottom: 15px;
+    min-width: 250px;
+    width: 25%;
+}
+
+.btn-custom {
+    background-color: #D09125;
+    color: #151F27;
+    display: inline-flex;
+}
+
+.btn-custom:hover {
+    background-color: #DDA440;
+    color: #151F27;
+}
+
+.footer-padding {
+    padding-top: 15px;
+}
+
+.btn-icon-padding {
+    padding-right: 5px;
+}
+
+/*
+hrad.html
+*/
+.header {
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+}
+
+.header-blue {
+    background-color: #2c686c;
+}
+
+.header img {
+    width: 100%;
+    height: auto;
+}
+
+#nav-header {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, 0);
+    width: 100%;
+}
+
+.header-title {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 5vw;
+}
+
+#content-subpage {
+    position: relative;
+    background-color: #151f27;
+}
+
+#content-subpage img {
+    width: 40%;
+    filter: grayscale(50%);
+    float: right;
+    margin-left: 25px;
+}
+
+#content-subpage img:hover {
+    filter: none;
+}
+
+.nav-custom {
+    background-color: #AA813E;
+    margin-bottom: 25px;
+    border-radius: 10px;
+    padding: 3px;
+    width: 100%;
+}
+
+.nav-custom a {
+    color: black;
+}
+
+.nav-custom a:hover {
+    color: #564427;
+}
+
+.nav-active-custom {
+    background-color: #564427 !important;
+}
+
+.nav-active-custom:hover {
+    background-color: #876732 !important;
+    color: black !important;
+}
+
+.btn-group {
+    width: 100%;
+    padding: 4px;
+    background-color: #564427;
+    margin-bottom: 25px;
+}
+
+.btn-nav-custom {
+    width: min-content;
+    color: white;
+}
+
+.btn-nav-custom:hover {
+    background-color: #AA813E;
+    color: black;
+}
+
+.dark {
+    background-color: #151f27;
+}
+
+/*
+roleplay.html
+ */
+.header-light {
+    background-color: #F1E1BD;
+}
+
+.light {
+    background-color: #AA813E;
+}
+
+.name {
+    width: 20%;
+    min-width: 200px;
+}
+
+.input-quest {
+    width: 40%;
+    min-width: 400px;
+}
+
+.rp-text {
+    background-color: #bc924f;
+    margin-bottom: 10px;
+}
+
+.rp-text p {
+    color: black;
+}
+
+.rp-header {
+    width: fit-content;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.rp-header p {
+    color: black;
+}
+
+/*
+prevzatý kód
+https://medium.com/@patrickwestwood/how-to-make-multi-layered-parallax-illustration-with-css-javascript-2b56883c3f27
+ */
+body {
+    padding: 0;
+    margin: 0;
+    font-family: "Playfair Display", serif;
+    color: white;
+}
+
+#forest {
+    height: 100vh;
+    overflow: hidden;
+    position: relative;
+}
+
+#content {
+    background-color: #151f27;
+}
+
+.layer {
+    background-position: bottom center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 100vh;
+    position: fixed;
+    z-index: -1;
+}
+
+#forest-mobile {
+    display: none;
+    background: url("images/bg_full.png") no-repeat
+    center bottom / cover;
+    height: 320px;
+}
+
+.first-section {
+    padding: 20px 0 0 0;
+}
+
+.text-header {
+    font-size: 50px;
+    text-align: center;
+}
+
+h2 {
+    line-height: 120%;
+    margin-bottom: 30px;
+}
+
+p {
+    color: #ede0d5;
+    font-size: 18px;
+    line-height: 150%;
+    text-align: justify;
+}
+
+#forest, .layer {
+    margin: 0 auto;
+    overflow: hidden;
+}
+
+.layer-bg {
+    background-color: #f1e1bd;
+}
+
+.layer-1 {
+    background-image: url("images/bg1.1.png");
+    background-position: left bottom;
+}
+
+.layer-2 {
+    background-image: url("images/bg2.1.png");
+}
+
+.layer-3 {
+    background-image: url("images/bg3.1.png");
+    background-position: right bottom;
+}
+
+.layer-4 {
+    background-image: url("images/bg5.1.png");
+}
+
+.layer-overlay {
+    background-image: url("images/bg4.1.png");
+}
