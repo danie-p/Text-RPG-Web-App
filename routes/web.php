@@ -32,4 +32,4 @@ Route::post('/login', [UserController::class, 'login'])->name('login');
 Route::post('/create-post', [PostController::class, 'createPost']);
 Route::get('/edit-post/{post}', [PostController::class, 'editWindow']);
 Route::put('/edit-post/{post}', [PostController::class, 'editPost']);
-Route::put('/delete-post/{post}', [PostController::class, 'deletePost']);
+Route::delete('/delete-post/{post}', [PostController::class, 'deletePost']);
