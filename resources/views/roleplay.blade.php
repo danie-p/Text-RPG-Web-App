@@ -43,11 +43,6 @@
                         <li class="nav-item nav-item-custom">
                             <a class="nav-link nav-link-custom" href="#">Nápoveda</a>
                         </li>
-                        <li class="nav-item nav-item-custom nav-item-highlight">
-                            <a class="nav-link nav-link-custom nav-link-highlight" href="#">
-                                <i class="bi bi-person-heart btn-icon-padding"></i>
-                                Prihlásiť sa</a>
-                        </li>
                     </ul>
                 </div>
             </div>

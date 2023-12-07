@@ -14,21 +14,22 @@
     <div class="register-window">
         <div class="login-form">
             <h2>Registrácia</h2>
-            <form action="/register" method="POST">
+            <form action="{{ route('register') }}" method="POST">
+            @csrf
                 <div class="login-form-el" data-bs-theme="dark">
-                    <label for="register-username">Prihlasovacie meno</label>
-                    <input type="text" placeholder="Zadaj prihlasovacie meno" class="bg-dark form-control">
+                    <label for="register-name">Prihlasovacie meno</label>
+                    <input name="name" id="register-name" type="text" placeholder="Zadaj prihlasovacie meno" class="bg-dark form-control">
                 </div>
                 <div class="login-form-el" data-bs-theme="dark">
                     <label for="register-email">e-mail</label>
-                    <input type="email" placeholder="Zadaj e-mail" class="bg-dark form-control">
+                    <input name="email" id="register-email" type="email" placeholder="Zadaj e-mail" class="bg-dark form-control">
                 </div>
                 <div class="login-form-el" data-bs-theme="dark">
                     <label for="register-password">Heslo</label>
-                    <input type="password" placeholder="Zadaj heslo" class="bg-dark form-control">
+                    <input name="password" id="register-password" type="password" placeholder="Zadaj heslo" class="bg-dark form-control">
                 </div>
                 <div class="login-form-el">
-                    <button type="button" class="btn btn-custom">Registrovať sa</button>
+                    <button type="submit" class="btn btn-custom">Registrovať sa</button>
                 </div>
             </form>
         </div>

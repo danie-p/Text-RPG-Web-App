@@ -60,12 +60,24 @@
                         <li class="nav-item nav-item-custom">
                             <a class="nav-link nav-link-custom" href="#">Nápoveda</a>
                         </li>
+                        @auth
+                        <li class="nav-item nav-item-custom nav-item-highlight">
+                            <form action="/logout" method="POST">
+                                @csrf
+                                <button class="nav-link nav-link-custom nav-link-highlight">
+                                    <i class="bi bi-person-heart btn-icon-padding"></i>
+                                    Odhlásiť sa
+                                </button>
+                            </form>
+                        </li>
+                        @else
                         <li id="login-b" class="nav-item nav-item-custom nav-item-highlight">
-                            <a class="nav-link nav-link-custom nav-link-highlight" href="#">
+                            <button class="nav-link nav-link-custom nav-link-highlight">
                                 <i class="bi bi-person-heart btn-icon-padding"></i>
                                 Prihlásiť sa
-                            </a>
+                            </button>
                         </li>
+                        @endauth
                     </ul>
                 </div>
             </div>
@@ -141,17 +153,17 @@
                 @csrf
                 <div class="login-form-el" data-bs-theme="dark">
                     <label for="username">Prihlasovacie meno</label>
-                    <input type="text" id="username" placeholder="Zadaj prihlasovacie meno" class="bg-dark form-control">
+                    <input name="login-name" type="text" id="username" placeholder="Zadaj prihlasovacie meno" class="bg-dark form-control">
                 </div>
                 <div class="login-form-el" data-bs-theme="dark">
                     <label for="password">Heslo</label>
-                    <input type="password" id="password" placeholder="Zadaj heslo" class="bg-dark form-control">
+                    <input name="login-password" type="password" id="password" placeholder="Zadaj heslo" class="bg-dark form-control">
                 </div>
                 <div class="login-form-el">
-                    <button type="button" class="btn btn-custom">Prihlásiť sa</button>
+                    <button class="btn btn-custom">Prihlásiť sa</button>
                 </div>
                 <div class="login-form-el">
-                    <p>Ešte nemáš účet? <a href="{{ route('register') }}">Zaregistruj sa!</a></p>
+                    <p>Ešte nemáš účet? <a href="{{ route('register-page') }}">Zaregistruj sa!</a></p>
                 </div>
             </form>
         </div>

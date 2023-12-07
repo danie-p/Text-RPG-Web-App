@@ -14,7 +14,7 @@ class PageController extends Controller
         return view('roleplay');
     }
 
-    public function register() {
+    public function register_page() {
         return view('register');
     }
 

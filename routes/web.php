@@ -21,7 +21,9 @@ Route::get('/', function () {
 
 Route::get('/castle', [PageController::class, 'castle'])->name('castle');
 Route::get('/roleplay', [PageController::class, 'roleplay'])->name('roleplay');
-Route::get('/register', [PageController::class, 'register'])->name('register');
+Route::get('/register-page', [PageController::class, 'register_page'])->name('register-page');
 Route::get('/home', [PageController::class, 'home'])->name('home');
 
-Route::post('/register', [UserController::class, 'register']);
+Route::post('/register', [UserController::class, 'register'])->name('register');
+Route::post('/logout', [UserController::class, 'logout'])->name('logout');
+Route::post('/login', [UserController::class, 'login'])->name('login');

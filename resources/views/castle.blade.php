@@ -43,11 +43,24 @@
                         <li class="nav-item nav-item-custom">
                             <a class="nav-link nav-link-custom" href="#">Nápoveda</a>
                         </li>
+                        @auth
                         <li class="nav-item nav-item-custom nav-item-highlight">
-                            <a class="nav-link nav-link-custom nav-link-highlight" href="#">
-                                <i class="bi bi-person-heart btn-icon-padding"></i>
-                                Prihlásiť sa</a>
+                            <form action="/logout" method="POST">
+                                @csrf
+                                <button class="nav-link nav-link-custom nav-link-highlight">
+                                    <i class="bi bi-person-heart btn-icon-padding"></i>
+                                    Odhlásiť sa
+                                </button>
+                            </form>
                         </li>
+                        @else
+                        <li id="login-b" class="nav-item nav-item-custom nav-item-highlight">
+                            <button class="nav-link nav-link-custom nav-link-highlight">
+                                <i class="bi bi-person-heart btn-icon-padding"></i>
+                                Prihlásiť sa
+                            </button>
+                        </li>
+                        @endauth
                     </ul>
                 </div>
             </div>
@@ -76,7 +89,11 @@
                     </div>
                     <div class="col-md-auto">
                         <div class="btn-group" role="group" aria-label="Basic example">
+                            @auth
                             <a href="{{ route('roleplay') }}" role="button" class="btn btn-nav-custom">Roleplay</a>
+                            @else
+                            <a href="#" role="button" class="btn btn-nav-custom">Roleplay</a>
+                            @endauth
                             <button type="button" class="btn btn-nav-custom">
                                 <i class="bi bi-music-note-beamed"></i>
                             </button>
@@ -133,5 +150,32 @@
             </footer>
         </div>
     </div>
+
+
+    <div class="popup">
+        <div class="close-btn">&times;</div>
+        <div class="login-form">
+            <h2>Prihlásenie</h2>
+            <form action="/login" method="POST">
+                @csrf
+                <div class="login-form-el" data-bs-theme="dark">
+                    <label for="username">Prihlasovacie meno</label>
+                    <input name="login-name" type="text" id="username" placeholder="Zadaj prihlasovacie meno" class="bg-dark form-control">
+                </div>
+                <div class="login-form-el" data-bs-theme="dark">
+                    <label for="password">Heslo</label>
+                    <input name="login-password" type="password" id="password" placeholder="Zadaj heslo" class="bg-dark form-control">
+                </div>
+                <div class="login-form-el">
+                    <button class="btn btn-custom">Prihlásiť sa</button>
+                </div>
+                <div class="login-form-el">
+                    <p>Ešte nemáš účet? <a href="{{ route('register-page') }}">Zaregistruj sa!</a></p>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="js/script.js"></script>
 </body>
 </html>
