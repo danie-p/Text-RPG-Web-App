@@ -42,6 +42,15 @@
                         <li class="nav-item nav-item-custom">
                             <a class="nav-link nav-link-custom" href="#">Nápoveda</a>
                         </li>
+                        <li class="nav-item nav-item-custom nav-item-highlight">
+                            <form action="/logout" method="POST">
+                                @csrf
+                                <button class="nav-link nav-link-custom nav-link-highlight">
+                                    <i class="bi bi-person-heart btn-icon-padding"></i>
+                                    Odhlásiť sa
+                                </button>
+                            </form>
+                        </li>
                     </ul>
                 </div>
             </div>
@@ -84,6 +93,7 @@
                 <div class="container rp-text">
                     <p>{{ $post['body'] }}</p>
                 </div>
+
                 <div class="container-inline">
                     <button class="btn btn-custom1"><a href="/edit-post/{{ $post->id }}">Upraviť</a></button>
                     <form action="/delete-post/{{ $post->id }}" method="POST">

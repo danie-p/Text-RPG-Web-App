@@ -1,7 +1,4 @@
 window.onload = () => {
-    /*
-    https://www.youtube.com/watch?v=5BeM3-_8788
-    */
     document.querySelector('#login-b').addEventListener('click', function () {
         document.querySelector(".popup").classList.add("active");
     });

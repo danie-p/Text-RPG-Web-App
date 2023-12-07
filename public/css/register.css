@@ -31,6 +31,10 @@ body {
     color: #fff
 }
 
+input:invalid {
+    border: 1px red;
+  }
+
 .register-window .login-form .login-form-el {
     margin: 15px 0px;
 }

@@ -18,15 +18,15 @@
             @csrf
                 <div class="login-form-el" data-bs-theme="dark">
                     <label for="register-name">Prihlasovacie meno</label>
-                    <input name="name" id="register-name" type="text" placeholder="Zadaj prihlasovacie meno" class="bg-dark form-control">
+                    <input name="name" id="register-name" type="text" placeholder="Zadaj prihlasovacie meno" class="bg-dark form-control" required>
                 </div>
                 <div class="login-form-el" data-bs-theme="dark">
                     <label for="register-email">e-mail</label>
-                    <input name="email" id="register-email" type="email" placeholder="Zadaj e-mail" class="bg-dark form-control">
+                    <input name="email" id="register-email" type="email" placeholder="Zadaj e-mail" class="bg-dark form-control" required>
                 </div>
                 <div class="login-form-el" data-bs-theme="dark">
                     <label for="register-password">Heslo</label>
-                    <input name="password" id="register-password" type="password" placeholder="Zadaj heslo" class="bg-dark form-control">
+                    <input name="password" id="register-password" type="password" placeholder="Zadaj heslo" class="bg-dark form-control" required>
                 </div>
                 <div class="login-form-el">
                     <button type="submit" class="btn btn-custom">Registrovať sa</button>

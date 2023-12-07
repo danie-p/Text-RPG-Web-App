@@ -18,9 +18,10 @@
             @csrf
             @method('PUT')
                 <div class="mb-3">
-                    <label for="exampleFormControlTextarea1" class="form-label">Príspevok</label>
-                    <textarea name="body" class="form-control" rows="5" value="{{ $post->body }}"></textarea>
+                    <label class="form-label">Príspevok</label>
+                    <textarea name="body" class="form-control" rows="5">{{ $post->body }}</textarea>
                 </div>
+            
                 <div class="mb-3">
                     <label for="formFile" class="form-label">Priložiť súbor</label>
                     <input name="image" class="form-control" value="{{ $post->image }}" type="file" id="formFile">
@@ -28,13 +29,14 @@
                 <div class="input-group mb-3 input-quest">
                     <label class="input-group-text">Splenenie questu</label>
                     <select name="quest" class="form-select">
-                        <option selected>{{ $post->image }}</option>
+                        <option selected="{{ $post->quest }}"></option>
                         <option value="1">Quest 1</option>
                         <option value="2">Quest 2</option>
                         <option value="3">Quest 3</option>
                     </select>
                 </div>
-                <button class="btn btn-primary">Uložiť zmeny</button>
+            
+                <button class="btn btn-custom">Uložiť zmeny</button>
             </form>
         </div>
     </div>

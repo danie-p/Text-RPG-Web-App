@@ -131,6 +131,12 @@
     color: #151F27;
     display: inline-flex;
     text-decoration: none;
+    margin-bottom: 5px;
+}
+
+.btn-custom1 a {
+    text-decoration: none;
+    color: #151F27;
 }
 
 .container-inline {
@@ -156,6 +162,10 @@
 .btn-icon-padding {
     padding-right: 5px;
 }
+
+input:invalid {
+    border: 2px red;
+  }
 
 /*
 hrad.html
