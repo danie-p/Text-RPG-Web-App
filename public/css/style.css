@@ -126,6 +126,24 @@
     display: inline-flex;
 }
 
+.btn-custom1 {
+    background-color: #f1e1bd;
+    color: #151F27;
+    display: inline-flex;
+    text-decoration: none;
+}
+
+.container-inline {
+    display: inline-block;
+}
+
+.btn-custom2 {
+    background-color: #151F27;
+    color: #fff;
+    display: inline-flex;
+    text-decoration: none;
+}
+
 .btn-custom:hover {
     background-color: #DDA440;
     color: #151F27;
@@ -238,12 +256,20 @@ hrad.html
 /*
 roleplay.html
  */
+.rp-title {
+    position: absolute;
+    top: 70%;
+    left: 50%;
+    font-size: 5vw;
+}
+
 .header-light {
-    background-color: #F1E1BD;
+    background-color: #2c686c;
+    height: 250px;
 }
 
 .light {
-    background-color: #AA813E;
+    background-color: #2c686c;
 }
 
 .name {
@@ -257,12 +283,18 @@ roleplay.html
 }
 
 .rp-text {
-    background-color: #bc924f;
+    background-color: #151F27;
     margin-bottom: 10px;
+    padding-top: 15px;
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-bottom: 1px;
+    border-radius: 10px;
+    border: 1px solid white;
 }
 
 .rp-text p {
-    color: black;
+    color: lightgray;
 }
 
 .rp-header {
@@ -273,6 +305,11 @@ roleplay.html
 
 .rp-header p {
     color: black;
+}
+
+.no-access {
+    margin: 50px;
+    text-align: center;
 }
 
 /*

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Post;
 use Illuminate\Http\Request;
 
 class PageController extends Controller
@@ -11,7 +12,8 @@ class PageController extends Controller
     }
 
     public function roleplay() {
-        return view('roleplay');
+        $posts = Post::all();
+        return view('roleplay', ['posts' => $posts]);
     }
 
     public function register_page() {

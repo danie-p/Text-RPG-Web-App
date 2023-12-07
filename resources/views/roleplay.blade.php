@@ -12,9 +12,8 @@
 </head>
 
 <body class="light">
+    @auth
     <div class="header header-light">
-        <h1 class="header-title title title-dark">ROLEPLAY - HRAD</h1>
-        <img id="header-img" src="images/header_rp.png" alt="Header">
         <nav id="nav-header" class="navbar navbar-expand-lg navbar-custom">
             <div class="container-fluid">
                 <button class="navbar-toggler navbar-toggler-custom mx-auto" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
@@ -47,59 +46,62 @@
                 </div>
             </div>
         </nav>
+        <h1 class="rp-title title title-dark">ROLEPLAY - HRAD</h1>
     </div>
 
     <div class="container">
         <div class="first-section">
-            <div class="mb-3 name">
-                <label for="exampleFormControlInput1" class="form-label">Používateľské meno</label>
-                <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="Princezná Fiona">
-            </div>
-            <div class="mb-3">
-                <label for="exampleFormControlTextarea1" class="form-label">Príspevok</label>
-                <textarea class="form-control" id="exampleFormControlTextarea1" rows="5" placeholder="Tu píš svoj príbeh"></textarea>
-            </div>
-            <div class="mb-3">
-                <label for="formFile" class="form-label">Priložiť súbor</label>
-                <input class="form-control" type="file" id="formFile">
-            </div>
-            <div class="input-group mb-3 input-quest">
-                <label class="input-group-text" for="inputGroupSelect02">Splenenie questu</label>
-                <select class="form-select" id="inputGroupSelect02">
-                    <option selected>Nie je vybratý žiadny quest</option>
-                    <option value="1">Quest 1</option>
-                    <option value="2">Quest 2</option>
-                    <option value="3">Quest 3</option>
-                </select>
-             </div>
-            <button type="button" class="btn btn-custom ">Odoslať</button>
+
+            <form action="/create-post" method="POST">
+                @csrf
+                <div class="mb-3">
+                    <label for="exampleFormControlTextarea1" class="form-label">Príspevok</label>
+                    <textarea name="body" class="form-control" id="exampleFormControlTextarea1" rows="5" placeholder="Tu píš svoj príbeh"></textarea>
+                </div>
+                <div class="mb-3">
+                    <label for="formFile" class="form-label">Priložiť súbor</label>
+                    <input name="image" class="form-control" type="file" id="formFile">
+                </div>
+                <div class="input-group mb-3 input-quest">
+                    <label class="input-group-text" for="inputGroupSelect02">Splenenie questu</label>
+                    <select name="quest" class="form-select" id="inputGroupSelect02">
+                        <option selected>Nie je vybratý žiadny quest</option>
+                        <option value="1">Quest 1</option>
+                        <option value="2">Quest 2</option>
+                        <option value="3">Quest 3</option>
+                    </select>
+                </div>
+                <button class="btn btn-custom ">Odoslať</button>
+            </form>
+
         </div>
-        <div class="first-section">
-            <div class="container rp-header">
-                <p>Princezná Fiona</p>
+
+        @foreach ($posts as $post)
+            <div class="first-section">
+                <div class="container rp-header">
+                    {{ $post['user_id'] }}
+                </div>
+                <div class="container rp-text">
+                    <p>{{ $post['body'] }}</p>
+                </div>
+                <div class="container-inline">
+                    <button class="btn btn-custom1"><a href="/edit-post/{{ $post->id }}">Upraviť</a></button>
+                    <form action="/delete-post/{{ $post->id }}" method="POST">
+                        @csrf
+                        @method('DELETE')
+                        <button class="btn btn-custom2">Vymazať</button>
+                    </form>
+                </div>
             </div>
-            <div class="container rp-text">
-                <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi commodo nisi mauris,
-                    sed aliquam justo hendrerit a. Etiam neque libero, aliquet eget enim ut, faucibus
-                    imperdiet est. Aenean vitae nunc at magna pellentesque iaculis. Suspendisse potenti.
-                    Ut ultricies vel lectus iaculis luctus. Etiam faucibus commodo dignissim. Sed mi urna,
-                    eleifend id diam in, euismod vestibulum leo. Aliquam ligula ex, tristique ut tortor vel,
-                    rhoncus tempor tellus. Fusce tempus turpis non nulla volutpat ultrices. Morbi ultrices
-                    sed sem nec pulvinar. Nunc luctus consequat finibus. Ut ac dolor ante. Aliquam pulvinar massa
-                    quis ornare aliquam. Sed blandit lectus sed sapien aliquet, vitae rhoncus leo feugiat.
-                </p>
-                <p>
-                    In sit amet laoreet nibh. In et ipsum ut quam finibus ornare. Donec placerat scelerisque
-                    augue, sed aliquet nibh aliquam vitae. Proin quis ultricies risus. Nunc sollicitudin nisi
-                    eget odio scelerisque, ut accumsan dui dapibus. Sed vel dolor a quam posuere ullamcorper sit
-                    amet vitae mi. Vestibulum hendrerit auctor lacinia. Quisque pellentesque mollis felis, id
-                    congue ex. Donec felis nisi, tristique vel aliquet et, porttitor nec eros. Integer tempus ut
-                    velit in posuere.
-                </p>
-            </div>
-        </div>
+        @endforeach
+
     </div>
+    @else
+    <div class="container-fluid">
+        <h1 class="no-access">Nepovolený vstup!</h1>
+    </div>
+
+    @endauth
 
     <div class="container-fluid">
         <footer class="py-3">

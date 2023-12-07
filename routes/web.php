@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\PageController;
+use App\Http\Controllers\PostController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -27,3 +28,7 @@ Route::get('/home', [PageController::class, 'home'])->name('home');
 Route::post('/register', [UserController::class, 'register'])->name('register');
 Route::post('/logout', [UserController::class, 'logout'])->name('logout');
 Route::post('/login', [UserController::class, 'login'])->name('login');
+
+Route::post('/create-post', [PostController::class, 'createPost']);
+Route::get('/edit-post/{post}', [PostController::class, 'editWindow']);
+Route::put('/edit-post/{post}', [PostController::class, 'editPost']);
