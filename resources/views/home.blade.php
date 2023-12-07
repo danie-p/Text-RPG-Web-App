@@ -47,7 +47,10 @@
                             </a>
                             <ul class="dropdown-menu">
                                 <li><a class="dropdown-item" href="#">Les</a></li>
-                                <li><a class="dropdown-item" href="hrad.html">Hrad</a></li>
+                                <li>
+                                    <a class="dropdown-item" href="{{ route('castle') }}">Hrad
+                                    </a>
+                                </li>
                                 <li><a class="dropdown-item" href="#">Podhradie</a></li>
                             </ul>
                         </li>
@@ -134,20 +137,23 @@
         <div class="close-btn">&times;</div>
         <div class="login-form">
             <h2>Prihlásenie</h2>
-            <div class="login-form-el" data-bs-theme="dark">
-                <label for="username">Prihlasovacie meno</label>
-                <input type="text" id="username" placeholder="Zadaj prihlasovacie meno" class="bg-dark form-control">
-            </div>
-            <div class="login-form-el" data-bs-theme="dark">
-                <label for="password">Heslo</label>
-                <input type="password" id="password" placeholder="Zadaj heslo" class="bg-dark form-control">
-            </div>
-            <div class="login-form-el">
-                <button type="button" class="btn btn-custom">Prihlásiť sa</button>
-            </div>
-            <div class="login-form-el">
-                <p>Ešte nemáš účet? <a href="#">Zaregistruj sa!</a></p>
-            </div>
+            <form action="/login" method="POST">
+                @csrf
+                <div class="login-form-el" data-bs-theme="dark">
+                    <label for="username">Prihlasovacie meno</label>
+                    <input type="text" id="username" placeholder="Zadaj prihlasovacie meno" class="bg-dark form-control">
+                </div>
+                <div class="login-form-el" data-bs-theme="dark">
+                    <label for="password">Heslo</label>
+                    <input type="password" id="password" placeholder="Zadaj heslo" class="bg-dark form-control">
+                </div>
+                <div class="login-form-el">
+                    <button type="button" class="btn btn-custom">Prihlásiť sa</button>
+                </div>
+                <div class="login-form-el">
+                    <p>Ešte nemáš účet? <a href="{{ route('register') }}">Zaregistruj sa!</a></p>
+                </div>
+            </form>
         </div>
     </div>
 

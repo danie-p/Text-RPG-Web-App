@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\PageController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,3 +18,10 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('home');
 });
+
+Route::get('/castle', [PageController::class, 'castle'])->name('castle');
+Route::get('/roleplay', [PageController::class, 'roleplay'])->name('roleplay');
+Route::get('/register', [PageController::class, 'register'])->name('register');
+Route::get('/home', [PageController::class, 'home'])->name('home');
+
+Route::post('/register', [UserController::class, 'register']);

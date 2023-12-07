@@ -23,7 +23,7 @@
                 <div class="collapse navbar-collapse" id="navbarNavDropdown">
                     <ul class="navbar-nav mx-auto">
                         <li class="nav-item nav-item-custom">
-                            <a class="nav-link nav-link-custom active" aria-current="page" href="index2.html">
+                            <a class="nav-link nav-link-custom active" aria-current="page" href="{{ route('home') }}">
                                 <i class="bi bi-house-heart-fill"></i>
                             </a>
                         </li>
@@ -33,7 +33,7 @@
                             </a>
                             <ul class="dropdown-menu">
                                 <li><a class="dropdown-item" href="#">Les</a></li>
-                                <li><a class="dropdown-item" href="hrad.html">Hrad</a></li>
+                                <li><a class="dropdown-item" href="{{ route('castle') }}">Hrad</a></li>
                                 <li><a class="dropdown-item" href="#">Podhradie</a></li>
                             </ul>
                         </li>

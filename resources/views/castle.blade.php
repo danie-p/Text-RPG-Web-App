@@ -23,7 +23,7 @@
                 <div class="collapse navbar-collapse" id="navbarNavDropdown">
                     <ul class="navbar-nav mx-auto">
                         <li class="nav-item nav-item-custom">
-                            <a class="nav-link nav-link-custom active" aria-current="page" href="index2.html">
+                            <a class="nav-link nav-link-custom active" aria-current="page" href="{{ route('home') }}">
                                 <i class="bi bi-house-heart-fill"></i>
                             </a>
                         </li>
@@ -33,7 +33,7 @@
                             </a>
                             <ul class="dropdown-menu">
                                 <li><a class="dropdown-item" href="#">Les</a></li>
-                                <li><a class="dropdown-item" href="hrad.html">Hrad</a></li>
+                                <li><a class="dropdown-item" href="{{ route('castle') }}">Hrad</a></li>
                                 <li><a class="dropdown-item" href="#">Podhradie</a></li>
                             </ul>
                         </li>
@@ -76,7 +76,7 @@
                     </div>
                     <div class="col-md-auto">
                         <div class="btn-group" role="group" aria-label="Basic example">
-                            <a href="roleplay.html" role="button" class="btn btn-nav-custom">Roleplay</a>
+                            <a href="{{ route('roleplay') }}" role="button" class="btn btn-nav-custom">Roleplay</a>
                             <button type="button" class="btn btn-nav-custom">
                                 <i class="bi bi-music-note-beamed"></i>
                             </button>
