@@ -57,10 +57,11 @@
                         <li class="nav-item nav-item-custom">
                             <a class="nav-link nav-link-custom" href="#">Nápoveda</a>
                         </li>
-                        <li class="nav-item nav-item-custom nav-item-highlight">
+                        <li id="login-b" class="nav-item nav-item-custom nav-item-highlight">
                             <a class="nav-link nav-link-custom nav-link-highlight" href="#">
                                 <i class="bi bi-person-heart btn-icon-padding"></i>
-                                Prihlásiť sa</a>
+                                Prihlásiť sa
+                            </a>
                         </li>
                     </ul>
                 </div>
@@ -126,6 +127,27 @@
                 </div>
                 <p class="text-center text-light footer-padding">Daniela Pavlíková | 2023</p>
             </footer>
+        </div>
+    </div>
+
+    <div class="popup">
+        <div class="close-btn">&times;</div>
+        <div class="login-form">
+            <h2>Prihlásenie</h2>
+            <div class="login-form-el" data-bs-theme="dark">
+                <label for="username">Prihlasovacie meno</label>
+                <input type="text" id="username" placeholder="Zadaj prihlasovacie meno" class="bg-dark form-control">
+            </div>
+            <div class="login-form-el" data-bs-theme="dark">
+                <label for="password">Heslo</label>
+                <input type="password" id="password" placeholder="Zadaj heslo" class="bg-dark form-control">
+            </div>
+            <div class="login-form-el">
+                <button type="button" class="btn btn-custom">Prihlásiť sa</button>
+            </div>
+            <div class="login-form-el">
+                <p>Ešte nemáš účet? <a href="#">Zaregistruj sa!</a></p>
+            </div>
         </div>
     </div>
 

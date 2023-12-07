@@ -276,6 +276,76 @@ roleplay.html
 }
 
 /*
+    login popup
+*/
+.popup {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(1.25);
+    width: 300px;
+    padding: 20px 30px;
+    background-color: #151f27;
+    box-shadow: 2px 2px 5px 5px #151F27;
+    border-radius: 10px;
+    opacity: 0;
+    transition:
+        top 0ms ease-in-out 200ms,
+        opacity 200ms ease-in-out 0ms,
+        transform 20ms ease-in-out 0ms;
+}
+
+.popup.active {
+    top: 50%;
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1.25);
+    transition:
+        top 0ms ease-in-out 200ms,
+        opacity 200ms ease-in-out 0ms,
+        transform 20ms ease-in-out 0ms;
+}
+
+.popup .close-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 15px;
+    height: 15px;
+    background: #2c686c;
+    color:#fff;
+    text-align: center;
+    line-height: 15px;
+    border-radius: 15px;
+    cursor: pointer;
+}
+
+.popup .login-form h2 {
+    text-align: center;
+    margin: 10px 8px 20px;
+    font-size: 25px;
+    font-weight: bold;
+}
+
+.popup .login-form .login-form-el {
+    margin: 15px 0px;
+}
+
+.popup .login-form label {
+    margin: 3px 2px;
+    font-size: 15px;
+}
+
+.popup .login-form .login-form-el p {
+    display: block;
+    font-size: 17px;
+}
+
+.popup .login-form .login-form-el a {
+    color: #D09125;
+    text-decoration: none;
+}
+
+/*
 prevzatý kód
 https://medium.com/@patrickwestwood/how-to-make-multi-layered-parallax-illustration-with-css-javascript-2b56883c3f27
  */

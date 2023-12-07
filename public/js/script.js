@@ -1,4 +1,15 @@
 /*
+https://www.youtube.com/watch?v=5BeM3-_8788
+*/
+document.querySelector('#login-b').addEventListener('click', function () {
+    document.querySelector(".popup").classList.add("active");
+});
+
+document.querySelector(".popup .close-btn").addEventListener("click", function () {
+    document.querySelector(".popup").classList.remove("active");
+});
+
+/*
 prevzatý kód preložený z CoffeeScript do JavaScript
 https://medium.com/@patrickwestwood/how-to-make-multi-layered-parallax-illustration-with-css-javascript-2b56883c3f27
  */
