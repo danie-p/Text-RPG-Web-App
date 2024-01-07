@@ -20,7 +20,7 @@ class PostController extends Controller
 
     public function editWindow(Post $post) {
         if (auth()->user()->id !== $post['user_id']) {
-            return redirect('/');
+            return redirect('/roleplay');
         }
 
         return view('edit-post', ['post' => $post]);
@@ -28,7 +28,7 @@ class PostController extends Controller
 
     public function editPost(Post $post, Request $request) {
         if (auth()->user()->id !== $post['user_id']) {
-            return redirect('/');
+            return redirect('/roleplay');
         }
 
         $incomingFields = $request->validate([
@@ -42,7 +42,7 @@ class PostController extends Controller
 
     public function deletePost(Post $post) {
         if (auth()->user()->id !== $post['user_id']) {
-            return redirect('/');
+            return redirect('/roleplay');
         }
 
         $post->delete();
