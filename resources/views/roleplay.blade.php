@@ -8,7 +8,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-kQtW33rZJAHjgefvhyyzcGF3C5TFyBQBA13V1RKPf4uH+bwyzQxZ6CmMZHmNBEfJ" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
-    <link rel="stylesheet" href="{{ asset('css/style.css'); }}">
+    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
 </head>
 
 <body class="light">
@@ -42,6 +42,15 @@
                         <li class="nav-item nav-item-custom">
                             <a class="nav-link nav-link-custom" href="#">Nápoveda</a>
                         </li>
+                        <li class="nav-item nav-item-custom nav-item-highlight">
+                            <form action="/logout" method="POST">
+                                @csrf
+                                <button class="nav-link nav-link-custom nav-link-highlight">
+                                    <i class="bi bi-person-heart btn-icon-padding"></i>
+                                    Odhlásiť sa
+                                </button>
+                            </form>
+                        </li>
                     </ul>
                 </div>
             </div>
@@ -56,7 +65,7 @@
                 @csrf
                 <div class="mb-3">
                     <label for="exampleFormControlTextarea1" class="form-label">Príspevok</label>
-                    <textarea name="body" class="form-control" id="exampleFormControlTextarea1" rows="5" placeholder="Tu píš svoj príbeh"></textarea>
+                    <textarea name="body" class="form-control" id="exampleFormControlTextarea1" rows="5" placeholder="Tu píš svoj príbeh" required minlength="10"></textarea>
                 </div>
                 <div class="mb-3">
                     <label for="formFile" class="form-label">Priložiť súbor</label>
@@ -84,14 +93,16 @@
                 <div class="container rp-text">
                     <p>{{ $post['body'] }}</p>
                 </div>
-                <div class="container-inline">
-                    <button class="btn btn-custom1"><a href="/edit-post/{{ $post->id }}">Upraviť</a></button>
-                    <form action="/delete-post/{{ $post->id }}" method="POST">
-                        @csrf
-                        @method('DELETE')
-                        <button class="btn btn-custom2">Vymazať</button>
-                    </form>
-                </div>
+                @if(Auth::user()->id == $post['user_id'])
+                    <div class="container-flex">
+                        <button class="btn btn-custom1"><a href="/edit-post/{{ $post->id }}">Upraviť</a></button>
+                        <form action="/delete-post/{{ $post->id }}" method="POST">
+                            @csrf
+                            @method('DELETE')
+                            <button class="btn btn-custom2">Vymazať</button>
+                        </form>
+                    </div>
+                @endif
             </div>
         @endforeach
 

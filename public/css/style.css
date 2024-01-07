@@ -131,17 +131,35 @@
     color: #151F27;
     display: inline-flex;
     text-decoration: none;
+    margin-bottom: 5px;
 }
 
-.container-inline {
-    display: inline-block;
+.btn-custom1:hover {
+    background-color: rgba(241, 225, 189, 0.5);
+}
+
+.btn-custom1 a {
+    text-decoration: none;
+    color: #151F27;
+}
+
+.container-flex {
+    display: flex;
+}
+
+.container-flex button {
+    margin-right: 10px;
 }
 
 .btn-custom2 {
-    background-color: #151F27;
+    background-color: rgba(45, 55, 72, 1);
     color: #fff;
     display: inline-flex;
     text-decoration: none;
+}
+
+.btn-custom2:hover {
+    background-color: rgba(45, 55, 72, 0.5);
 }
 
 .btn-custom:hover {
@@ -155,6 +173,10 @@
 
 .btn-icon-padding {
     padding-right: 5px;
+}
+
+.dropdown-item:active {
+    background-color: rgba(224, 172, 82, 0.5);
 }
 
 /*
