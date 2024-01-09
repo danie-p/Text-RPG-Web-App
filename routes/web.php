@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CharacterController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\UserController;
@@ -24,6 +25,7 @@ Route::get('/castle', [PageController::class, 'castle'])->name('castle');
 Route::get('/roleplay', [PageController::class, 'roleplay'])->name('roleplay');
 Route::get('/register-page', [PageController::class, 'register_page'])->name('register-page');
 Route::get('/home', [PageController::class, 'home'])->name('home');
+Route::get('/create-character-page', [PageController::class, 'create_character_page'])->name('create-character-page');
 
 Route::post('/register', [UserController::class, 'register'])->name('register');
 Route::post('/logout', [UserController::class, 'logout'])->name('logout');
@@ -33,3 +35,5 @@ Route::post('/create-post', [PostController::class, 'createPost']);
 Route::get('/edit-post/{post}', [PostController::class, 'editWindow']);
 Route::put('/edit-post/{post}', [PostController::class, 'editPost']);
 Route::delete('/delete-post/{post}', [PostController::class, 'deletePost']);
+
+Route::post('/create-character', [CharacterController::class, 'createCharacter'])->name('create-character');

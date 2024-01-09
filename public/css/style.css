@@ -9,6 +9,7 @@
     padding-left: 2vh;
     padding-right: 2vh;
     text-align: center;
+    border-radius: 0.25rem;
 }
 
 .title-light {
@@ -19,6 +20,11 @@
 .title-dark {
     color: #151F27;
     border: 1px solid #151F27;
+}
+
+.title-headerless {
+    margin: 60px 0 40px 0;
+    width: fit-content;
 }
 
 .floatie {
@@ -58,12 +64,17 @@
     background-color: transparent;
 }
 
+.navbar-custom-headerless {
+    position: relative !important;
+    z-index: 3;
+}
+
 .nav-link-custom {
     font-size: 110%;
     color: white;
 }
 
-.nav-link-custom:hover, #drop a:focus {
+.nav-link-custom:hover, .dropdown a:focus {
     color: #E0AC52;
 }
 
@@ -74,7 +85,7 @@
 .nav-item-custom {
     margin: 0.3vw;
     background-color: rgba(21, 31, 39, 0.7);
-    border-radius: 10px;
+    border-radius: 0.25rem;
     padding-left: 0.5vh;
     padding-right: 0.5vh;
 }
@@ -121,21 +132,23 @@
 }
 
 .btn-custom {
+    border-radius: 0.25rem;
     background-color: #D09125;
     color: #151F27;
     display: inline-flex;
 }
 
 .btn-custom1 {
-    background-color: #f1e1bd;
-    color: #151F27;
+    border-radius: 0.25rem;
+    color: #f1e1bd;
+    background-color: rgba(68, 141, 145, 1);
     display: inline-flex;
     text-decoration: none;
     margin-bottom: 5px;
 }
 
 .btn-custom1:hover {
-    background-color: rgba(241, 225, 189, 0.5);
+    background-color: rgba(68, 141, 145, 0.5);
 }
 
 .btn-custom1 a {
@@ -148,18 +161,20 @@
 }
 
 .container-flex button {
+    margin-top: 5px;
     margin-right: 10px;
 }
 
 .btn-custom2 {
-    background-color: rgba(45, 55, 72, 1);
+    border-radius: 0.25rem;
+    background-color: rgba(44, 104, 108, 1);
     color: #fff;
     display: inline-flex;
     text-decoration: none;
 }
 
 .btn-custom2:hover {
-    background-color: rgba(45, 55, 72, 0.5);
+    background-color: rgba(44, 104, 108, 0.5);
 }
 
 .btn-custom:hover {
@@ -177,6 +192,18 @@
 
 .dropdown-item:active {
     background-color: rgba(224, 172, 82, 0.5);
+}
+
+.container {
+    width: 62%;
+}
+
+.post-container {
+    width: 75%;
+}
+
+.rp-body {
+    background: radial-gradient(#2c686c, #151f27);
 }
 
 /*
@@ -232,7 +259,7 @@ hrad.html
 .nav-custom {
     background-color: #AA813E;
     margin-bottom: 25px;
-    border-radius: 10px;
+    border-radius: 0.25rem;
     padding: 3px;
     width: 100%;
 }
@@ -255,6 +282,7 @@ hrad.html
 }
 
 .btn-group {
+    border-radius: 0.25rem;
     width: 100%;
     padding: 4px;
     background-color: #564427;
@@ -262,6 +290,7 @@ hrad.html
 }
 
 .btn-nav-custom {
+    border-radius: 0.25rem;
     width: min-content;
     color: white;
 }
@@ -279,8 +308,14 @@ hrad.html
 roleplay.html
  */
 .rp-title {
-    position: absolute;
-    top: 70%;
+    position: relative;
+    transform: translate(-50%);
+    font-family: "Playfair Display", serif;
+    font-weight: bold;
+    padding-left: 2vh;
+    padding-right: 2vh;
+    text-align: center;
+    border-radius: 0.25rem;
     left: 50%;
     font-size: 5vw;
 }
@@ -307,12 +342,10 @@ roleplay.html
 .rp-text {
     background-color: #151F27;
     margin-bottom: 10px;
-    padding-top: 15px;
-    padding-left: 15px;
-    padding-right: 15px;
-    padding-bottom: 1px;
-    border-radius: 10px;
-    border: 1px solid white;
+    padding: 15px 20px 1px;
+    border-radius: 0.25rem;
+    box-shadow: 0 0 10px #2c686c;
+    color: #fff;
 }
 
 .rp-text p {
@@ -345,23 +378,25 @@ roleplay.html
     width: 300px;
     padding: 20px 30px;
     background-color: #151f27;
-    box-shadow: 2px 2px 5px 5px #151F27;
-    border-radius: 10px;
+    box-shadow: 0 0 10px #2c686c;
+    border-radius: 0.25rem;
     opacity: 0;
+    visibility: hidden;
     transition:
         top 0ms ease-in-out 200ms,
         opacity 200ms ease-in-out 0ms,
-        transform 20ms ease-in-out 0ms;
+        transform 40ms ease-in-out 0ms;
 }
 
 .popup.active {
     top: 50%;
     opacity: 1;
-    transform: translate(-50%, -50%) scale(1.25);
+    transform: translate(-50%, -50%) scale(1.2);
+    visibility: visible;
     transition:
         top 0ms ease-in-out 200ms,
         opacity 200ms ease-in-out 0ms,
-        transform 20ms ease-in-out 0ms;
+        transform 40ms ease-in-out 0ms;
 }
 
 .popup .close-btn {
@@ -392,7 +427,7 @@ roleplay.html
 
 .popup .login-form label {
     margin: 3px 2px;
-    font-size: 15px;
+    font-size: 17px;
 }
 
 .popup .login-form .login-form-el p {

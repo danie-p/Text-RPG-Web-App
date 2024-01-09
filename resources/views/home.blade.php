@@ -41,8 +41,8 @@
                                 <i class="bi bi-house-heart-fill"></i>
                             </a>
                         </li>
-                        <li id="drop" class="nav-item nav-item-custom dropdown">
-                            <a class="nav-link nav-link-custom dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <li class="nav-item nav-item-custom dropdown">
+                            <a class="nav-link nav-link-custom dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 Rázcestie
                             </a>
                             <ul class="dropdown-menu">
@@ -61,14 +61,20 @@
                             <a class="nav-link nav-link-custom" href="#">Nápoveda</a>
                         </li>
                         @auth
-                        <li class="nav-item nav-item-custom nav-item-highlight">
-                            <form action="/logout" method="POST">
-                                @csrf
-                                <button class="nav-link nav-link-custom nav-link-highlight">
+                        <li class="nav-item nav-item-custom nav-item-highlight dropdown">
+                                <button class="nav-link nav-link-custom nav-link-highlight dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
                                     <i class="bi bi-person-heart btn-icon-padding"></i>
-                                    Odhlásiť sa
+                                    Môj účet
                                 </button>
-                            </form>
+                                <ul class="dropdown-menu">
+                                    <li>
+                                        <form action="/logout" method="POST" class="dropdown-item">
+                                            @csrf
+                                            <button class="dropdown-item" style="background: none; padding: 0">Odhlásiť sa</button>
+                                        </form>
+                                    </li>
+                                    <li><a class="dropdown-item" href="{{ route('create-character-page') }}">Vytvoriť postavu</a></li>
+                                </ul>
                         </li>
                         @else
                         <li id="login-b" class="nav-item nav-item-custom nav-item-highlight">

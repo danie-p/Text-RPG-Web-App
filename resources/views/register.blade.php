@@ -12,6 +12,7 @@
 </head>
 <body class="register-body">
     <div class="register-window">
+        <div class="close-btn">&times;</div>
         <div class="login-form">
             <h2>Registrácia</h2>
             <form action="{{ route('register') }}" method="POST">
@@ -34,5 +35,7 @@
             </form>
         </div>
     </div>
+
+    <script src="js/character.js"></script>
 </body>
 </html>

@@ -23,4 +23,8 @@ class PageController extends Controller
     public function home() {
         return view('home');
     }
+
+    public function create_character_page() {
+        return view('create-character');
+    }
 }

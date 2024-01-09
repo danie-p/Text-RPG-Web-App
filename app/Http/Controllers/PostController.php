@@ -19,6 +19,9 @@ class PostController extends Controller
     }
 
     public function editWindow(Post $post) {
+        /*if (!auth()->user()) {
+            return redirect('/home');
+        }*/
         if (auth()->user()->id !== $post['user_id']) {
             return redirect('/roleplay');
         }

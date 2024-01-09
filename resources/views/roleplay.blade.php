@@ -11,10 +11,10 @@
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
 </head>
 
-<body class="light">
+<body class="rp-body">
     @auth
-    <div class="header header-light">
-        <nav id="nav-header" class="navbar navbar-expand-lg navbar-custom">
+    <div class="container">
+        <nav id="nav-header" class="navbar navbar-expand-lg navbar-custom-headerless">
             <div class="container-fluid">
                 <button class="navbar-toggler navbar-toggler-custom mx-auto" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon navbar-dark"></span>
@@ -55,19 +55,17 @@
                 </div>
             </div>
         </nav>
-        <h1 class="rp-title title title-dark">ROLEPLAY - HRAD</h1>
-    </div>
+        <h1 class="rp-title title-headerless title-light">ROLEPLAY - HRAD</h1>
 
-    <div class="container">
         <div class="first-section">
 
             <form action="/create-post" method="POST">
                 @csrf
-                <div class="mb-3">
+                <div class="mb-3 post-container">
                     <label for="exampleFormControlTextarea1" class="form-label">Príspevok</label>
                     <textarea name="body" class="form-control" id="exampleFormControlTextarea1" rows="5" placeholder="Tu píš svoj príbeh" required minlength="10"></textarea>
                 </div>
-                <div class="mb-3">
+                <div class="mb-3 post-container">
                     <label for="formFile" class="form-label">Priložiť súbor</label>
                     <input name="image" class="form-control" type="file" id="formFile">
                 </div>
@@ -87,10 +85,10 @@
 
         @foreach ($posts as $post)
             <div class="first-section">
-                <div class="container rp-header">
+                <div class="rp-header">
                     {{ $post['user_id'] }}
                 </div>
-                <div class="container rp-text">
+                <div class="rp-text">
                     <p>{{ $post['body'] }}</p>
                 </div>
                 @if(Auth::user()->id == $post['user_id'])

@@ -5,22 +5,24 @@
 }
 
 body {
-    background: radial-gradient(#2c686c, #151f27);
+    background: radial-gradient(#876732, #60481f);
     font-family: 'Times New Roman', Times, serif;
 }
 
 .register-window {
-    position: absolute;
+    margin-top: 8%;
+    margin-bottom: 10%;
+    position: relative;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%) scale(1.2);
-    width: 25%;
+    width: 50%;
     min-width: 300px;
     padding: 20px 30px;
-    background-color: #151f27;
-    box-shadow: 0 0 10px #2c686c;
+    background-color: #60481f;
+    box-shadow: 0 0 20px #876732;
     border-radius: 0.25rem;
-    color: #fff;
+    color: #D09125;
 }
 
 .register-window .login-form h2 {
@@ -28,21 +30,17 @@ body {
     margin: 10px 8px 20px;
     font-size: 25px;
     font-weight: bold;
-    color: #fff
+    color: #f1e1bd;
 }
 
-input:invalid {
-    border: 1px red;
-  }
-
 .register-window .login-form .login-form-el {
-    margin: 15px 0px;
+    margin-bottom: 15px;
 }
 
 .register-window .login-form label {
-    margin: 3px 2px;
+    margin: 0 2px 3px 2px;
     font-size: 17px;
-    color: #D09125;
+    color: #f1e1bd;
 }
 
 .btn-custom {
@@ -56,14 +54,48 @@ input:invalid {
     color: #151F27;
 }
 
+.bg-light {
+    background-color: #876732 !important;
+}
+
+.form-control {
+    border: none;
+}
+
+#image {
+    width: 100%;
+    height: 304px;
+    object-fit: cover;
+}
+
+#age {
+    width: 35%;
+}
+
+#name {
+    width: 65%;
+}
+
+#surname {
+    width: 65%;
+}
+
+#create-character-bio {
+    min-height: 200px;
+}
+
+#create-character-description {
+    min-height: 200px;
+}
+
 .close-btn {
     position: absolute;
     top: 10px;
     right: 10px;
     width: 15px;
     height: 15px;
-    background: #2c686c;
-    color:#fff;
+    background: #876732;
+    color: black;
     text-align: center;
     line-height: 15px;
     border-radius: 15px;
