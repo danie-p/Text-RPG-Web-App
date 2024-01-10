@@ -55,7 +55,7 @@
                             </ul>
                         </li>
                         <li class="nav-item nav-item-custom">
-                            <a class="nav-link nav-link-custom" href="#">Obyvatelia</a>
+                            <a class="nav-link nav-link-custom" href="{{ route('citizens') }}">Obyvatelia</a>
                         </li>
                         <li class="nav-item nav-item-custom">
                             <a class="nav-link nav-link-custom" href="#">Nápoveda</a>

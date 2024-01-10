@@ -37,3 +37,5 @@ Route::put('/edit-post/{post}', [PostController::class, 'editPost']);
 Route::delete('/delete-post/{post}', [PostController::class, 'deletePost']);
 
 Route::post('/create-character', [CharacterController::class, 'createCharacter'])->name('create-character');
+Route::get('/show-character/{id}', [CharacterController::class, 'showCharacter'])->name('show-character');
+Route::get('/citizens', [CharacterController::class, 'showAllCharacters'])->name('citizens');

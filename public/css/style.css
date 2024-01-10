@@ -367,6 +367,23 @@ roleplay.html
     text-align: center;
 }
 
+#citizen {
+    color: #D09125;
+    text-decoration: none;
+}
+
+.container-citizens {
+    min-height: 100px;
+    width: 50%;
+    margin: auto;
+    padding-bottom: 20px;
+    padding-top: 20px;
+}
+
+.container-citizens p {
+    text-align: center;
+}
+
 /*
     login popup
 */
@@ -422,7 +439,7 @@ roleplay.html
 }
 
 .popup .login-form .login-form-el {
-    margin: 15px 0px;
+    margin: 15px 0;
 }
 
 .popup .login-form label {

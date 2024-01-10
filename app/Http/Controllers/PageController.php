@@ -27,4 +27,8 @@ class PageController extends Controller
     public function create_character_page() {
         return view('create-character');
     }
+
+    public function citizens() {
+        return view('citizens');
+    }
 }

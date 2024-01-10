@@ -22,7 +22,6 @@ body {
     background-color: #60481f;
     box-shadow: 0 0 20px #876732;
     border-radius: 0.25rem;
-    color: #D09125;
 }
 
 .register-window .login-form h2 {
@@ -100,4 +99,53 @@ body {
     line-height: 15px;
     border-radius: 15px;
     cursor: pointer;
+}
+
+.show-window {
+    margin: auto;
+    width: 50%;
+    min-width: 300px;
+    padding: 20px 30px;
+    background-color: #60481f;
+    box-shadow: 0 0 20px #876732;
+    border-radius: 0.25rem;
+    padding-top: 40px;
+}
+
+.window-container {
+    padding-bottom: 30px;
+}
+
+.show-window h3 {
+    color: black;
+}
+
+.show-window p {
+    margin-top: 2px;
+    background-color: #2f2213;
+    color: #966e43;
+    padding: 15px;
+    box-shadow: 0 0 5px #2f2213;
+    border-radius: 0.25rem;
+}
+
+.show-window label {
+    margin: 0 2px 3px 2px;
+    font-size: 15px;
+    color: #966e43;
+}
+
+.show-window .row {
+    margin-bottom: 10px;
+}
+
+#top-right {
+    background-image: url("https://www.onlygfx.com/wp-content/uploads/2017/11/flower-ornament-2-2.png");
+    background-size: 75%;
+    background-position: bottom right;
+    background-repeat: no-repeat;
+}
+
+.container-navbar {
+    padding-bottom: 20px;
 }

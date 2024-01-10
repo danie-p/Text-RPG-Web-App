@@ -16,12 +16,11 @@
         <h2>Vytvor si postavu</h2>
         <form action="{{ route('create-character') }}" method="POST">
             @csrf
-
             <div class="container-fluid">
                 <div class="close-btn">&times;</div>
                 <div class="row">
                     <div class="col-md-6">
-                        <img id="image" src="https://64.media.tumblr.com/4f6b9d29be2dd9d31057f65299760f4f/tumblr_o1k1vyqriG1tb8cbpo1_1280.jpg">
+                        <img id="image" style="object-position: center bottom" src="https://cdn.openart.ai/stable_diffusion/20768f5a316b8cb9d202d3815cfcba9e1a96ca90_2000x2000.webp">
                     </div>
                     <div class="col-md-6">
                         <div class="row">
@@ -50,9 +49,9 @@
                         </div>
                         <div class="row">
                             <div class="col-md-12">
-                                <div id="image-url" class="login-form-el" data-bs-theme="dark">
+                                <div id="imageurl" class="login-form-el" data-bs-theme="dark">
                                     <label for="create-character-image-url">Obrázok</label>
-                                    <input name="image-url" id="create-character-image-url" type="text" placeholder="Zadaj url adresu obrázka" class="bg-light form-control">
+                                    <input name="image_url" id="create-character-image-url" type="text" placeholder="Zadaj url adresu obrázka" class="bg-light form-control">
                                 </div>
                             </div>
                         </div>
@@ -62,13 +61,13 @@
                     <div class="col-md-6">
                         <div id="bio" class="login-form-el" data-bs-theme="dark">
                             <label for="create-character-bio">Životopis</label>
-                            <textarea name="bio" id="create-character-bio" type="" placeholder="Napíš životopis" class="bg-light form-control" required minlength="500"></textarea>
+                            <textarea name="bio" id="create-character-bio" type="" placeholder="Napíš životopis" class="bg-light form-control" required minlength="300"></textarea>
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div id="description" class="login-form-el" data-bs-theme="dark">
                             <label for="create-character-description">Opis</label>
-                            <textarea name="description" id="create-character-description" type="text" placeholder="Opíš postavu" class="bg-light form-control" required minlength="500"></textarea>
+                            <textarea name="description" id="create-character-description" type="text" placeholder="Opíš postavu" class="bg-light form-control" required minlength="300"></textarea>
                         </div>
                     </div>
                 </div>
