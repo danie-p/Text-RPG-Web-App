@@ -73,7 +73,7 @@
                 </div>
                 <div class="col-md-12">
                     <div class="login-form-el">
-                        <button type="submit" class="btn btn-custom">Vytvoriť postavu</button>
+                        <button id="create-char-btn" type="submit" class="btn btn-custom">Vytvoriť postavu</button>
                     </div>
                 </div>
             </div>

@@ -155,15 +155,21 @@
         <div class="close-btn">&times;</div>
         <div class="login-form">
             <h2>Prihlásenie</h2>
-            <form action="/login" method="POST">
+            <form class="needs-validation" novalidate action="/login" method="POST">
                 @csrf
                 <div class="login-form-el" data-bs-theme="dark">
                     <label for="username">Prihlasovacie meno</label>
                     <input name="login-name" type="text" id="username" placeholder="Zadaj prihlasovacie meno" class="bg-dark form-control" required>
+                    <div class="invalid-feedback">
+                        Zadaj, prosím, svoje prihlasovacie meno.
+                    </div>
                 </div>
                 <div class="login-form-el" data-bs-theme="dark">
                     <label for="password">Heslo</label>
                     <input name="login-password" type="password" id="password" placeholder="Zadaj heslo" class="bg-dark form-control" required>
+                    <div class="invalid-feedback">
+                        Zadaj, prosím, svoje heslo.
+                    </div>
                 </div>
                 <div class="login-form-el">
                     <button class="btn btn-custom">Prihlásiť sa</button>
@@ -176,4 +182,5 @@
     </div>
 
     <script src="js/script.js"></script>
+    <script src="js/form-validation.js"></script>
 </body>

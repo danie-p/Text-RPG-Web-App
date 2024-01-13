@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Aetheria | Hrad</title>
+    <title>Aetheria | Roleplay - Hrad</title>
     <link rel="icon" type="image/svg" href="images/icon.svg">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-kQtW33rZJAHjgefvhyyzcGF3C5TFyBQBA13V1RKPf4uH+bwyzQxZ6CmMZHmNBEfJ" crossorigin="anonymous"></script>
@@ -42,14 +42,20 @@
                         <li class="nav-item nav-item-custom">
                             <a class="nav-link nav-link-custom" href="#">Nápoveda</a>
                         </li>
-                        <li class="nav-item nav-item-custom nav-item-highlight">
-                            <form action="/logout" method="POST">
-                                @csrf
-                                <button class="nav-link nav-link-custom nav-link-highlight">
-                                    <i class="bi bi-person-heart btn-icon-padding"></i>
-                                    Odhlásiť sa
-                                </button>
-                            </form>
+                        <li class="nav-item nav-item-custom nav-item-highlight dropdown">
+                            <button class="nav-link nav-link-custom nav-link-highlight dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="bi bi-person-heart btn-icon-padding"></i>
+                                Môj účet
+                            </button>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <form action="/logout" method="POST" class="dropdown-item">
+                                        @csrf
+                                        <button class="dropdown-item" style="background: none; padding: 0">Odhlásiť sa</button>
+                                    </form>
+                                </li>
+                                <li><a class="dropdown-item" href="{{ route('create-character-page') }}">Vytvoriť postavu</a></li>
+                            </ul>
                         </li>
                     </ul>
                 </div>
@@ -59,18 +65,21 @@
 
         <div class="first-section">
 
-            <form action="/create-post" method="POST">
+            <form class="needs-validation" novalidate action="/create-post" method="POST">
                 @csrf
                 <div class="mb-3 post-container">
                     <label for="exampleFormControlTextarea1" class="form-label">Príspevok</label>
-                    <textarea name="body" class="form-control" id="exampleFormControlTextarea1" rows="5" placeholder="Tu píš svoj príbeh" required minlength="10"></textarea>
+                    <textarea name="body" class="form-control" id="exampleFormControlTextarea1" rows="5" placeholder="Tu píš svoj príbeh" required minlength="300"></textarea>
+                    <div class="invalid-feedback">
+                        Zadaj, prosím, text o dĺžke najmenej 300 znakov.
+                    </div>
                 </div>
                 <div class="mb-3 post-container">
                     <label for="formFile" class="form-label">Priložiť súbor</label>
                     <input name="image" class="form-control" type="file" id="formFile">
                 </div>
                 <div class="input-group mb-3 input-quest">
-                    <label class="input-group-text" for="inputGroupSelect02">Splenenie questu</label>
+                    <label class="input-group-text" for="inputGroupSelect02">Splnenie questu</label>
                     <select name="quest" class="form-select" id="inputGroupSelect02">
                         <option selected>Nie je vybratý žiadny quest</option>
                         <option value="1">Quest 1</option>
@@ -126,5 +135,6 @@
         </footer>
     </div>
 
+    <script src="js/form-validation.js"></script>
 </body>
 </html>

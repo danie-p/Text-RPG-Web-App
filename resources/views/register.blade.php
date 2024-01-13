@@ -15,19 +15,28 @@
         <div class="close-btn">&times;</div>
         <div class="login-form">
             <h2>Registrácia</h2>
-            <form action="{{ route('register') }}" method="POST">
+            <form class="needs-validation" novalidate action="{{ route('register') }}" method="POST">
             @csrf
                 <div class="login-form-el" data-bs-theme="dark">
                     <label for="register-name">Prihlasovacie meno</label>
                     <input name="name" id="register-name" type="text" placeholder="Zadaj prihlasovacie meno" class="bg-dark form-control" required minlength="3" maxlength="20">
+                    <div class="invalid-feedback">
+                        Zadaj, prosím, meno o dĺžke 3-20 znakov.
+                    </div>
                 </div>
                 <div class="login-form-el" data-bs-theme="dark">
                     <label for="register-email">e-mail</label>
                     <input name="email" id="register-email" type="email" placeholder="Zadaj e-mail" class="bg-dark form-control" required>
+                    <div class="invalid-feedback">
+                        Zadaj, prosím, e-mail v správnom tvare.
+                    </div>
                 </div>
                 <div class="login-form-el" data-bs-theme="dark">
                     <label for="register-password">Heslo</label>
                     <input name="password" id="register-password" type="password" placeholder="Zadaj heslo" class="bg-dark form-control" required minlength="8">
+                    <div class="invalid-feedback">
+                        Zadaj, prosím, heslo najmenej o dĺžke 8 znakov.
+                    </div>
                 </div>
                 <div class="login-form-el">
                     <button type="submit" class="btn btn-custom">Registrovať sa</button>
@@ -37,5 +46,6 @@
     </div>
 
     <script src="js/character.js"></script>
+    <script src="js/form-validation.js"></script>
 </body>
 </html>
