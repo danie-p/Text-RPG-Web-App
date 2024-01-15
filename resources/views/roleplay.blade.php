@@ -9,6 +9,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-kQtW33rZJAHjgefvhyyzcGF3C5TFyBQBA13V1RKPf4uH+bwyzQxZ6CmMZHmNBEfJ" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/form-validation.css') }}">
 </head>
 
 <body class="rp-body">
@@ -64,24 +65,32 @@
         <h1 class="rp-title title-headerless title-light">ROLEPLAY - HRAD</h1>
 
         <div class="first-section">
-
-            <form class="needs-validation" novalidate action="/create-post" method="POST">
+            <label for="rp-post" class="form-label">Príspevok</label>
+            <form id="rp-post" class="needs-validation" novalidate action="/create-post" method="POST">
                 @csrf
-                <div class="mb-3 post-container">
-                    <label for="exampleFormControlTextarea1" class="form-label">Príspevok</label>
-                    <textarea name="body" class="form-control" id="exampleFormControlTextarea1" rows="5" placeholder="Tu píš svoj príbeh" required minlength="300"></textarea>
+                <div class="input-group mb-3 input-quest">
+                    <select name="character" class="form-select" id="inputGroupSelect02" required>
+                        <option disabled selected value>Vybrať postavu</option>
+                        @foreach($characters as $character)
+                            <option>{{ $character->name }}</option>
+                        @endforeach
+                    </select>
                     <div class="invalid-feedback">
-                        Zadaj, prosím, text o dĺžke najmenej 300 znakov.
+                        Vyber, prosím, postavu.
                     </div>
                 </div>
                 <div class="mb-3 post-container">
-                    <label for="formFile" class="form-label">Priložiť súbor</label>
+                    <textarea name="body" class="form-control" id="exampleFormControlTextarea1" rows="5" placeholder="Tu píš svoj príbeh" required minlength="300"></textarea>
+                    <div class="invalid-feedback">
+                        Zadaj, prosím, príspevok o dĺžke najmenej 300 znakov.
+                    </div>
+                </div>
+                <div class="mb-3 post-container">
                     <input name="image" class="form-control" type="file" id="formFile">
                 </div>
                 <div class="input-group mb-3 input-quest">
-                    <label class="input-group-text" for="inputGroupSelect02">Splnenie questu</label>
                     <select name="quest" class="form-select" id="inputGroupSelect02">
-                        <option selected>Nie je vybratý žiadny quest</option>
+                        <option disabled selected>Splniť quest</option>
                         <option value="1">Quest 1</option>
                         <option value="2">Quest 2</option>
                         <option value="3">Quest 3</option>
@@ -94,19 +103,31 @@
 
         @foreach ($posts as $post)
             <div class="first-section">
-                <div class="rp-header">
-                    {{ $post['user_id'] }}
+                <div class="container-flex">
+                    <div style="flex: 1;" class="rp-header">
+                        <b style="font-size: larger">{{ $post->character->name }}</b>
+                        <span style="margin-left: 10px">{{ $post->user->name }}</span>
+                    </div>
+                    <div style="text-align: right; color: rgba(68, 141, 145, 1)" class="rp-header">
+                        <b style="font-size: larger"></b>
+                        {{ \Carbon\Carbon::parse($post->updated_at)->format('d.m.Y H:i:s') }}
+                    </div>
                 </div>
                 <div class="rp-text">
                     <p>{{ $post['body'] }}</p>
                 </div>
                 @if(Auth::user()->id == $post['user_id'])
-                    <div class="container-flex">
-                        <button class="btn btn-custom1"><a href="/edit-post/{{ $post->id }}">Upraviť</a></button>
+                    <div class="container-flex cont-flex1">
+                        <button style="margin-right: 10px" class="btn btn-custom1">
+                            <a href="/edit-post/{{ $post->id }}">
+                                <i class="bi bi-feather"></i>
+                                Upraviť</a></button>
                         <form action="/delete-post/{{ $post->id }}" method="POST">
                             @csrf
                             @method('DELETE')
-                            <button class="btn btn-custom2">Vymazať</button>
+                            <button class="btn btn-custom2">
+                                <i class="bi bi-trash3-fill btn-icon-padding"></i>
+                                Vymazať</button>
                         </form>
                     </div>
                 @endif
@@ -114,12 +135,6 @@
         @endforeach
 
     </div>
-    @else
-    <div class="container-fluid">
-        <h1 class="no-access">Nepovolený vstup!</h1>
-    </div>
-
-    @endauth
 
     <div class="container-fluid">
         <footer class="py-3">
@@ -134,6 +149,11 @@
             <p class="text-center text-light footer-padding">Daniela Pavlíková | 2023</p>
         </footer>
     </div>
+    @else
+    <div class="container-fluid">
+        <h1 class="no-access">Nepovolený vstup!</h1>
+    </div>
+    @endauth
 
     <script src="js/form-validation.js"></script>
 </body>

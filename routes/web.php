@@ -22,7 +22,6 @@ Route::get('/', function () {
 });
 
 Route::get('/castle', [PageController::class, 'castle'])->name('castle');
-Route::get('/roleplay', [PageController::class, 'roleplay'])->name('roleplay');
 Route::get('/register-page', [PageController::class, 'register_page'])->name('register-page');
 Route::get('/home', [PageController::class, 'home'])->name('home');
 Route::get('/create-character-page', [PageController::class, 'create_character_page'])->name('create-character-page');
@@ -32,10 +31,13 @@ Route::post('/logout', [UserController::class, 'logout'])->name('logout');
 Route::post('/login', [UserController::class, 'login'])->name('login');
 
 Route::post('/create-post', [PostController::class, 'createPost']);
-Route::get('/edit-post/{post}', [PostController::class, 'editWindow']);
+Route::get('/edit-post/{post}', [PostController::class, 'editWindowWithCharacters'])->name('editWindow');
 Route::put('/edit-post/{post}', [PostController::class, 'editPost']);
-Route::delete('/delete-post/{post}', [PostController::class, 'deletePost']);
+Route::any('/delete-post/{post}', [PostController::class, 'deletePost']);
+Route::get('/roleplay', [PostController::class, 'showPosts'])->name('roleplay');
 
 Route::post('/create-character', [CharacterController::class, 'createCharacter'])->name('create-character');
 Route::get('/show-character/{id}', [CharacterController::class, 'showCharacter'])->name('show-character');
 Route::get('/citizens', [CharacterController::class, 'showAllCharacters'])->name('citizens');
+Route::get('/edit-character/{character}', [CharacterController::class, 'editWindow'])->name('editWindow');
+Route::put('/edit-character/{character}', [CharacterController::class, 'editCharacter']);

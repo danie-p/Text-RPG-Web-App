@@ -1,5 +1,18 @@
-window.onload = () => {
-    document.querySelector(".close-btn").addEventListener("click", function () {
-        window.location.href = "/home";
-    });
+document.addEventListener('DOMContentLoaded', function () {
+    const form = document.querySelector('.needs-validation');
+    window.addEventListener('resize', handleResize);
+    window.addEventListener('load', handleResize)
+    form.addEventListener('submit', handleResize);
+    form.addEventListener('input', handleResize);
+});
+
+// dynamicka zmena vysky obrazku postavy
+function handleResize() {
+    const rows = document.querySelectorAll('.row-height');
+    const img = document.getElementById('image');
+    var colHeight = 0;
+    rows.forEach(row => {
+        colHeight += row.offsetHeight;
+    })
+    img.style.height = colHeight;
 }

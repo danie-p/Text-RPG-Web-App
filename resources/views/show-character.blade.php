@@ -78,9 +78,9 @@
     <div class="window-container">
     <div class="show-window">
         <div class="container-fluid">
-            <div class="row">
+            <div class="row" style="margin-bottom: 15px">
                 <div class="col-md-6">
-                    <img id="image" src={{ $character->image_url }}>
+                    <img alt="Character Image" id="image-show" src={{ $character->image_url }}>
                 </div>
                 <div id="top-right" class="col-md-6">
                     <div class="row">
@@ -88,13 +88,9 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-md-6">
+                        <div class="col-md-12">
                             <label>Meno</label>
-                            <h3 id="create-character-name">{{ $character->name }}</h3>
-                        </div>
-                        <div class="col-md-6">
-                            <label>Priezvisko</label>
-                            <h3 id="create-character-surname">{{ $character->surname }}</h3>
+                            <h3 id="create-character-name">{{ $character->name }} {{ $character->surname }}</h3>
                         </div>
                     </div>
                     <div class="row">
@@ -111,7 +107,7 @@
                     </div>
                 </div>
             </div>
-            <div class="row">
+            <div style="margin-bottom: 0" class="row">
                 <div class="col-md-6">
                     <label>Životopis</label>
                     <p id="create-character-bio">{{ $character->bio }}</p>
@@ -121,6 +117,16 @@
                     <p id="create-character-bio">{{ $character->description }}</p>
                 </div>
             </div>
+                @if(Auth::user()->id == $character['user_id'])
+                    <div class="container-flex cont-flex2">
+                        <button class="btn btn-custom4"><a href="/edit-character/{{ $character->id }}">Upraviť</a></button>
+                        <form action="/delete-character/{{ $character->id }}" method="POST">
+                            @csrf
+                            @method('DELETE')
+                            <button class="btn btn-custom3">Vymazať</button>
+                        </form>
+                    </div>
+                @endif
         </div>
     </div>
     </div>
@@ -132,7 +138,8 @@
                     <input class="bg-dark form-control me-2" type="search" placeholder="Hľadaný text" aria-label="Search">
                     <button class="btn btn-custom" type="submit">
                         <i class="bi bi-search-heart btn-icon-padding"></i>
-                        Hľadaj</button>
+                        Hľadaj
+                    </button>
                 </form>
             </div>
             <p class="text-center text-light footer-padding">Daniela Pavlíková | 2023</p>

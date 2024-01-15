@@ -1,4 +1,4 @@
-window.onload = () => {
+document.addEventListener('DOMContentLoaded', function () {
     document.querySelector('#login-b').addEventListener('click', function () {
         document.querySelector(".popup").classList.add("active");
     });
@@ -6,7 +6,7 @@ window.onload = () => {
     document.querySelector(".popup .close-btn").addEventListener("click", function () {
         document.querySelector(".popup").classList.remove("active");
     });
-}
+});
 
 /*
 prevzatý kód preložený z CoffeeScript do JavaScript

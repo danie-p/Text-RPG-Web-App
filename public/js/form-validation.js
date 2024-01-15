@@ -1,9 +1,9 @@
-window.onload = () => {
-    const forms = document.querySelectorAll('.needs-validation');
-
+document.addEventListener('DOMContentLoaded', function () {
     /*
     Kód prevzatý z https://getbootstrap.com/docs/5.3/forms/validation/?#custom-styles
      */
+    const forms = document.querySelectorAll('.needs-validation');
+
     Array.from(forms).forEach(form => {
         form.addEventListener('submit', event => {
             if (!form.checkValidity()) {
@@ -14,4 +14,4 @@ window.onload = () => {
             form.classList.add('was-validated');
         }, false);
     });
-}
+});

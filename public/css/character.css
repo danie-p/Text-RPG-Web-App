@@ -10,24 +10,20 @@ body {
 }
 
 .register-window {
-    margin-top: 8%;
-    margin-bottom: 10%;
-    position: relative;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%) scale(1.2);
-    width: 50%;
+    margin: auto;
+    width: 62%;
     min-width: 300px;
     padding: 20px 30px;
     background-color: #60481f;
     box-shadow: 0 0 20px #876732;
     border-radius: 0.25rem;
+    font-size: 20px;
 }
 
 .register-window .login-form h2 {
     text-align: center;
     margin: 10px 8px 20px;
-    font-size: 25px;
+    font-size: 30px;
     font-weight: bold;
     color: #f1e1bd;
 }
@@ -53,38 +49,90 @@ body {
     color: #151F27;
 }
 
+.btn-custom3 {
+    border-radius: 0.25rem;
+    background-color: #876732;
+    display: inline-flex;
+    color: #190a07;
+}
+
+.btn-custom4 a {
+    text-decoration: none;
+    color: #876732;
+    outline: none;
+}
+
+.btn-custom3:hover, .btn-custom3:active, .btn-custom3:focus-visible, .btn-custom3:active {
+    background-color: rgba(135, 103, 50, 0.5);
+    color: #190a07;
+}
+
+.btn-custom4 {
+    border-radius: 0.25rem;
+    background-color: #190a07;
+    color: #876732;
+    display: inline-flex;
+    text-decoration: none;
+    margin-right: 10px;
+}
+
+.btn-custom4:hover, .btn-custom4:active, .btn-custom4:focus-visible {
+    background-color: rgba(25, 10, 7, 0.5);
+    color: #876732;
+}
+
 .bg-light {
     background-color: #876732 !important;
 }
 
 .form-control {
     border: none;
+    font-size: 18px;
+    line-height: 150%;
+    text-align: justify;
 }
 
 #image {
     width: 100%;
-    height: 304px;
+    height: 309px;
+    object-fit: cover;
+}
+
+#image-show {
+    width: 100%;
+    height: 400px;
     object-fit: cover;
 }
 
 #age {
     width: 35%;
+    min-width: 105px;
+}
+
+#age .invalid-feedback {
+    width: 285%;
 }
 
 #name {
     width: 65%;
+    min-width: 135px;
+}
+
+#name .invalid-feedback {
+    width: 153%;
 }
 
 #surname {
     width: 65%;
+    min-width: 135px;
 }
 
 #create-character-bio {
-    min-height: 200px;
+    min-height: 300px;
 }
 
 #create-character-description {
-    min-height: 200px;
+    min-height: 300px;
 }
 
 .close-btn {
@@ -103,7 +151,7 @@ body {
 
 .show-window {
     margin: auto;
-    width: 50%;
+    width: 62%;
     min-width: 300px;
     padding: 20px 30px;
     background-color: #60481f;
@@ -148,4 +196,65 @@ body {
 
 .container-navbar {
     padding-bottom: 20px;
+}
+
+.form-control.is-valid, .was-validated .form-control:valid {
+    border-color: #190a07;
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'%3e%3cpath fill='%23190a07' d='M2.3 6.73.6 4.53c-.4-1.04.46-1.4 1.1-.8l1.1 1.4 3.4-3.8c.6-.63 1.6-.27 1.2.7l-4 4.6c-.43.5-.8.4-1.1.1z'/%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    padding-right: calc(1.5em + .75rem);
+    background-position: right calc(.375em + .1875rem) center;
+    background-size: calc(.75em + .375rem) calc(.75em + .375rem);
+}
+
+textarea:valid, textarea:focus:valid {
+    border: 1px solid #190a07;
+    background-position: top calc(.375em + .1875rem) right calc(.375em + .1875rem) !important;
+    color: white;
+}
+
+.form-control.is-valid, .was-validated .form-control:invalid {
+    border-color: #E0AC52;
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12' width='12' height='12' fill='none' stroke='%23E0AC52'%3e%3ccircle cx='6' cy='6' r='4.5'/%3e%3cpath stroke-linejoin='round' d='M5.8 3.6h.4L6 6.5z'/%3e%3ccircle cx='6' cy='8.2' r='.6' fill='%23E0AC52' stroke='none'/%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    padding-right: calc(1.5em + .75rem);
+    background-position: right calc(.375em + .1875rem) center;
+    background-size: calc(.75em + .375rem) calc(.75em + .375rem);
+}
+
+textarea:invalid, textarea:focus:invalid {
+    border: 1px solid #E0AC52;
+    background-position: top calc(.375em + .1875rem) right calc(.375em + .1875rem) !important;
+    color: white;
+}
+
+.invalid-feedback {
+    color: #E0AC52;
+    font-size: 17px;
+}
+
+input:focus:valid, .form-control.is-valid:focus, .was-validated .form-control:valid:focus {
+    border: 1px solid #190a07;
+    box-shadow: 0 0 5px #190a07 !important;
+}
+
+input:valid {
+    border: 1px solid #190a07;
+}
+
+input:focus:invalid, .form-control.is-invalid:focus, .was-validated .form-control:invalid:focus {
+    border: 1px solid #E0AC52;
+    box-shadow: 0 0 5px #E0AC52 !important;
+}
+
+input:invalid {
+    border: 1px solid #E0AC52;
+}
+
+textarea:focus:valid {
+    box-shadow: 0 0 10px #190a07 !important;
+}
+
+textarea:focus:invalid {
+    box-shadow: 0 0 10px #E0AC52 !important;
 }
