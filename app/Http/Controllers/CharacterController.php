@@ -18,8 +18,8 @@ class CharacterController extends Controller
 
         $incomingFields['user_id'] = auth()->id();
 
-        Character::create($incomingFields);
-        return redirect('/citizens');
+        $character = Character::create($incomingFields);
+        return view('show-character', compact('character'));
     }
 
     public function editWindow(Character $character) {
@@ -43,6 +43,20 @@ class CharacterController extends Controller
 
         $character->update($incomingFields);
         return view('show-character', compact('character'));
+    }
+
+    public function deleteCharacter(Character $character, Request $request) {
+        if ($request->isMethod('delete')) {
+
+            if (auth()->user()->id !== $character['user_id']) {
+                return view('show-character', compact('character'));
+            }
+
+            $character->delete();
+
+            return redirect('/citizens');
+        }
+        return redirect('/home');
     }
 
     public function showCharacter($id) {

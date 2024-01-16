@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
     <link rel="stylesheet" href="{{ asset('css/form-validation.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/modal.css') }}">
 </head>
 
 <body class="rp-body">
@@ -96,7 +97,7 @@
                         <option value="3">Quest 3</option>
                     </select>
                 </div>
-                <button class="btn btn-custom ">Odoslať</button>
+                <button class="btn btn-custom submit-textarea">Odoslať</button>
             </form>
 
         </div>
@@ -105,7 +106,7 @@
             <div class="first-section">
                 <div class="container-flex">
                     <div style="flex: 1;" class="rp-header">
-                        <b style="font-size: larger">{{ $post->character->name }}</b>
+                        <b style="font-size: larger">{{ $post->character->name }} {{ $post->character->surname }}</b>
                         <span style="margin-left: 10px">{{ $post->user->name }}</span>
                     </div>
                     <div style="text-align: right; color: rgba(68, 141, 145, 1)" class="rp-header">
@@ -120,20 +121,39 @@
                     <div class="container-flex cont-flex1">
                         <button style="margin-right: 10px" class="btn btn-custom1">
                             <a href="/edit-post/{{ $post->id }}">
-                                <i class="bi bi-feather"></i>
-                                Upraviť</a></button>
-                        <form action="/delete-post/{{ $post->id }}" method="POST">
-                            @csrf
-                            @method('DELETE')
-                            <button class="btn btn-custom2">
-                                <i class="bi bi-trash3-fill btn-icon-padding"></i>
-                                Vymazať</button>
-                        </form>
+                                <i class="bi bi-feather btn-icon-padding"></i>
+                                Upraviť</a>
+                        </button>
+                        <button style="margin: 5px 0 5px 0" class="btn btn-custom2" data-bs-toggle="modal" data-bs-target="#myModal{{ $post->id }}">
+                            <i class="bi bi-trash3-fill btn-icon-padding"></i>
+                            Vymazať
+                        </button>
                     </div>
                 @endif
             </div>
-        @endforeach
 
+            <div id="myModal{{ $post->id }}" class="modal fade" tabindex="-1">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title">Potvrdenie vymazania</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <p>Naozaj chceš vymazať príspevok od postavy {{ $post->character->name }} {{ $post->character->surname }}?</p>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Späť</button>
+                            <form id="form-delete-{{ $post->id }}" action="/delete-post/{{ $post->id }}" method="POST">
+                                @csrf
+                                @method('DELETE')
+                                <button type="button" class="btn btn-custom1" onclick="deletePost({{ $post->id }})">Vymazať</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        @endforeach
     </div>
 
     <div class="container-fluid">
@@ -149,12 +169,19 @@
             <p class="text-center text-light footer-padding">Daniela Pavlíková | 2023</p>
         </footer>
     </div>
+
     @else
     <div class="container-fluid">
         <h1 class="no-access">Nepovolený vstup!</h1>
     </div>
     @endauth
 
-    <script src="js/form-validation.js"></script>
+    <script>
+        function deletePost(postId) {
+            document.getElementById('form-delete-' + postId).submit();
+        }
+    </script>
+    <script src="../js/form-validation.js"></script>
+    <script src="../js/dynamic-textarea.js"></script>
 </body>
 </html>

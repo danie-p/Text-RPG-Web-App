@@ -153,7 +153,7 @@
                         </div>
                         <div class="col-md-12">
                             <div class="container-flex cont-flex2 login-form-el">
-                                <button type="submit" class="btn btn-custom4" style="margin-right: 0">Vytvoriť postavu</button>
+                                <button type="submit" class="btn btn-custom4 submit-textarea" style="margin-right: 0">Vytvoriť postavu</button>
                             </div>
                         </div>
                     </div>
@@ -182,7 +182,8 @@
         </div>
     @endauth
 
-    <script src="js/form-validation.js"></script>
-    <script src="js/character.js"></script>
+    <script src="../js/form-validation.js"></script>
+    <script src="../js/character.js"></script>
+    <script src="../js/dynamic-textarea.js"></script>
 </body>
 </html>

@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
     <link rel="stylesheet" href="{{ asset('css/character.css') }}">
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/modal.css') }}">
 </head>
 
 <body class="register-body">
@@ -119,12 +120,38 @@
             </div>
                 @if(Auth::user()->id == $character['user_id'])
                     <div class="container-flex cont-flex2">
-                        <button class="btn btn-custom4"><a href="/edit-character/{{ $character->id }}">Upraviť</a></button>
-                        <form action="/delete-character/{{ $character->id }}" method="POST">
-                            @csrf
-                            @method('DELETE')
-                            <button class="btn btn-custom3">Vymazať</button>
-                        </form>
+                        <a href="/edit-character/{{ $character->id }}">
+                            <button style="margin: 5px 10px 5px 0; align-items: center" class="btn btn-custom4">
+                                <i class="bi bi-feather btn-icon-padding"></i>
+                                Upraviť
+                            </button>
+                        </a>
+                        <button style="margin: 5px 0 5px 0; align-items: center" class="btn btn-custom3" data-bs-toggle="modal" data-bs-target="#myModal">
+                            <i class="bi bi-trash3-fill btn-icon-padding"></i>
+                            Vymazať
+                        </button>
+                    </div>
+
+                    <div id="myModal" class="modal fade modal-char" tabindex="-1">
+                        <div class="modal-dialog modal-dialog-centered">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title">Potvrdenie vymazania</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <p>Naozaj chceš vymazať postavu {{ $character->name }} {{ $character->surname }}?</p>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Späť</button>
+                                    <form id="form-delete" action="/delete-character/{{ $character->id }}" method="POST">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="button" class="btn btn-custom1" onclick="deleteCharacter()">Vymazať</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 @endif
         </div>
@@ -170,6 +197,11 @@
         </div>
     </div>
 
+    <script>
+        function deleteCharacter() {
+            document.getElementById('form-delete').submit();
+        }
+    </script>
     <script src="../js/script.js"></script>
 </body>
 </html>

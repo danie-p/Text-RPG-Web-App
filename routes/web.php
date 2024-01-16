@@ -41,3 +41,4 @@ Route::get('/show-character/{id}', [CharacterController::class, 'showCharacter']
 Route::get('/citizens', [CharacterController::class, 'showAllCharacters'])->name('citizens');
 Route::get('/edit-character/{character}', [CharacterController::class, 'editWindow'])->name('editWindow');
 Route::put('/edit-character/{character}', [CharacterController::class, 'editCharacter']);
+Route::any('/delete-character/{character}', [CharacterController::class, 'deleteCharacter']);

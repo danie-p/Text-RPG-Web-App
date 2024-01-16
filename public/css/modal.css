@@ -1,0 +1,83 @@
+.modal-content {
+    background-color: #151f27;
+    border: #448D91 1px solid;
+    width: 75%;
+}
+
+.modal-title {
+    font-weight: bold;
+    color: #448D91;
+}
+
+.modal-header {
+    border-bottom: #448D91 1px solid;
+}
+
+.modal-footer {
+    border-top: #448D91 1px solid;
+}
+
+.btn-close {
+    --bs-btn-close-color: #448D91;
+    color: #448D91;
+    --bs-btn-close-bg: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23448D91'%3e%3cpath d='M.293.293a1 1 0 0 1 1.414 0L8 6.586 14.293.293a1 1 0 1 1 1.414 1.414L9.414 8l6.293 6.293a1 1 0 0 1-1.414 1.414L8 9.414l-6.293 6.293a1 1 0 0 1-1.414-1.414L6.586 8 .293 1.707a1 1 0 0 1 0-1.414z'/%3e%3c/svg%3e");
+}
+
+.btn-close:focus {
+    box-shadow: none;
+}
+
+.modal-footer .btn-secondary {
+    margin: 0 10px 0 0;
+    border-radius: 0.25rem;
+}
+
+.modal-footer .btn-custom1 {
+    margin: 0;
+}
+
+.modal-char .modal-content {
+    background-color: #60481f;
+    border: #876732 1px solid;
+    width: 75%;
+}
+
+.modal-char .modal-title {
+    font-weight: bold;
+    color: #190a07;
+}
+
+.modal-char .modal-header {
+    border-bottom: #876732 1px solid;
+}
+
+.modal-char .modal-footer {
+    border-top: #876732 1px solid;
+}
+
+.modal-char .btn-close {
+    --bs-btn-close-color: #876732;
+    color: #876732;
+    --bs-btn-close-bg: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23876732'%3e%3cpath d='M.293.293a1 1 0 0 1 1.414 0L8 6.586 14.293.293a1 1 0 1 1 1.414 1.414L9.414 8l6.293 6.293a1 1 0 0 1-1.414 1.414L8 9.414l-6.293 6.293a1 1 0 0 1-1.414-1.414L6.586 8 .293 1.707a1 1 0 0 1 0-1.414z'/%3e%3c/svg%3e");
+}
+
+.modal-char p {
+    margin-top: 0;
+    background-color: #60481f;
+    color: white;
+    padding: 0;
+    box-shadow: none;
+    border-radius: 0;
+}
+
+.modal-char .modal-footer .btn-secondary {
+    margin: 0 10px 0 0;
+    border-radius: 0.25rem;
+    background-color: #876732;
+    border-color: #876732;
+}
+
+.modal-char .modal-footer .btn-custom1 {
+    margin: 0;
+    background-color: #190a07;
+}
