@@ -214,6 +214,11 @@
     background: radial-gradient(#2c686c, #151f27);
 }
 
+#quest iconify-icon {
+    font-size: 200%;
+    color: #D09125;
+}
+
 /*
 hrad.html
 */
@@ -349,7 +354,6 @@ roleplay.html
 
 .rp-text {
     background-color: #151F27;
-    margin-bottom: 10px;
     padding: 15px 20px 15px;
     border-radius: 0.25rem;
     box-shadow: 0 0 10px #2c686c;

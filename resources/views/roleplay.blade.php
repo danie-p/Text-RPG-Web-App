@@ -7,6 +7,7 @@
     <link rel="icon" type="image/svg" href="images/icon.svg">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-kQtW33rZJAHjgefvhyyzcGF3C5TFyBQBA13V1RKPf4uH+bwyzQxZ6CmMZHmNBEfJ" crossorigin="anonymous"></script>
+    <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
     <link rel="stylesheet" href="{{ asset('css/form-validation.css') }}">
@@ -114,7 +115,7 @@
                     </div>
                     <div style="text-align: right; color: rgba(68, 141, 145, 1)" class="rp-header">
                         <b style="font-size: larger"></b>
-                        <span id="post-update-time-{{ $post->id }}">{{ \Carbon\Carbon::parse($post->updated_at)->format('d.m.Y H:i:s') }}</span>
+                        <span id="post-update-time-{{ $post->id }}">{{ \Carbon\Carbon::parse($post->updated_at)->format('d M Y H:i') }}</span>
                     </div>
                 </div>
                 <div id="post-body-{{ $post->id }}" class="rp-text">
@@ -122,28 +123,31 @@
                 </div>
 
                 <div class="container-flex cont-flex1">
-                    <span style="flex: 1; margin-top: 5px">
-                        <i @if($post->quest != "")
-                               style="display: inline;"
-                           @else
-                               style="display: none;"
-                           @endif
-                            id="icon-quest-{{ $post->id }}" class="bi bi-bookmark-check-fill"></i>
-                        <span id="post-quest-{{ $post->id }}">
+                    <span id="quest" style="flex: 1; display: flex; align-items: center; margin-left: 10px">
+                        <iconify-icon
+                            @if($post->quest != "")
+                                style="display: inline;"
+                            @else
+                                style="display: none;"
+                            @endif
+                            id="icon-quest-{{ $post->id }}" icon="teenyicons:bookmark-solid"></iconify-icon>
+                        <span id="post-quest-{{ $post->id }}" style="margin-left: 5px; color: #E0AC52">
                             @if($post->quest != "")
                             Quest {{ $post->quest }}
                             @endif
                         </span>
                     </span>
                     @if(Auth::user()->id == $post['user_id'])
-                        <button id="btn-edit-{{ $post->id }}" data-postid="{{ $post->id }}" style="margin-right: 10px" class="btn btn-custom1 btn-edit">
+                        <span style="margin-top: 10px">
+                            <button id="btn-edit-{{ $post->id }}" data-postid="{{ $post->id }}" style="margin-right: 10px" class="btn btn-custom1 btn-edit">
                                 <i class="bi bi-feather btn-icon-padding"></i>
                                 Upraviť
-                        </button>
-                        <button style="margin: 5px 0 5px 0" class="btn btn-custom2" data-bs-toggle="modal" data-bs-target="#myModal{{ $post->id }}">
-                            <i class="bi bi-trash3-fill btn-icon-padding"></i>
-                            Vymazať
-                        </button>
+                            </button>
+                            <button style="margin: 5px 0 5px 0" class="btn btn-custom2" data-bs-toggle="modal" data-bs-target="#myModal{{ $post->id }}">
+                                <i class="bi bi-trash3-fill btn-icon-padding"></i>
+                                Vymazať
+                            </button>
+                        </span>
                     @endif
                 </div>
             </div>

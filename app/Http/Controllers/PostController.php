@@ -52,7 +52,7 @@ class PostController extends Controller
             'editBody' => $post->body,
             'editCharName' => $character->name,
             'editCharSurname' => $character->surname,
-            'editUpdateTime' => $post->updated_at->format('d.m.Y H:i:s'),
+            'editUpdateTime' => $post->updated_at->format('d M Y H:i'),
             'editUserName' => $post->user->name,
             'editQuest' => $post->quest
         ]);
