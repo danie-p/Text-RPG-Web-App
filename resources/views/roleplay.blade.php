@@ -103,33 +103,91 @@
         </div>
 
         @foreach ($posts as $post)
-            <div class="first-section">
+            <div id="hide-on-edit-{{ $post->id }}" class="first-section">
                 <div class="container-flex">
                     <div style="flex: 1;" class="rp-header">
-                        <b style="font-size: larger">{{ $post->character->name }} {{ $post->character->surname }}</b>
-                        <span style="margin-left: 10px">{{ $post->user->name }}</span>
+                        <b style="font-size: larger">
+                            <span id="post-char-name-{{ $post->id }}">{{ $post->character->name }}</span>
+                            <span id="post-char-surname-{{ $post->id }}">{{ $post->character->surname }}</span>
+                        </b>
+                        <span id="post-user-name-{{ $post->id }}" style="margin-left: 10px">{{ $post->user->name }}</span>
                     </div>
                     <div style="text-align: right; color: rgba(68, 141, 145, 1)" class="rp-header">
                         <b style="font-size: larger"></b>
-                        {{ \Carbon\Carbon::parse($post->updated_at)->format('d.m.Y H:i:s') }}
+                        <span id="post-update-time-{{ $post->id }}">{{ \Carbon\Carbon::parse($post->updated_at)->format('d.m.Y H:i:s') }}</span>
                     </div>
                 </div>
-                <div class="rp-text">
-                    <p>{{ $post['body'] }}</p>
+                <div id="post-body-{{ $post->id }}" class="rp-text">
+                    {{ $post['body'] }}
                 </div>
-                @if(Auth::user()->id == $post['user_id'])
-                    <div class="container-flex cont-flex1">
-                        <button style="margin-right: 10px" class="btn btn-custom1">
-                            <a href="/edit-post/{{ $post->id }}">
+
+                <div class="container-flex cont-flex1">
+                    <span style="flex: 1; margin-top: 5px">
+                        <i @if($post->quest != "")
+                               style="display: inline;"
+                           @else
+                               style="display: none;"
+                           @endif
+                            id="icon-quest-{{ $post->id }}" class="bi bi-bookmark-check-fill"></i>
+                        <span id="post-quest-{{ $post->id }}">
+                            @if($post->quest != "")
+                            Quest {{ $post->quest }}
+                            @endif
+                        </span>
+                    </span>
+                    @if(Auth::user()->id == $post['user_id'])
+                        <button id="btn-edit-{{ $post->id }}" data-postid="{{ $post->id }}" style="margin-right: 10px" class="btn btn-custom1 btn-edit">
                                 <i class="bi bi-feather btn-icon-padding"></i>
-                                Upraviť</a>
+                                Upraviť
                         </button>
                         <button style="margin: 5px 0 5px 0" class="btn btn-custom2" data-bs-toggle="modal" data-bs-target="#myModal{{ $post->id }}">
                             <i class="bi bi-trash3-fill btn-icon-padding"></i>
                             Vymazať
                         </button>
-                    </div>
-                @endif
+                    @endif
+                </div>
+            </div>
+
+            <div id="show-on-edit-{{ $post->id }}" style="visibility: hidden; height: 0">
+                <div class="login-form">
+                    <form id="edit-form-{{ $post->id }}" class="needs-validation" novalidate action="/edit-post/{{ $post->id }}" method="POST">
+                        @csrf
+                        <div class="mb-3">
+                            <textarea name="body" class="form-control" rows="5" required minlength="300">{{ $post->body }}</textarea>
+                            <div class="invalid-feedback">
+                                Zadaj, prosím, príspevok o dĺžke najmenej 300 znakov.
+                            </div>
+                        </div>
+                        <div class="input-group mb-3 input-quest">
+                            <select name="character" class="form-select" required>
+                                <option selected>{{ $post->character->name }}</option>
+                                @foreach($characters as $character)
+                                    @if($character->name !== $post->character->name)
+                                        <option>{{ $character->name }}</option>
+                                    @endif
+                                @endforeach
+                            </select>
+                            <div class="invalid-feedback">
+                                Vyber, prosím, postavu.
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <input name="image" class="form-control" value="{{ $post->image }}" type="file" id="formFile">
+                        </div>
+                        <div class="input-group mb-3 input-quest">
+                            <select name="quest" class="form-select">
+                                <option disabled selected>Vybrať quest</option>
+                                <option value="1">Quest 1</option>
+                                <option value="2">Quest 2</option>
+                                <option value="3">Quest 3</option>
+                            </select>
+                        </div>
+                        <button id="btn-edit-save-{{ $post->id }}" data-postid="{{ $post->id }}" type="submit" class="btn btn-custom1">
+                            <i class="bi bi-feather btn-icon-padding"></i>
+                            Uložiť zmeny
+                        </button>
+                    </form>
+                </div>
             </div>
 
             <div id="myModal{{ $post->id }}" class="modal fade" tabindex="-1">
@@ -183,5 +241,6 @@
     </script>
     <script src="../js/form-validation.js"></script>
     <script src="../js/dynamic-textarea.js"></script>
+    <script src="../js/edit-post.js"></script>
 </body>
 </html>

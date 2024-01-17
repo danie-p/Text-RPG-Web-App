@@ -78,7 +78,7 @@ class CharacterController extends Controller
         $incomingFields = $request->validate([
             'name' => 'required',
             'surname' => 'nullable',
-            'age' => 'required|numeric',
+            'age' => 'required|numeric|min:1',
             'image_url' => 'required|url',
             'bio' => 'required|min:300',
             'description' => 'required|min:300',

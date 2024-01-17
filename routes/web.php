@@ -31,8 +31,7 @@ Route::post('/logout', [UserController::class, 'logout'])->name('logout');
 Route::post('/login', [UserController::class, 'login'])->name('login');
 
 Route::post('/create-post', [PostController::class, 'createPost']);
-Route::get('/edit-post/{post}', [PostController::class, 'editWindowWithCharacters'])->name('editWindow');
-Route::put('/edit-post/{post}', [PostController::class, 'editPost']);
+Route::post('/edit-post/{post}', [PostController::class, 'editPost']);
 Route::any('/delete-post/{post}', [PostController::class, 'deletePost']);
 Route::get('/roleplay', [PostController::class, 'showPosts'])->name('roleplay');
 

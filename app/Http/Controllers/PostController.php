@@ -17,7 +17,7 @@ class PostController extends Controller
             'character' => 'required'
         ]);
 
-        $incomingFields['body'] = strip_tags($incomingFields['body']);
+        $incomingFields['body'] = strip_tags($incomingFields['body'], '<p>');
         $incomingFields['user_id'] = auth()->id();
 
         $character = Character::where('name', $incomingFields['character'])->first();
@@ -27,21 +27,13 @@ class PostController extends Controller
         return redirect('/roleplay');
     }
 
-    public function editWindow(Post $post) {
+    public function editPost(Post $post, Request $request) {
         if (!auth()->user()) {
             return redirect('/home');
         }
 
         if (auth()->user()->id !== $post['user_id']) {
-            return redirect('/roleplay');
-        }
-
-        return view('edit-post', ['post' => $post]);
-    }
-
-    public function editPost(Post $post, Request $request) {
-        if (auth()->user()->id !== $post['user_id']) {
-            return redirect('/roleplay');
+            return response()->json(['error' => 'Unauthorized'], 403);
         }
 
         $incomingFields = $request->validate([
@@ -49,13 +41,21 @@ class PostController extends Controller
             'character' => 'required'
         ]);
 
-        $incomingFields['body'] = strip_tags($incomingFields['body']);
+        $incomingFields['body'] = strip_tags($incomingFields['body'], '<p>');
 
         $character = Character::where('name', $incomingFields['character'])->first();
         $incomingFields['character_id'] = $character->id;
 
         $post->update($incomingFields);
-        return redirect('/roleplay');
+
+        return response()->json([
+            'editBody' => $post->body,
+            'editCharName' => $character->name,
+            'editCharSurname' => $character->surname,
+            'editUpdateTime' => $post->updated_at->format('d.m.Y H:i:s'),
+            'editUserName' => $post->user->name,
+            'editQuest' => $post->quest
+        ]);
     }
 
     public function deletePost(Post $post, Request $request) {

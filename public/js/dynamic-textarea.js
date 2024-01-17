@@ -1,6 +1,7 @@
 document.addEventListener('DOMContentLoaded', function () {
     const textareas = document.querySelectorAll('textarea');
     const forms = document.querySelectorAll('.needs-validation');
+    const btnsEdit = document.querySelectorAll('[id^="btn-edit-"]');
 
     Array.from(textareas).forEach(textarea => {
         textarea.addEventListener('keyup', event => dynamicResize(textarea));
@@ -10,6 +11,9 @@ document.addEventListener('DOMContentLoaded', function () {
         Array.from(forms).forEach(form => {
             form.addEventListener('submit', event => dynamicResize(textarea));
         });
+        Array.from(btnsEdit).forEach(btn => {
+            btn.addEventListener('click', event => dynamicResize(textarea));
+        });
     });
 });
 
@@ -17,7 +21,6 @@ function dynamicResize(textarea) {
     if (textarea.scrollHeight + 2 < window.innerHeight) {
         textarea.style.height = 'auto';
         textarea.style.height = (textarea.scrollHeight + 2) + 'px';
-        console.log("height: " + textarea.style.height);
     } else {
         textarea.style.height = window.innerHeight;
     }

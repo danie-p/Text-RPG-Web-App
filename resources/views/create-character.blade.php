@@ -111,7 +111,7 @@
                                     <div class="col-md-12">
                                         <div id="age" class="login-form-el" data-bs-theme="dark">
                                             <label for="create-character-age">Vek</label>
-                                            <input name="age" id="create-character-age" type="number" placeholder="Zadaj vek" class="bg-light form-control" required>
+                                            <input name="age" id="create-character-age" type="number" placeholder="Zadaj vek" class="bg-light form-control" required min="1">
                                             <div class="invalid-feedback">
                                                 Zadaj, prosím, vek postavy.
                                             </div>
