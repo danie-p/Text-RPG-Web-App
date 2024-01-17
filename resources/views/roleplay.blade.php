@@ -8,10 +8,12 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-kQtW33rZJAHjgefvhyyzcGF3C5TFyBQBA13V1RKPf4uH+bwyzQxZ6CmMZHmNBEfJ" crossorigin="anonymous"></script>
     <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
     <link rel="stylesheet" href="{{ asset('css/form-validation.css') }}">
     <link rel="stylesheet" href="{{ asset('css/modal.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/filter.css') }}">
 </head>
 
 <body class="rp-body">
@@ -104,8 +106,48 @@
                 </div>
                 <button class="btn btn-custom submit-textarea">Odoslať</button>
             </form>
-
         </div>
+
+        <form id="filter-form" class="needs-validation" novalidate action="/filter-posts" method="POST">
+            @csrf
+            <div style="display: flex">
+                <i class="bi bi-filter"></i>
+                <div class="dropdown">
+                    <button class="btn btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown">Autor
+                        <span class="caret"></span></button>
+                    <ul class="dropdown-menu">
+                        <input class="form-control" id="myInput" type="text" placeholder="Search..">
+                        <div class="dropdown-menu-scrollable">
+                            @foreach($users as $user)
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault{{ $user->id }}">
+                                    <label class="form-check-label" for="flexCheckDefault{{ $user->id }}">
+                                        {{ $user->name }}
+                                    </label>
+                                </div>
+                            @endforeach
+                        </div>
+                    </ul>
+                </div>
+                <div class="dropdown">
+                    <button class="btn btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown">Postava
+                        <span class="caret"></span></button>
+                    <ul class="dropdown-menu">
+                        <input class="form-control" id="myInput" type="text" placeholder="Search..">
+                        <div class="dropdown-menu-scrollable">
+                            @foreach($allCharacters as $characterOfAll)
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault{{ $characterOfAll->id }}">
+                                    <label class="form-check-label" for="flexCheckDefault{{ $characterOfAll->id }}">
+                                        {{ $characterOfAll->name }}
+                                    </label>
+                                </div>
+                            @endforeach
+                        </div>
+                    </ul>
+                </div>
+            </div>
+        </form>
 
         <div id="container-posts">
         @foreach ($posts as $post)
@@ -244,6 +286,7 @@
     </div>
     @endauth
 
+    <script src="../js/filter.js"></script>
     <script>
         function deletePost(postId) {
             document.getElementById('form-delete-' + postId).submit();

@@ -15,50 +15,52 @@ document.addEventListener('DOMContentLoaded', function () {
 
         var editForm = document.getElementById('edit-form-' + postId);
 
-        editForm.addEventListener('submit', function (event) {
-            // default akcia k eventu nenastane (submit the form)
-            event.preventDefault();
+        if (editForm) {
+            editForm.addEventListener('submit', function (event) {
+                // default akcia k eventu nenastane (submit the form)
+                event.preventDefault();
 
-            // uchovat aktualne data vo form
-            var formData = new FormData(editForm);
+                // uchovat aktualne data vo form
+                var formData = new FormData(editForm);
 
-            fetch(editForm.getAttribute('action'), {
-                method: 'POST',
-                body: formData
-            }).then(response => {
-                if (!response.ok) {
-                    throw new Error('Response is not OK!');
-                }
-                return response.json();
-            }).then(data => {
-                var postBody = document.getElementById('post-body-' + postId);
-                var postCharName = document.getElementById('post-char-name-' + postId);
-                var postCharSurname = document.getElementById('post-char-surname-' + postId);
-                var postUpdateTime = document.getElementById('post-update-time-' + postId);
-                var postUserName = document.getElementById('post-user-name-' + postId);
-                var postQuest = document.getElementById('post-quest-' + postId);
-                var iconQuest = document.getElementById('icon-quest-' + postId);
+                fetch(editForm.getAttribute('action'), {
+                    method: 'POST',
+                    body: formData
+                }).then(response => {
+                    if (!response.ok) {
+                        throw new Error('Response is not OK!');
+                    }
+                    return response.json();
+                }).then(data => {
+                    var postBody = document.getElementById('post-body-' + postId);
+                    var postCharName = document.getElementById('post-char-name-' + postId);
+                    var postCharSurname = document.getElementById('post-char-surname-' + postId);
+                    var postUpdateTime = document.getElementById('post-update-time-' + postId);
+                    var postUserName = document.getElementById('post-user-name-' + postId);
+                    var postQuest = document.getElementById('post-quest-' + postId);
+                    var iconQuest = document.getElementById('icon-quest-' + postId);
 
-                postBody.textContent = data.editBody;
-                postCharName.textContent = data.editCharName;
-                postCharSurname.textContent = data.editCharSurname;
-                postUpdateTime.textContent = data.editUpdateTime;   // editUpdateTime by mal poslat uz naformatovane data
-                postUserName.textContent = data.editUserName;
-                if (data.editQuest != null) {
-                    postQuest.textContent = 'Quest ' + data.editQuest;
-                    iconQuest.style.display = 'block';
-                } else {
-                    postQuest.textContent = "";
-                    iconQuest.style.display = 'none';
-                }
+                    postBody.textContent = data.editBody;
+                    postCharName.textContent = data.editCharName;
+                    postCharSurname.textContent = data.editCharSurname;
+                    postUpdateTime.textContent = data.editUpdateTime;   // editUpdateTime by mal poslat uz naformatovane data
+                    postUserName.textContent = data.editUserName;
+                    if (data.editQuest != null) {
+                        postQuest.textContent = 'Quest ' + data.editQuest;
+                        iconQuest.style.display = 'block';
+                    } else {
+                        postQuest.textContent = "";
+                        iconQuest.style.display = 'none';
+                    }
 
-                var containerPosts = document.getElementById('container-posts');
-                //containerPosts.prepend(hideOnEdit);
+                    var containerPosts = document.getElementById('container-posts');
+                    //containerPosts.prepend(hideOnEdit);
 
-            }).catch(error => {
-                console.error('Fetch error:', error);
+                }).catch(error => {
+                    console.error('Fetch error:', error);
+                });
             });
-        });
+        }
     });
 
     const btnsEditSave = document.querySelectorAll('[id^="btn-edit-save-"]');

@@ -76,7 +76,9 @@ class PostController extends Controller
         if (auth()->user()) {
             $characters = auth()->user()->characters;
             $posts = Post::orderBy('updated_at', 'desc')->get();
-            return view('roleplay', compact('characters', 'posts'));
+            $users = User::all();
+            $allCharacters = Character::all();
+            return view('roleplay', compact('characters', 'posts', 'users', 'allCharacters'));
         }
         return redirect('/home');
     }
