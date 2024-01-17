@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="{{ asset('css/character.css') }}">
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
     <link rel="stylesheet" href="{{ asset('css/modal.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/form-validation.css') }}">
 </head>
 
 <body class="register-body">
@@ -53,13 +54,17 @@
                                     Môj účet
                                 </button>
                                 <ul class="dropdown-menu">
+                                    <li class="dropdown-item" style="pointer-events: none">{{ auth()->user()->name }}</li>
+                                    <li class="dropdown-item">
+                                        <button id="btn-edit-profile" class="dropdown-item" style="background: none; padding: 0;">Upraviť profil</button>
+                                    </li>
+                                    <li><a class="dropdown-item" href="{{ route('create-character-page') }}">Vytvoriť postavu</a></li>
                                     <li>
                                         <form action="/logout" method="POST" class="dropdown-item">
                                             @csrf
-                                            <button class="dropdown-item" style="background: none; padding: 0">Odhlásiť sa</button>
+                                            <button class="dropdown-item" style="background: none; padding: 0; color: #D09125">Odhlásiť sa</button>
                                         </form>
                                     </li>
-                                    <li><a class="dropdown-item" href="{{ route('create-character-page') }}">Vytvoriť postavu</a></li>
                                 </ul>
                             </li>
                         @else
@@ -118,6 +123,7 @@
                     <p id="create-character-bio">{{ $character->description }}</p>
                 </div>
             </div>
+            @auth
                 @if(Auth::user()->id == $character['user_id'])
                     <div class="container-flex cont-flex2">
                         <a href="/edit-character/{{ $character->id }}">
@@ -154,6 +160,7 @@
                         </div>
                     </div>
                 @endif
+            @endauth
         </div>
     </div>
     </div>

@@ -9,6 +9,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-kQtW33rZJAHjgefvhyyzcGF3C5TFyBQBA13V1RKPf4uH+bwyzQxZ6CmMZHmNBEfJ" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/form-validation.css') }}">
 </head>
 
 <body class="dark">
@@ -50,13 +51,17 @@
                                     Môj účet
                                 </button>
                                 <ul class="dropdown-menu">
+                                    <li class="dropdown-item" style="pointer-events: none">{{ auth()->user()->name }}</li>
+                                    <li class="dropdown-item">
+                                        <button id="btn-edit-profile" class="dropdown-item" style="background: none; padding: 0;">Upraviť profil</button>
+                                    </li>
+                                    <li><a class="dropdown-item" href="{{ route('create-character-page') }}">Vytvoriť postavu</a></li>
                                     <li>
                                         <form action="/logout" method="POST" class="dropdown-item">
                                             @csrf
-                                            <button class="dropdown-item" style="background: none; padding: 0">Odhlásiť sa</button>
+                                            <button class="dropdown-item" style="background: none; padding: 0; color: #D09125">Odhlásiť sa</button>
                                         </form>
                                     </li>
-                                    <li><a class="dropdown-item" href="{{ route('create-character-page') }}">Vytvoriť postavu</a></li>
                                 </ul>
                             </li>
                         @else
@@ -120,6 +125,7 @@
         </div>
     </div>
 
+    <script src="../js/form-validation.js"></script>
     <script src="js/script.js"></script>
 </body>
 </html>

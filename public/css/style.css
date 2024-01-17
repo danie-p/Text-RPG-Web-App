@@ -202,6 +202,10 @@
     background-color: rgba(224, 172, 82, 0.5);
 }
 
+.dropdown-item:hover {
+    background-color: rgba(224, 172, 82, 0.3);
+}
+
 .container {
     width: 62%;
 }
@@ -394,7 +398,7 @@ roleplay.html
 /*
     login popup
 */
-.popup {
+.popup, .popup-edit {
     position: absolute;
     top: 50%;
     left: 50%;
@@ -412,7 +416,19 @@ roleplay.html
         transform 40ms ease-in-out 0ms;
 }
 
-.popup.active {
+.popup-edit .show-edit-passwd {
+    opacity: 0;
+    visibility: hidden;
+    display: none;
+}
+
+.popup-edit .show-edit-passwd.active {
+    opacity: 1;
+    visibility: visible;
+    display: block;
+}
+
+.popup.active, .popup-edit.active {
     top: 50%;
     opacity: 1;
     transform: translate(-50%, -50%) scale(1.2);
@@ -423,7 +439,7 @@ roleplay.html
         transform 40ms ease-in-out 0ms;
 }
 
-.popup .close-btn {
+.popup .close-btn, .popup-edit .close-btn {
     position: absolute;
     top: 10px;
     right: 10px;
@@ -437,7 +453,14 @@ roleplay.html
     cursor: pointer;
 }
 
-.popup .login-form h2 {
+.popup-edit .close-btn-passwd {
+    color:#D09125;
+    cursor: pointer;
+    margin: 3px 2px;
+    font-size: 17px;
+}
+
+.popup .login-form h2, .popup-edit .login-form h2 {
     text-align: center;
     margin: 10px 8px 20px;
     font-size: 25px;
@@ -445,22 +468,22 @@ roleplay.html
     color: #fff
 }
 
-.popup .login-form .login-form-el {
+.popup .login-form .login-form-el, .popup-edit .login-form .login-form-el {
     margin: 15px 0;
 }
 
-.popup .login-form label {
+.popup .login-form label, .popup-edit .login-form label {
     margin: 3px 2px;
     font-size: 17px;
     color: #D09125;
 }
 
-.popup .login-form .login-form-el p {
+.popup .login-form .login-form-el p, .popup-edit .login-form .login-form-el p {
     display: block;
     font-size: 17px;
 }
 
-.popup .login-form .login-form-el a {
+.popup .login-form .login-form-el a, .popup-edit .login-form .login-form-el a {
     color: #D09125;
     text-decoration: none;
 }

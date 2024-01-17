@@ -29,6 +29,7 @@ Route::get('/create-character-page', [PageController::class, 'create_character_p
 Route::post('/register', [UserController::class, 'register'])->name('register');
 Route::post('/logout', [UserController::class, 'logout'])->name('logout');
 Route::post('/login', [UserController::class, 'login'])->name('login');
+Route::any('/edit-profile', [UserController::class, 'editProfile']);
 
 Route::post('/create-post', [PostController::class, 'createPost']);
 Route::post('/edit-post/{post}', [PostController::class, 'editPost']);

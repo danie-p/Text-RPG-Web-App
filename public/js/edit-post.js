@@ -51,6 +51,10 @@ document.addEventListener('DOMContentLoaded', function () {
                     postQuest.textContent = "";
                     iconQuest.style.display = 'none';
                 }
+
+                var containerPosts = document.getElementById('container-posts');
+                //containerPosts.prepend(hideOnEdit);
+
             }).catch(error => {
                 console.error('Fetch error:', error);
             });
