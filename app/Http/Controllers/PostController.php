@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Character;
 use App\Models\Post;
+use App\Models\Quest;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -78,7 +79,8 @@ class PostController extends Controller
             $posts = Post::orderBy('updated_at', 'desc')->get();
             $users = User::all();
             $allCharacters = Character::all();
-            return view('roleplay', compact('characters', 'posts', 'users', 'allCharacters'));
+            $quests = Quest::all();
+            return view('roleplay', compact('characters', 'posts', 'users', 'allCharacters', 'quests'));
         }
         return redirect('/home');
     }

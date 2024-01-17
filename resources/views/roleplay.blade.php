@@ -116,7 +116,7 @@
                     <button class="btn btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown">Autor
                         <span class="caret"></span></button>
                     <ul class="dropdown-menu">
-                        <input class="form-control" id="myInput" type="text" placeholder="Search..">
+                        <input class="form-control" id="myInput" type="text" placeholder="Vyhľadaj autora..">
                         <div class="dropdown-menu-scrollable">
                             @foreach($users as $user)
                                 <div class="form-check">
@@ -133,13 +133,30 @@
                     <button class="btn btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown">Postava
                         <span class="caret"></span></button>
                     <ul class="dropdown-menu">
-                        <input class="form-control" id="myInput" type="text" placeholder="Search..">
+                        <input class="form-control" id="myInput" type="text" placeholder="Vyhľadaj postavu..">
                         <div class="dropdown-menu-scrollable">
                             @foreach($allCharacters as $characterOfAll)
                                 <div class="form-check">
                                     <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault{{ $characterOfAll->id }}">
                                     <label class="form-check-label" for="flexCheckDefault{{ $characterOfAll->id }}">
                                         {{ $characterOfAll->name }}
+                                    </label>
+                                </div>
+                            @endforeach
+                        </div>
+                    </ul>
+                </div>
+                <div class="dropdown">
+                    <button class="btn btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown">Quest
+                        <span class="caret"></span></button>
+                    <ul class="dropdown-menu">
+                        <input class="form-control" id="myInput" type="text" placeholder="Vyhľadaj quest..">
+                        <div class="dropdown-menu-scrollable">
+                            @foreach($quests as $quest)
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault{{ $quest->id }}">
+                                    <label class="form-check-label" for="flexCheckDefault{{ $quest->id }}">
+                                        {{ $quest->name }}
                                     </label>
                                 </div>
                             @endforeach
