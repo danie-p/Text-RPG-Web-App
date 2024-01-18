@@ -7,8 +7,7 @@ document.addEventListener('DOMContentLoaded', function () {
         const hideOnEdit = document.getElementById('hide-on-edit-' + postId);
 
         btn.addEventListener('click', function () {
-            showOnEdit.style.visibility = 'visible';
-            showOnEdit.style.height = 'auto';
+            showOnEdit.style.display = 'block';
             hideOnEdit.style.visibility = 'hidden';
             hideOnEdit.style.height = 0;
         });
@@ -72,8 +71,7 @@ document.addEventListener('DOMContentLoaded', function () {
             const hideOnEdit = document.getElementById('hide-on-edit-' + postId);
             hideOnEdit.style.visibility = 'visible';
             hideOnEdit.style.height = 'auto';
-            showOnEdit.style.visibility = 'hidden';
-            showOnEdit.style.height = 0;
+            showOnEdit.style.display = 'none';
         });
     });
 });

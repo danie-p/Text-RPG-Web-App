@@ -7,6 +7,7 @@ use App\Models\Post;
 use App\Models\Quest;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Arr;
 
 class PostController extends Controller
 {
@@ -95,5 +96,25 @@ class PostController extends Controller
             return view('edit-post', compact('characters', 'post'));
         }
         return redirect('/home');
+    }
+
+    public function filterPosts(Request $request) {
+        $authors = $request->input('authors');
+        $characters = $request->input('characters');
+        $quests = $request->input('quests');
+
+        $filteredPosts = Post::select('id')
+            ->when($authors, function ($query) use ($authors) {
+                return $query->whereIn('user_id', $authors);
+            })
+            ->when($characters, function ($query) use ($characters) {
+                return $query->whereIn('character_id', $characters);
+            })
+            ->when($quests, function ($query) use ($quests) {
+                return $query->whereIn('quest_id', $quests);
+            })
+            ->get();
+
+        return response()->json($filteredPosts);
     }
 }

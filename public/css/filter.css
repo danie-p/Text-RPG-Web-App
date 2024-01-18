@@ -2,3 +2,15 @@
     max-height:200px;
     overflow-y: scroll;
 }
+
+.close-btn {
+    width: 15px;
+    height: 15px;
+    background: #876732;
+    color: black;
+    text-align: center;
+    line-height: 15px;
+    border-radius: 15px;
+    cursor: pointer;
+    margin-right: 10px;
+}

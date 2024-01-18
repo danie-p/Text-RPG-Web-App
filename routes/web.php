@@ -35,6 +35,7 @@ Route::post('/create-post', [PostController::class, 'createPost']);
 Route::post('/edit-post/{post}', [PostController::class, 'editPost']);
 Route::any('/delete-post/{post}', [PostController::class, 'deletePost']);
 Route::get('/roleplay', [PostController::class, 'showPosts'])->name('roleplay');
+Route::post('/roleplay/filter', [PostController::class, 'filterPosts']);
 
 Route::post('/create-character', [CharacterController::class, 'createCharacter'])->name('create-character');
 Route::get('/show-character/{id}', [CharacterController::class, 'showCharacter'])->name('show-character');
