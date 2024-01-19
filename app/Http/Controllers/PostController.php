@@ -22,6 +22,11 @@ class PostController extends Controller
         $incomingFields['body'] = strip_tags($incomingFields['body'], '<p>');
         $incomingFields['user_id'] = auth()->id();
 
+        $quest = Quest::where('name', $incomingFields['quest'])->first();
+        if ($quest) {
+            $incomingFields['quest_id'] = $quest->id;
+        }
+
         $character = Character::where('name', $incomingFields['character'])->first();
         $incomingFields['character_id'] = $character->id;
 
@@ -39,11 +44,20 @@ class PostController extends Controller
         }
 
         $incomingFields = $request->validate([
-            'body' => 'required',
+            'body' => 'required|min:300',
+            'image' => 'nullable',
+            'quest' => 'nullable',
             'character' => 'required'
         ]);
 
         $incomingFields['body'] = strip_tags($incomingFields['body'], '<p>');
+
+        $quest = Quest::where('name', $incomingFields['quest'])->first();
+        if ($quest) {
+            $incomingFields['quest_id'] = $quest->id;
+        } else {
+            $incomingFields['quest_id'] = null;
+        }
 
         $character = Character::where('name', $incomingFields['character'])->first();
         $incomingFields['character_id'] = $character->id;
@@ -56,7 +70,7 @@ class PostController extends Controller
             'editCharSurname' => $character->surname,
             'editUpdateTime' => $post->updated_at->format('d M Y H:i'),
             'editUserName' => $post->user->name,
-            'editQuest' => $post->quest
+            'editQuest' => $quest ? $quest->name : ""
         ]);
     }
 
@@ -102,6 +116,13 @@ class PostController extends Controller
         $authors = $request->input('authors');
         $characters = $request->input('characters');
         $quests = $request->input('quests');
+        $questCanBeNull = false;
+
+        foreach ($quests as $quest) {
+            if ($quest === "NULL") {
+                $questCanBeNull = true;
+            }
+        }
 
         $filteredPosts = Post::select('id')
             ->when($authors, function ($query) use ($authors) {
@@ -110,8 +131,13 @@ class PostController extends Controller
             ->when($characters, function ($query) use ($characters) {
                 return $query->whereIn('character_id', $characters);
             })
-            ->when($quests, function ($query) use ($quests) {
-                return $query->whereIn('quest_id', $quests);
+            ->when($quests, function ($query) use ($quests, $questCanBeNull) {
+                return $query->where(function ($query) use ($quests, $questCanBeNull) {
+                    $query->whereIn('quest_id', $quests);
+                    if ($questCanBeNull) {
+                        $query->orWhereNull('quest_id');
+                    }
+                });
             })
             ->get();
 

@@ -68,6 +68,11 @@ $(document).ready(function(){
 });
 
 function showFilteredPosts(postIds) {
+    console.log("posts");
+    postIds.forEach(e => {
+        console.log(e)
+    })
+
     const contPosts = document.getElementById('container-posts');
     contPosts.querySelectorAll('.post').forEach(post => {
         post.style.display = 'none';
@@ -76,6 +81,12 @@ function showFilteredPosts(postIds) {
     postIds.forEach(function (postId) {
         document.getElementById('post-' + postId.id).style.display = 'block';
     })
+
+    if (postIds.length === 0) {
+        document.getElementById("not-found").style.display = 'block';
+    } else {
+        document.getElementById("not-found").style.display = 'none';
+    }
 }
 
 function addFilteredPosts(array, formId) {
@@ -91,5 +102,9 @@ function addFilteredPosts(array, formId) {
         formChecks.forEach(formCheck => {
             array.push(formCheck.querySelector('.form-check-input').dataset.number);
         });
+
+        if (formId === "filter-quest") {
+            array.push("NULL");
+        }
     }
 }

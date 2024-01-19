@@ -11,6 +11,7 @@
     margin-top: 20px;
     display: flex;
     align-items: center;
+    flex-wrap: wrap;
 }
 
 #filter-form .bi-filter {

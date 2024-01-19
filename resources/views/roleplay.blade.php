@@ -99,10 +99,12 @@
                 </div>
                 <div class="input-group mb-3 input-quest">
                     <select name="quest" class="form-select" id="inputGroupSelect02">
-                        <option disabled selected>Splniť quest</option>
-                        <option value="1">Quest 1</option>
-                        <option value="2">Quest 2</option>
-                        <option value="3">Quest 3</option>
+                        <option selected>Splniť quest - žiadny</option>
+                        @foreach($quests as $quest)
+                            @if($quest->location === "Hrad")
+                                <option>{{ $quest->name }}</option>
+                            @endif
+                        @endforeach
                     </select>
                 </div>
                 <button class="btn btn-custom submit-textarea">Odoslať</button>
@@ -156,18 +158,23 @@
                         <input class="form-control" id="myInputQuest" type="text" placeholder="Vyhľadaj quest..">
                         <div id="filter-quest"  class="dropdown-menu-scrollable">
                             @foreach($quests as $quest)
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" id="flexCheckDefaultQuest{{ $quest->id }}" data-number="{{ $quest->id }}">
-                                    <label class="form-check-label" for="flexCheckDefaultQuest{{ $quest->id }}">
-                                        {{ $quest->name }}
-                                    </label>
-                                </div>
+                                @if($quest->location === "Hrad")
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="flexCheckDefaultQuest{{ $quest->id }}" data-number="{{ $quest->id }}">
+                                        <label class="form-check-label" for="flexCheckDefaultQuest{{ $quest->id }}">
+                                            {{ $quest->name }}
+                                        </label>
+                                    </div>
+                                @endif
                             @endforeach
                         </div>
                     </ul>
                 </div>
-                <button class="close-btn btn btn-custom2" style="margin-bottom: 5px">
-                    <i class="bi bi-x-circle-fill btn-icon-padding"></i>Zrušiť filtre</button>
+
+                <button class="btn btn-custom2 close-btn" type="button">
+                    <i class="bi bi-x-circle"></i>
+                    Zrušiť filtre
+                </button>
             </div>
         </form>
 
@@ -193,17 +200,17 @@
                         </div>
 
                         <div class="container-flex cont-flex1">
-                            <span id="quest" style="flex: 1; display: flex; align-items: center; margin-left: 10px">
+                            <span id="quest" style="flex: 1; display: flex; margin-left: 10px">
                                 <iconify-icon
-                                    @if($post->quest != "")
+                                    @if($post->quest_id != null)
                                         style="display: inline;"
                                     @else
                                         style="display: none;"
                                     @endif
                                     id="icon-quest-{{ $post->id }}" icon="teenyicons:bookmark-solid"></iconify-icon>
                                 <span id="post-quest-{{ $post->id }}" style="margin-left: 5px; color: #E0AC52">
-                                    @if($post->quest != "")
-                                    Quest {{ $post->quest }}
+                                    @if($post->quest_id != null)
+                                    <b>Splnený quest - </b>{{ $post->quest->name }}
                                     @endif
                                 </span>
                             </span>
@@ -250,10 +257,22 @@
                                 </div>
                                 <div class="input-group mb-3 input-quest">
                                     <select name="quest" class="form-select">
-                                        <option disabled selected>Vybrať quest</option>
-                                        <option value="1">Quest 1</option>
-                                        <option value="2">Quest 2</option>
-                                        <option value="3">Quest 3</option>
+                                        @if($post->quest_id)
+                                            <option selected>{{ $post->quest->name }}</option>
+                                            <option>Splniť quest - žiadny</option>
+                                            @foreach($quests as $quest)
+                                                @if($quest->location === "Hrad" && $quest->name !== $post->quest->name)
+                                                    <option>{{ $quest->name }}</option>
+                                                @endif
+                                            @endforeach
+                                        @else
+                                            <option selected>Splniť quest - žiadny</option>
+                                            @foreach($quests as $quest)
+                                                @if($quest->location === "Hrad")
+                                                    <option>{{ $quest->name }}</option>
+                                                @endif
+                                            @endforeach
+                                        @endif
                                     </select>
                                 </div>
                                 <button id="btn-edit-save-{{ $post->id }}" data-postid="{{ $post->id }}" type="submit" class="btn btn-custom1">
@@ -290,7 +309,11 @@
         </div>
     </div>
 
-    <div class="container-fluid">
+    <div id="not-found" class="container-fluid" style="display: none; margin-top: 20px">
+        <p class="text-center">Neboli nájdené žiadne výsledky!</p>
+    </div>
+
+    <div class="container-fluid" style="margin-top: 20px">
         <footer class="py-3">
             <div class="container-fluid border-bottom" data-bs-theme="dark">
                 <form class="search-bar d-flex" role="search">
