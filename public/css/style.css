@@ -145,7 +145,6 @@
     border-radius: 0.25rem;
     color: #f1e1bd;
     background-color: rgba(68, 141, 145, 1);
-    display: inline-flex;
     text-decoration: none;
     margin-bottom: 5px;
 }
@@ -172,7 +171,6 @@
     border-radius: 0.25rem;
     background-color: rgba(44, 104, 108, 1);
     color: black;
-    display: inline-flex;
     text-decoration: none;
 }
 

@@ -30,6 +30,7 @@ $(document).ready(function(){
     });
 
     filterForm.on('submit', function (event) {
+        console.log("odoslany");
         event.preventDefault();
 
         let authors = [];

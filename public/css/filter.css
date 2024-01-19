@@ -1,16 +1,23 @@
 .dropdown-menu-scrollable {
-    max-height:200px;
+    max-height: 200px;
     overflow-y: scroll;
 }
 
 .close-btn {
-    width: 15px;
-    height: 15px;
-    background: #876732;
-    color: black;
-    text-align: center;
-    line-height: 15px;
-    border-radius: 15px;
     cursor: pointer;
+}
+
+.flex-center {
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+}
+
+#filter-form .bi-filter {
+    font-size: 30px;
+    margin-right: 10px;
+}
+
+#filter-form .btn-custom1 {
     margin-right: 10px;
 }

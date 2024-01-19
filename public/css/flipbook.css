@@ -9,6 +9,7 @@
 }
 
 .flex-center {
+    position: relative;
     display: flex;
     align-items: center;
     justify-content: end;
@@ -35,17 +36,51 @@
     color: transparent;
 }
 
+.cont-background {
+    margin-right: 50%;
+    margin-left: 15px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+}
+
+.cont-background p {
+    text-align: left;
+    font-size: 75px;
+    font-family: 'Canterbury', serif;
+    color: #22303b;
+}
+
 .normal-page {
     background-color: #ede0d5;
-    width: 425px;
+    width: 412px;
     height: 550px;
+}
+
+.odd {
+    background-color: transparent;
+    background-image: url("../images/pages_right.png");
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.even {
+    background-color: transparent;
+    background-image: url("../images/pages_left.png");
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
 }
 
 .normal-page h3 {
     color: #2f2213;
     font-family: 'Chomsky', serif;
     font-size: 40px;
-    margin: 20px;
+    margin: 50px 50px 20px 50px;
     text-align: center;
 }
 
@@ -61,11 +96,17 @@
 .normal-page p {
     color: #2f2213;
     font-size: 20px;
-    margin: 20px;
+    margin-left: 50px;
+    margin-right: 50px;
+    margin-bottom: 50px;
 }
 
-.cover-page-inside {
-    background-color: #53311e;
+.cover-page-inside-left {
+    background-image: url("../images/book_cover_left.png");
+}
+
+.cover-page-inside-right {
+    background-image: url("../images/book_cover_right.png");
 }
 
 .cover-page-outside {

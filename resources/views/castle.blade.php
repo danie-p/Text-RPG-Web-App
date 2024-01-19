@@ -149,9 +149,12 @@
                 </div>
             </div>
             <div class="flex-center">
+                <div class="cont-background">
+                    <p>Protectio trahit subjectionem,<br>et subjectio protectionem.</p>
+                </div>
                 <div id="flipbook" class="flipbook">
                     <div class="hard hide-when-back cover-page-outside"><h1>Questy</h1></div>
-                    <div id="fixed-front" class="hard hide-when-back cover-page-inside"></div>
+                    <div id="fixed-front" class="hard hide-when-back cover-page-inside-left"></div>
                     @foreach($quests as $quest)
                         @if($quest->location === "Hrad")
                             <div class="own-size hide-when-back normal-page">
@@ -160,7 +163,7 @@
                             </div>
                         @endif
                     @endforeach
-                    <div id="fixed-back" class="hard fixed cover-page-inside"></div>
+                    <div id="fixed-back" class="hard fixed cover-page-inside-right"></div>
                     <div class="hard cover-page-outside"></div>
                 </div>
             </div>

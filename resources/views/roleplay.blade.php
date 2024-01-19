@@ -111,10 +111,10 @@
 
         <form id="filter-form" class="needs-validation" novalidate action="/filter-posts" method="POST">
             @csrf
-            <div style="display: flex">
+            <div class="flex-center">
                 <i class="bi bi-filter"></i>
                 <div class="dropdown">
-                    <button class="btn btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown">Autor
+                    <button class="btn btn-custom1 dropdown-toggle" type="button" data-bs-toggle="dropdown">Autor
                         <span class="caret"></span></button>
                     <ul class="dropdown-menu">
                         <input class="form-control" id="myInputUser" type="text" placeholder="Vyhľadaj autora..">
@@ -132,7 +132,7 @@
                 </div>
 
                 <div class="dropdown">
-                    <button class="btn btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown">Postava
+                    <button class="btn btn-custom1 dropdown-toggle" type="button" data-bs-toggle="dropdown">Postava
                         <span class="caret"></span></button>
                     <ul class="dropdown-menu">
                         <input class="form-control" id="myInputCharacter" type="text" placeholder="Vyhľadaj postavu..">
@@ -150,7 +150,7 @@
                 </div>
 
                 <div class="dropdown">
-                    <button class="btn btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown">Quest
+                    <button class="btn btn-custom1 dropdown-toggle" type="button" data-bs-toggle="dropdown">Quest
                         <span class="caret"></span></button>
                     <ul class="dropdown-menu">
                         <input class="form-control" id="myInputQuest" type="text" placeholder="Vyhľadaj quest..">
@@ -166,7 +166,8 @@
                         </div>
                     </ul>
                 </div>
-                <div class="close-btn">&times;</div>
+                <button class="close-btn btn btn-custom2" style="margin-bottom: 5px">
+                    <i class="bi bi-x-circle-fill btn-icon-padding"></i>Zrušiť filtre</button>
             </div>
         </form>
 
