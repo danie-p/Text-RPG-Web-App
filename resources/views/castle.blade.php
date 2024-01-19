@@ -230,7 +230,16 @@
     <script type="text/javascript">
         $("#flipbook").turn({
             autoCenter: true,
-            duration: 1500
+            duration: 1500,
+            when: {
+                turning: function (event, page, view) {
+                    // Check if the user is turning to the last page
+                    if (page === $('#flipbook').turn('pages')) {
+                        // Prevent turning to the last page
+                        event.preventDefault();
+                    }
+                }
+            }
         });
 
         $("#flipbook").bind("turned", function(event, page, view) {
@@ -251,22 +260,9 @@
                 document.getElementById("fixed-front").classList.remove("fixed");
             }
 
-            if (page === $("#flipbook").turn("pages")) {
-                console.log("odoberam fixed last")
-                document.getElementById("fixed-back").classList.remove("fixed");
-                var otherPages = document.querySelectorAll(".hide-when-back");
-                otherPages.forEach(page => {
-                    page.style.visibility = 'hidden';
-                })
-            }
-
             if (page === $("#flipbook").turn("pages") - 1) {
                 console.log("odoberam fixed last")
                 document.getElementById("fixed-back").classList.remove("fixed");
-                var otherPages = document.querySelectorAll(".hide-when-back");
-                otherPages.forEach(page => {
-                    page.style.visibility = 'visible';
-                })
             }
         });
 
