@@ -1,0 +1,76 @@
+@font-face {
+    font-family: 'Canterbury';
+    src: url('../Canterbury.ttf') format('truetype');
+}
+
+.flex-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+h1 {
+    font-family: 'Canterbury', serif;
+    font-size: 75px;
+    text-align: center;
+    margin-top: 150px;
+    /*
+    https://codingartistweb.com/2020/01/gold-text-effect-css-text-effect/
+     */
+    background-image: linear-gradient(
+        to right,
+        #462523 0,
+        #cb9b51 22%,
+        #f6e27a 45%,
+        #f6f2c0 50%,
+        #f6e27a 55%,
+        #cb9b51 78%,
+        #462523 100%
+    );
+    background-clip: text;
+    color: transparent;
+}
+
+.normal-page {
+    background-color: #ede0d5;
+    width: 425px;
+    height: 550px;
+}
+
+.normal-page::first-letter {
+    color: black;
+    font-family: 'Canterbury', serif;
+    font-size: 75px;
+    float: left;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+
+.normal-page p {
+    color: black;
+    font-size: 20px;
+    margin: 20px;
+}
+
+.cover-page-inside {
+    background-color: #53311e;
+}
+
+.cover-page-outside {
+    background-color: #564427;
+    background-image: url("../images/book_cover.png");
+    background-size: contain;
+    background-position: center;
+}
+
+.flipbook{
+    width: 900px;
+    height: 600px;
+}
+
+.flipbook .page{
+}
+
+.page-wrapper {
+}

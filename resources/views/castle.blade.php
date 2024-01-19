@@ -7,9 +7,12 @@
     <link rel="icon" type="image/svg" href="images/icon.svg">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-kQtW33rZJAHjgefvhyyzcGF3C5TFyBQBA13V1RKPf4uH+bwyzQxZ6CmMZHmNBEfJ" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script src="../turnjs/lib/turn.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
     <link rel="stylesheet" href="{{ asset('css/form-validation.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/flipbook.css') }}">
 </head>
 
 <body class="dark">
@@ -145,6 +148,43 @@
                     </div>
                 </div>
             </div>
+            <div class="flex-center">
+                <div id="flipbook" class="flipbook">
+                    <div class="hard hide-when-back cover-page-outside"><h1>Questy</h1></div>
+                    <div id="fixed-front" class="hard hide-when-back cover-page-inside"></div>
+                    <div class="own-size hide-when-back normal-page">
+                        <p>
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi commodo nisi mauris,
+                            sed aliquam justo hendrerit a. Etiam neque libero, aliquet eget enim ut, faucibus
+                            imperdiet est. Aenean vitae nunc at magna pellentesque iaculis. Suspendisse potenti.
+                            Ut ultricies vel lectus iaculis luctus.
+                        </p>
+                    </div>
+                    <div class="own-size hide-when-back normal-page">
+                        <p>
+                            Fusce tempus turpis non nulla volutpat ultrices. Morbi ultrices
+                            sed sem nec pulvinar. Nunc luctus consequat finibus. Ut ac dolor ante. Aliquam pulvinar massa
+                            quis ornare aliquam. Sed blandit lectus sed sapien aliquet, vitae rhoncus leo feugiat.
+                        </p>
+                    </div>
+                    <div class="own-size hide-when-back normal-page">
+                        <p>
+                            Nullam non diam lacus. Mauris eu ex sed neque blandit dignissim. Morbi porttitor dignissim
+                            magna nec pulvinar. Integer gravida at elit quis pharetra. Donec sodales metus et ultricies
+                            fermentum.
+                        </p>
+                    </div>
+                    <div class="own-size hide-when-back normal-page">
+                        <p>
+                            Mauris molestie malesuada augue,
+                            id sollicitudin sem suscipit et. Curabitur sit amet maximus mi, sed lobortis libero.
+                            Nam lacus turpis, egestas non gravida sit amet, egestas vel turpis.
+                        </p>
+                    </div>
+                    <div id="fixed-back" class="hard fixed cover-page-inside"></div>
+                    <div class="hard cover-page-outside"></div>
+                </div>
+            </div>
         </div>
 
         <div class="container-fluid">
@@ -187,6 +227,50 @@
         </div>
     </div>
 
+    <script type="text/javascript">
+        $("#flipbook").turn({
+            autoCenter: true,
+            duration: 1500
+        });
+
+        $("#flipbook").bind("turned", function(event, page, view) {
+            if (page === 2) {
+                console.log("pridavam fixed first")
+                document.getElementById("fixed-front").classList.add("fixed");
+            }
+
+            if (page === $("#flipbook").turn("pages") - 1) {
+                console.log("pridavam fixed last")
+                document.getElementById("fixed-back").classList.add("fixed");
+            }
+        });
+
+        $("#flipbook").bind("turning", function(event, page, view) {
+            if (page === 1) {
+                console.log("odoberam fixed first")
+                document.getElementById("fixed-front").classList.remove("fixed");
+            }
+
+            if (page === $("#flipbook").turn("pages")) {
+                console.log("odoberam fixed last")
+                document.getElementById("fixed-back").classList.remove("fixed");
+                var otherPages = document.querySelectorAll(".hide-when-back");
+                otherPages.forEach(page => {
+                    page.style.visibility = 'hidden';
+                })
+            }
+
+            if (page === $("#flipbook").turn("pages") - 1) {
+                console.log("odoberam fixed last")
+                document.getElementById("fixed-back").classList.remove("fixed");
+                var otherPages = document.querySelectorAll(".hide-when-back");
+                otherPages.forEach(page => {
+                    page.style.visibility = 'visible';
+                })
+            }
+        });
+
+    </script>
     <script src="../js/form-validation.js"></script>
     <script src="js/script.js"></script>
 </body>

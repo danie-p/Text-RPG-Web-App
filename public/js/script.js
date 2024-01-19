@@ -5,9 +5,12 @@ document.addEventListener('DOMContentLoaded', function () {
             document.querySelector(".popup").classList.add("active");
         });
 
-        document.querySelector(".popup .close-btn").addEventListener("click", function () {
-            document.querySelector(".popup").classList.remove("active");
-        });
+        var closeBtn = document.querySelector(".popup .close-btn");
+        if (closeBtn) {
+            closeBtn.addEventListener("click", function () {
+                document.querySelector(".popup").classList.remove("active");
+            });
+        }
     }
 
     var btnEditProfile = document.getElementById('btn-edit-profile');
@@ -16,9 +19,12 @@ document.addEventListener('DOMContentLoaded', function () {
             document.querySelector(".popup-edit").classList.add("active");
         });
 
-        document.querySelector(".popup-edit .close-btn").addEventListener("click", function () {
-            document.querySelector(".popup-edit").classList.remove("active");
-        });
+        var closeBtn = document.querySelector(".popup-edit .close-btn");
+        if (closeBtn) {
+            closeBtn.addEventListener("click", function () {
+                document.querySelector(".popup-edit").classList.remove("active");
+            });
+        }
 
         // zobrazenie poli na upravu hesla
         var editPasswdText = document.getElementById('edit-passwd');

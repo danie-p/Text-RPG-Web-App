@@ -52,7 +52,7 @@ document.addEventListener('DOMContentLoaded', function () {
                         iconQuest.style.display = 'none';
                     }
 
-                    var containerPosts = document.getElementById('container-posts');
+                    // var containerPosts = document.getElementById('container-posts');
                     //containerPosts.prepend(hideOnEdit);
 
                 }).catch(error => {
