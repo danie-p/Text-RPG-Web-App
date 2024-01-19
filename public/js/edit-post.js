@@ -16,6 +16,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
         if (editForm) {
             editForm.addEventListener('submit', function (event) {
+                console.log('submit')
                 // default akcia k eventu nenastane (submit the form)
                 event.preventDefault();
 
@@ -37,7 +38,6 @@ document.addEventListener('DOMContentLoaded', function () {
                     var postUpdateTime = document.getElementById('post-update-time-' + postId);
                     var postUserName = document.getElementById('post-user-name-' + postId);
                     var postQuest = document.getElementById('post-quest-' + postId);
-                    var postQuestWrapper = document.getElementById('post-quest-wrapper-' + postId);
                     var iconQuest = document.getElementById('icon-quest-' + postId);
 
                     postBody.textContent = data.editBody;
@@ -45,13 +45,11 @@ document.addEventListener('DOMContentLoaded', function () {
                     postCharSurname.textContent = data.editCharSurname;
                     postUpdateTime.textContent = data.editUpdateTime;   // editUpdateTime by mal poslat uz naformatovane data
                     postUserName.textContent = data.editUserName;
-                    console.log("prislo")
-                    console.log(data.editQuest);
+
                     if (data.editQuest !== "") {
                         postQuest.innerHTML = '<b>Splnený quest - </b>' + data.editQuest;
                         iconQuest.style.display = 'block';
                     } else {
-                        console.log("prislo prazdne")
                         postQuest.textContent = "";
                         iconQuest.style.display = 'none';
                     }

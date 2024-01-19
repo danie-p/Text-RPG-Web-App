@@ -1,3 +1,8 @@
+@font-face {
+    font-family: 'Chomsky';
+    src: url('../Chomsky.otf') format('opentype');
+}
+
 .title {
     position: inherit;
     left: 50%;
@@ -361,6 +366,20 @@ roleplay.html
     border-radius: 0.25rem;
     box-shadow: 0 0 10px #2c686c;
     color: lightgray;
+}
+
+.rp-text p::first-letter {
+    font-family: 'Chomsky', serif;
+    font-size: 4.5rem;
+    float: left;
+    margin-right: 10px;
+    margin-top: 10px;
+}
+
+.rp-text p {
+    font-size: 1rem;
+    text-align: justify;
+    margin-bottom: 0;
 }
 
 .rp-header {

@@ -196,7 +196,9 @@
                             </div>
                         </div>
                         <div id="post-body-{{ $post->id }}" class="rp-text">
-                            {{ $post['body'] }}
+                            <p>
+                                {{ $post['body'] }}
+                            </p>
                         </div>
 
                         <div class="container-flex cont-flex1">
