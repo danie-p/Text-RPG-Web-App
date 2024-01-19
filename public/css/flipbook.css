@@ -1,4 +1,9 @@
 @font-face {
+    font-family: 'Chomsky';
+    src: url('../Chomsky.otf') format('opentype');
+}
+
+@font-face {
     font-family: 'Canterbury';
     src: url('../Canterbury.ttf') format('truetype');
 }
@@ -14,18 +19,15 @@
     font-size: 75px;
     text-align: center;
     margin-top: 150px;
-    /*
-    https://codingartistweb.com/2020/01/gold-text-effect-css-text-effect/
-     */
     background-image: linear-gradient(
         to right,
-        #462523 0,
-        #cb9b51 22%,
-        #f6e27a 45%,
-        #f6f2c0 50%,
-        #f6e27a 55%,
-        #cb9b51 78%,
-        #462523 100%
+        #7e5226 0,
+        #9f6630 15%,
+        #b07a3f 40%,
+        #e4b976 50%,
+        #b07a3f 60%,
+        #9f6630 85%,
+        #7e5226 100%
     );
     background-clip: text;
     color: transparent;
@@ -37,18 +39,25 @@
     height: 550px;
 }
 
-.normal-page::first-letter {
-    color: black;
-    font-family: 'Canterbury', serif;
+.normal-page h3 {
+    color: #2f2213;
+    font-family: 'Chomsky', serif;
+    font-size: 40px;
+    margin: 20px;
+    text-align: center;
+}
+
+.normal-page p::first-letter {
+    color: #2f2213;
+    font-family: 'Chomsky', serif;
     font-size: 75px;
     float: left;
     margin-right: 10px;
-    margin-bottom: 10px;
     margin-top: 10px;
 }
 
 .normal-page p {
-    color: black;
+    color: #2f2213;
     font-size: 20px;
     margin: 20px;
 }

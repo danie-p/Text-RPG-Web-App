@@ -152,35 +152,14 @@
                 <div id="flipbook" class="flipbook">
                     <div class="hard hide-when-back cover-page-outside"><h1>Questy</h1></div>
                     <div id="fixed-front" class="hard hide-when-back cover-page-inside"></div>
-                    <div class="own-size hide-when-back normal-page">
-                        <p>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi commodo nisi mauris,
-                            sed aliquam justo hendrerit a. Etiam neque libero, aliquet eget enim ut, faucibus
-                            imperdiet est. Aenean vitae nunc at magna pellentesque iaculis. Suspendisse potenti.
-                            Ut ultricies vel lectus iaculis luctus.
-                        </p>
-                    </div>
-                    <div class="own-size hide-when-back normal-page">
-                        <p>
-                            Fusce tempus turpis non nulla volutpat ultrices. Morbi ultrices
-                            sed sem nec pulvinar. Nunc luctus consequat finibus. Ut ac dolor ante. Aliquam pulvinar massa
-                            quis ornare aliquam. Sed blandit lectus sed sapien aliquet, vitae rhoncus leo feugiat.
-                        </p>
-                    </div>
-                    <div class="own-size hide-when-back normal-page">
-                        <p>
-                            Nullam non diam lacus. Mauris eu ex sed neque blandit dignissim. Morbi porttitor dignissim
-                            magna nec pulvinar. Integer gravida at elit quis pharetra. Donec sodales metus et ultricies
-                            fermentum.
-                        </p>
-                    </div>
-                    <div class="own-size hide-when-back normal-page">
-                        <p>
-                            Mauris molestie malesuada augue,
-                            id sollicitudin sem suscipit et. Curabitur sit amet maximus mi, sed lobortis libero.
-                            Nam lacus turpis, egestas non gravida sit amet, egestas vel turpis.
-                        </p>
-                    </div>
+                    @foreach($quests as $quest)
+                        @if($quest->location === "Hrad")
+                            <div class="own-size hide-when-back normal-page">
+                                <h3>{{ $quest->name }}</h3>
+                                <p>{{ $quest->body }}</p>
+                            </div>
+                        @endif
+                    @endforeach
                     <div id="fixed-back" class="hard fixed cover-page-inside"></div>
                     <div class="hard cover-page-outside"></div>
                 </div>

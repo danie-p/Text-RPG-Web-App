@@ -3,6 +3,7 @@
 use App\Http\Controllers\CharacterController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\QuestController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -21,7 +22,6 @@ Route::get('/', function () {
     return view('home');
 });
 
-Route::get('/castle', [PageController::class, 'castle'])->name('castle');
 Route::get('/register-page', [PageController::class, 'register_page'])->name('register-page');
 Route::get('/home', [PageController::class, 'home'])->name('home');
 Route::get('/create-character-page', [PageController::class, 'create_character_page'])->name('create-character-page');
@@ -43,3 +43,5 @@ Route::get('/citizens', [CharacterController::class, 'showAllCharacters'])->name
 Route::get('/edit-character/{character}', [CharacterController::class, 'editWindow'])->name('editWindow');
 Route::put('/edit-character/{character}', [CharacterController::class, 'editCharacter']);
 Route::any('/delete-character/{character}', [CharacterController::class, 'deleteCharacter']);
+
+Route::get('/castle', [QuestController::class, 'showQuests'])->name('castle');
