@@ -6,11 +6,13 @@ document.addEventListener('DOMContentLoaded', function () {
         const showOnEdit = document.getElementById('show-on-edit-' + postId);
         const hideOnEdit = document.getElementById('hide-on-edit-' + postId);
 
-        btn.addEventListener('click', function () {
-            showOnEdit.style.display = 'block';
-            hideOnEdit.style.visibility = 'hidden';
-            hideOnEdit.style.height = 0;
-        });
+        if (showOnEdit && hideOnEdit) {
+            btn.addEventListener('click', function () {
+                showOnEdit.style.display = 'block';
+                hideOnEdit.style.visibility = 'hidden';
+                hideOnEdit.style.height = 0;
+            });
+        }
 
         var editForm = document.getElementById('edit-form-' + postId);
 
@@ -40,7 +42,8 @@ document.addEventListener('DOMContentLoaded', function () {
                     var postQuest = document.getElementById('post-quest-' + postId);
                     var iconQuest = document.getElementById('icon-quest-' + postId);
 
-                    postBody.textContent = data.editBody;
+                    console.log(data.editBody);
+                    postBody.innerHTML = data.editBody.replace(/(?:\r\n|\r|\n)/g, '<br>')
                     postCharName.textContent = data.editCharName;
                     postCharSurname.textContent = data.editCharSurname;
                     postUpdateTime.textContent = data.editUpdateTime;   // editUpdateTime by mal poslat uz naformatovane data

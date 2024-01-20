@@ -20,58 +20,8 @@
 <body class="rp-body">
     @auth
     <div class="container">
-        <nav id="nav-header" class="navbar navbar-expand-lg navbar-custom-headerless">
-            <div class="container-fluid">
-                <button class="navbar-toggler navbar-toggler-custom mx-auto" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon navbar-dark"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarNavDropdown">
-                    <ul class="navbar-nav mx-auto">
-                        <li class="nav-item nav-item-custom">
-                            <a class="nav-link nav-link-custom active" aria-current="page" href="{{ route('home') }}">
-                                <i class="bi bi-house-heart-fill"></i>
-                            </a>
-                        </li>
-                        <li id="drop" class="nav-item nav-item-custom dropdown">
-                            <a class="nav-link nav-link-custom dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                Rázcestie
-                            </a>
-                            <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="#">Les</a></li>
-                                <li><a class="dropdown-item" href="{{ route('castle') }}">Hrad</a></li>
-                                <li><a class="dropdown-item" href="#">Podhradie</a></li>
-                            </ul>
-                        </li>
-                        <li class="nav-item nav-item-custom">
-                            <a class="nav-link nav-link-custom" href="{{ route('citizens') }}">Obyvatelia</a>
-                        </li>
-                        <li class="nav-item nav-item-custom">
-                            <a class="nav-link nav-link-custom" href="#">Nápoveda</a>
-                        </li>
-                        <li class="nav-item nav-item-custom nav-item-highlight dropdown">
-                            <button class="nav-link nav-link-custom nav-link-highlight dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                                <i class="bi bi-person-heart btn-icon-padding"></i>
-                                Môj účet
-                            </button>
-                            <ul class="dropdown-menu">
-                                <li class="dropdown-item" style="pointer-events: none">{{ auth()->user()->name }}</li>
-                                <li class="dropdown-item">
-                                    <button id="btn-edit-profile" class="dropdown-item" style="background: none; padding: 0;">Upraviť profil</button>
-                                </li>
-                                <li><a class="dropdown-item" href="{{ route('create-character-page') }}">Vytvoriť postavu</a></li>
-                                <li>
-                                    <form action="/logout" method="POST" class="dropdown-item">
-                                        @csrf
-                                        <button class="dropdown-item" style="background: none; padding: 0; color: #D09125">Odhlásiť sa</button>
-                                    </form>
-                                </li>
-                            </ul>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
-        <h1 class="rp-title title-headerless title-light">ROLEPLAY - HRAD</h1>
+        @include('partials.nav')
+        <h1 class="rp-title title-headerless title-light">Roleplay - Hrad</h1>
 
         <div class="first-section">
             <label for="rp-post" class="form-label">Príspevok</label>
@@ -107,7 +57,7 @@
                         @endforeach
                     </select>
                 </div>
-                <button class="btn btn-custom submit-textarea">Odoslať</button>
+                <button class="btn btn-custom5 submit-textarea">Odoslať</button>
             </form>
         </div>
 
@@ -197,7 +147,7 @@
                         </div>
                         <div id="post-body-{{ $post->id }}" class="rp-text">
                             <p>
-                                {{ $post['body'] }}
+                                {!! nl2br(e($post['body'])) !!}
                             </p>
                         </div>
 
@@ -319,19 +269,11 @@
         <p class="text-center">Neboli nájdené žiadne výsledky!</p>
     </div>
 
-    <div class="container-fluid" style="margin-top: 20px">
-        <footer class="py-3">
-            <div class="container-fluid border-bottom" data-bs-theme="dark">
-                <form class="search-bar d-flex" role="search">
-                    <input class="bg-dark form-control me-2" type="search" placeholder="Hľadaný text" aria-label="Search">
-                    <button class="btn btn-custom" type="submit">
-                        <i class="bi bi-search-heart btn-icon-padding"></i>
-                        Hľadaj</button>
-                </form>
-            </div>
-            <p class="text-center text-light footer-padding">Daniela Pavlíková | 2023</p>
-        </footer>
+    <div style="margin-top: 20px">
+        @include('partials.footer')
     </div>
+
+    @include('partials.edit-profile')
 
     @else
     <div class="container-fluid">

@@ -197,7 +197,7 @@ body {
 }
 
 .container-navbar {
-    padding-bottom: 20px;
+    height: 85px;
 }
 
 .form-control.is-valid, .was-validated .form-control:valid {

@@ -8,6 +8,11 @@
     src: url('../kawoszeh.ttf') format('truetype');
 }
 
+@font-face {
+    font-family: 'Canterbury';
+    src: url('../Canterbury.ttf') format('truetype');
+}
+
 * {
     font-family: kawoszeh, 'Times New Roman', Times, serif;
 }
@@ -21,8 +26,9 @@
     left: 50%;
     top: 50%;
     transform: translate(-50%, -60%);
-    font-family: "Playfair Display", serif;
-    font-size: 10vh;
+    font-family: Canterbury, serif;
+    font-size: 9vw;
+    letter-spacing: 8px;
     font-weight: bold;
     padding-left: 2vh;
     padding-right: 2vh;
@@ -96,6 +102,11 @@
     color: #E0AC52;
 }
 
+.nav-link-custom:focus-visible {
+    outline: 0;
+    box-shadow: 0 0 5px white;
+}
+
 .nav-item a:focus {
     color: white;
 }
@@ -106,8 +117,6 @@
     border-radius: 0.25rem;
     padding-left: 0.5vh;
     padding-right: 0.5vh;
-    display: flex;
-    align-items: center;
 }
 
 .nav-item-custom:hover {
@@ -167,7 +176,7 @@
     margin-bottom: 5px;
 }
 
-.btn-custom1:hover {
+.btn-custom1:hover, .btn-custom1:focus-visible {
     background-color: rgba(68, 141, 145, 0.8);
 }
 
@@ -197,9 +206,20 @@
     color: black;
 }
 
-.btn-custom2:hover {
+.btn-custom2:hover, .btn-custom2:focus-visible {
     background-color: rgba(44, 104, 108, 0.5);
     color: black;
+}
+
+.btn-custom5 {
+    border-radius: 0.25rem;
+    background-color: #6b4d2c;
+    color: white;
+    margin-bottom: 5px;
+}
+
+.btn-custom5:hover, .btn-custom5:focus-visible {
+    background-color: rgba(107, 77, 44, 0.7);
 }
 
 .btn-custom:hover {
@@ -271,7 +291,7 @@ hrad.html
     top: 40%;
     left: 50%;
     transform: translate(-50%, -50%);
-    font-size: 5vw;
+    font-size: 6vw;
 }
 
 #content-subpage {
@@ -344,14 +364,15 @@ roleplay.html
 .rp-title {
     position: relative;
     transform: translate(-50%);
-    font-family: "Playfair Display", serif;
+    font-family: Canterbury, "Times New Roman", Times, serif;
+    letter-spacing: 8px;
     font-weight: bold;
     padding-left: 2vh;
     padding-right: 2vh;
     text-align: center;
     border-radius: 0.25rem;
     left: 50%;
-    font-size: 5vw;
+    font-size: 6vw;
 }
 
 .header-light {
@@ -387,6 +408,7 @@ roleplay.html
     float: left;
     margin-right: 10px;
     margin-top: 10px;
+    display: inline-block;
 }
 
 .rp-text p {
