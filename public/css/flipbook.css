@@ -8,6 +8,10 @@
     src: url('../Canterbury.ttf') format('truetype');
 }
 
+.flipbook ::selection {
+    background: #E0AC52;
+}
+
 .flex-center {
     position: relative;
     display: flex;

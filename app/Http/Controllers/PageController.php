@@ -7,28 +7,25 @@ use Illuminate\Http\Request;
 
 class PageController extends Controller
 {
-    public function castle() {
-        return view('castle');
-    }
-
-    public function roleplay() {
-        $posts = Post::all();
-        return view('roleplay', ['posts' => $posts]);
-    }
-
     public function register_page() {
         return view('register');
     }
 
     public function home() {
-        return view('home');
+        $successMessage = session('success');
+
+        return view('home', ['successMessage' => $successMessage]);
     }
 
     public function create_character_page() {
         return view('create-character');
     }
 
-    public function citizens() {
-        return view('citizens');
+    public function create_quest_page() {
+        return view('create-quest');
+    }
+
+    public function create_item_page() {
+        return view('create-item');
     }
 }

@@ -25,6 +25,8 @@ Route::get('/', function () {
 Route::get('/register-page', [PageController::class, 'register_page'])->name('register-page');
 Route::get('/home', [PageController::class, 'home'])->name('home');
 Route::get('/create-character-page', [PageController::class, 'create_character_page'])->name('create-character-page');
+Route::get('/create-quest-page', [PageController::class, 'create_quest_page'])->name('create-quest-page');
+Route::get('/create-item-page', [PageController::class, 'create_item_page'])->name('create-item-page');
 
 Route::post('/register', [UserController::class, 'register'])->name('register');
 Route::post('/logout', [UserController::class, 'logout'])->name('logout');
@@ -45,3 +47,4 @@ Route::put('/edit-character/{character}', [CharacterController::class, 'editChar
 Route::any('/delete-character/{character}', [CharacterController::class, 'deleteCharacter']);
 
 Route::get('/castle', [QuestController::class, 'showQuests'])->name('castle');
+Route::post('/create-quest', [QuestController::class, 'createQuest'])->name('create-quest');

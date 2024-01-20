@@ -26,6 +26,9 @@
             @endforeach
         </div>
 
+        <div class="alert-box-sticky">
+            @include('partials.alerts')
+        </div>
         @include('partials.footer')
     </div>
 

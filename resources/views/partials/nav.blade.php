@@ -36,11 +36,17 @@
                             Môj účet
                         </button>
                         <ul class="dropdown-menu">
-                            <li class="dropdown-item" style="pointer-events: none">{{ auth()->user()->name }}</li>
+                            <li class="dropdown-item" style="pointer-events: none"><b>{{ auth()->user()->name }}</b></li>
                             <li class="dropdown-item">
                                 <button id="btn-edit-profile" class="dropdown-item" style="background: none; padding: 0;">Upraviť profil</button>
                             </li>
                             <li><a class="dropdown-item" href="{{ route('create-character-page') }}">Vytvoriť postavu</a></li>
+                            @if (Auth::user()->hasPermissionTo('manage-quest'))
+                                <li><a class="dropdown-item" href="{{ route('create-quest-page') }}">Vytvoriť quest</a></li>
+                            @endif
+                            @if (Auth::user()->hasPermissionTo('manage-item'))
+                                <li><a class="dropdown-item" href="{{ route('create-item-page') }}">Vytvoriť predmet</a></li>
+                            @endif
                             <li>
                                 <form action="/logout" method="POST" class="dropdown-item">
                                     @csrf

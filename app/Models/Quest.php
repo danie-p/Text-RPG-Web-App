@@ -9,6 +9,13 @@ class Quest extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'name',
+        'location',
+        'body',
+        'image_path'
+    ];
+
     // quest moze byt splneny mnohymi postavami
     public function characters() {
         return $this->belongsToMany(Character::class, 'chronicles');

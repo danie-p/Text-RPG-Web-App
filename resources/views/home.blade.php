@@ -33,6 +33,10 @@
         @include('partials.nav')
     </div>
 
+    <div class="alert-box-absolute">
+        @include('partials.alerts')
+    </div>
+
     <div id="forest-mobile"></div>
 
     <div id="content">
@@ -47,17 +51,6 @@
                     </div>
                 </div>
                 <div class="row">
-
-                    @if($errors->any())
-                        <div class="alert alert-danger">
-                            <ul>
-                                @foreach($errors->all() as $error)
-                                    <li>{{ $error }}</li>
-                                @endforeach
-                            </ul>
-                        </div>
-                    @endif
-
                     <p>
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi commodo nisi mauris,
                         sed aliquam justo hendrerit a. Etiam neque libero, aliquet eget enim ut, faucibus

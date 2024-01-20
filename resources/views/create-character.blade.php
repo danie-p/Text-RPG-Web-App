@@ -106,6 +106,9 @@
         </div>
     </div>
 
+    <div class="alert-box-sticky">
+        @include('partials.alerts')
+    </div>
     @include('partials.footer')
     @include('partials.edit-profile')
 
