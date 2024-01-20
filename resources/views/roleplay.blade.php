@@ -184,14 +184,14 @@
                     <div id="hide-on-edit-{{ $post->id }}" class="first-section">
                         <div class="container-flex">
                             <div style="flex: 1;" class="rp-header">
-                                <b style="font-size: larger">
+                                <b style="font-size: 22px">
                                     <span id="post-char-name-{{ $post->id }}">{{ $post->character->name }}</span>
                                     <span id="post-char-surname-{{ $post->id }}">{{ $post->character->surname }}</span>
                                 </b>
                                 <span id="post-user-name-{{ $post->id }}" style="margin-left: 10px">{{ $post->user->name }}</span>
                             </div>
                             <div style="text-align: right; color: rgba(68, 141, 145, 1)" class="rp-header">
-                                <b style="font-size: larger"></b>
+                                <b style="font-size: 22px"></b>
                                 <span id="post-update-time-{{ $post->id }}">{{ \Carbon\Carbon::parse($post->updated_at)->format('d M Y H:i') }}</span>
                             </div>
                         </div>
@@ -216,16 +216,20 @@
                                     @endif
                                 </span>
                             </span>
-                            @if(Auth::user()->id == $post['user_id'])
+                            @if(Auth::user()->id == $post['user_id'] || Auth::user()->hasPermissionTo('edit-any-post') || Auth::user()->hasPermissionTo('delete-any-post'))
                                 <span style="margin-top: 10px">
-                                    <button id="btn-edit-{{ $post->id }}" data-postid="{{ $post->id }}" style="margin-right: 10px" class="btn btn-custom1 btn-edit">
-                                        <i class="bi bi-feather btn-icon-padding"></i>
-                                        Upraviť
-                                    </button>
-                                    <button style="margin: 5px 0 5px 0" class="btn btn-custom2" data-bs-toggle="modal" data-bs-target="#myModal{{ $post->id }}">
-                                        <i class="bi bi-trash3-fill btn-icon-padding"></i>
-                                        Vymazať
-                                    </button>
+                                    @if(Auth::user()->id == $post['user_id'] || Auth::user()->hasPermissionTo('edit-any-post'))
+                                        <button id="btn-edit-{{ $post->id }}" data-postid="{{ $post->id }}" style="margin-right: 10px" class="btn btn-custom1 btn-edit">
+                                            <i class="bi bi-feather btn-icon-padding"></i>
+                                            Upraviť
+                                        </button>
+                                    @endif
+                                    @if(Auth::user()->id == $post['user_id'] || Auth::user()->hasPermissionTo('delete-any-post'))
+                                        <button style="margin: 5px 0 5px 0" class="btn btn-custom2" data-bs-toggle="modal" data-bs-target="#myModal{{ $post->id }}">
+                                            <i class="bi bi-trash3-fill btn-icon-padding"></i>
+                                            Vymazať
+                                        </button>
+                                    @endif
                                 </span>
                             @endif
                         </div>

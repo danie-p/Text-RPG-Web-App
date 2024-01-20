@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Character;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class CharacterController extends Controller
 {
@@ -23,11 +24,13 @@ class CharacterController extends Controller
     }
 
     public function editWindow(Character $character) {
-        if (!auth()->user()) {
+        $user = Auth::user();
+
+        if (!$user) {
             return redirect('/home');
         }
 
-        if (auth()->user()->id !== $character['user_id']) {
+        if ($user->id !== $character['user_id'] && !$user->hasPermissionTo('edit-any-character')) {
             return redirect('/home');
         }
 
@@ -35,7 +38,9 @@ class CharacterController extends Controller
     }
 
     public function editCharacter(Character $character, Request $request) {
-        if (auth()->user()->id !== $character['user_id']) {
+        $user = Auth::user();
+
+        if ($user->id !== $character['user_id'] && !$user->hasPermissionTo('edit-any-character')) {
             return view('show-character', compact('character'));
         }
 
@@ -48,7 +53,9 @@ class CharacterController extends Controller
     public function deleteCharacter(Character $character, Request $request) {
         if ($request->isMethod('delete')) {
 
-            if (auth()->user()->id !== $character['user_id']) {
+            $user = Auth::user();
+
+            if ($user->id !== $character['user_id'] && !$user->hasPermissionTo('delete-any-character')) {
                 return view('show-character', compact('character'));
             }
 
@@ -84,11 +91,11 @@ class CharacterController extends Controller
             'description' => 'required|min:300',
         ]);
 
-        $incomingFields['name'] = strip_tags($incomingFields['name']);
-        $incomingFields['surname'] = strip_tags($incomingFields['surname']);
-        $incomingFields['image_url'] = strip_tags($incomingFields['image_url']);
-        $incomingFields['bio'] = strip_tags($incomingFields['bio']);
-        $incomingFields['description'] = strip_tags($incomingFields['description']);
+        $incomingFields['name'] = strip_tags($incomingFields['name'], "<p></p> <br> <b></b> <i></i> <u></u>");
+        $incomingFields['surname'] = strip_tags($incomingFields['surname'], "<p></p> <br> <b></b> <i></i> <u></u>");
+        $incomingFields['image_url'] = strip_tags($incomingFields['image_url'], "<p></p> <br> <b></b> <i></i> <u></u>");
+        $incomingFields['bio'] = strip_tags($incomingFields['bio'], "<p></p> <br> <b></b> <i></i> <u></u>");
+        $incomingFields['description'] = strip_tags($incomingFields['description'], "<p></p> <br> <b></b> <i></i> <u></u>");
         return $incomingFields;
     }
 }

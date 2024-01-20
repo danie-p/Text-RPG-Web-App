@@ -6,7 +6,7 @@
 
 body {
     background: radial-gradient(#876732, #60481f);
-    font-family: 'Times New Roman', Times, serif;
+    font-family: kawoszeh, 'Times New Roman', Times, serif;
 }
 
 .register-window {
@@ -165,7 +165,9 @@ body {
 }
 
 .show-window h3 {
-    color: black;
+    color: #190a07;
+    font-size: 30px;
+    font-weight: bold;
 }
 
 .show-window p {

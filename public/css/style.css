@@ -3,6 +3,19 @@
     src: url('../Chomsky.otf') format('opentype');
 }
 
+@font-face {
+    font-family: 'kawoszeh';
+    src: url('../kawoszeh.ttf') format('truetype');
+}
+
+* {
+    font-family: kawoszeh, 'Times New Roman', Times, serif;
+}
+
+.btn {
+    font-size: 18px;
+}
+
 .title {
     position: inherit;
     left: 50%;
@@ -377,7 +390,6 @@ roleplay.html
 }
 
 .rp-text p {
-    font-size: 1rem;
     text-align: justify;
     margin-bottom: 0;
 }
@@ -513,8 +525,8 @@ https://medium.com/@patrickwestwood/how-to-make-multi-layered-parallax-illustrat
 body {
     padding: 0;
     margin: 0;
-    font-family: "Playfair Display", serif;
     color: white;
+    font-size: 18px;
 }
 
 #forest {

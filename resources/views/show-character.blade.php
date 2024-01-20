@@ -124,20 +124,24 @@
                 </div>
             </div>
             @auth
-                @if(Auth::user()->id == $character['user_id'])
-                    <div class="container-flex cont-flex2">
+                <div class="container-flex cont-flex2">
+                    @if(Auth::user()->id == $character['user_id'] || Auth::user()->hasPermissionTo('edit-any-character'))
                         <a href="/edit-character/{{ $character->id }}">
                             <button style="margin: 5px 10px 5px 0; align-items: center" class="btn btn-custom4">
                                 <i class="bi bi-feather btn-icon-padding"></i>
                                 Upraviť
                             </button>
                         </a>
+                    @endif
+                    @if(Auth::user()->id == $character['user_id'] || Auth::user()->hasPermissionTo('delete-any-character'))
                         <button style="margin: 5px 0 5px 0; align-items: center" class="btn btn-custom3" data-bs-toggle="modal" data-bs-target="#myModal">
                             <i class="bi bi-trash3-fill btn-icon-padding"></i>
                             Vymazať
                         </button>
-                    </div>
+                    @endif
+                </div>
 
+                @if(Auth::user()->id == $character['user_id'] || Auth::user()->hasPermissionTo('delete-any-character'))
                     <div id="myModal" class="modal fade modal-char" tabindex="-1">
                         <div class="modal-dialog modal-dialog-centered">
                             <div class="modal-content">

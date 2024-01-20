@@ -8,6 +8,7 @@ use App\Models\Quest;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Arr;
+use Illuminate\Support\Facades\Auth;
 
 class PostController extends Controller
 {
@@ -19,7 +20,7 @@ class PostController extends Controller
             'character' => 'required'
         ]);
 
-        $incomingFields['body'] = strip_tags($incomingFields['body'], '<p>');
+        $incomingFields['body'] = strip_tags($incomingFields['body'], "<p></p> <br> <b></b> <i></i> <u></u>");
         $incomingFields['user_id'] = auth()->id();
 
         $quest = Quest::where('name', $incomingFields['quest'])->first();
@@ -35,11 +36,13 @@ class PostController extends Controller
     }
 
     public function editPost(Post $post, Request $request) {
-        if (!auth()->user()) {
+        $user = Auth::user();
+
+        if (!$user) {
             return redirect('/home');
         }
 
-        if (auth()->user()->id !== $post['user_id']) {
+        if ($user->id !== $post['user_id'] && !$user->hasPermissionTo('edit-any-post')) {
             return response()->json(['error' => 'Unauthorized'], 403);
         }
 
@@ -50,7 +53,7 @@ class PostController extends Controller
             'character' => 'required'
         ]);
 
-        $incomingFields['body'] = strip_tags($incomingFields['body'], '<p>');
+        $incomingFields['body'] = strip_tags($incomingFields['body'], "<p></p> <br> <b></b> <i></i> <u></u>");
 
         $quest = Quest::where('name', $incomingFields['quest'])->first();
         if ($quest) {
@@ -78,7 +81,9 @@ class PostController extends Controller
     public function deletePost(Post $post, Request $request) {
         if ($request->isMethod('delete')) {
 
-            if (auth()->user()->id !== $post['user_id']) {
+            $user = Auth::user();
+
+            if ($user->id !== $post['user_id'] && !$user->hasPermissionTo('delete-any-post')) {
                 return redirect('/roleplay');
             }
 
@@ -90,8 +95,10 @@ class PostController extends Controller
     }
 
     public function showPosts() {
-        if (auth()->user()) {
-            $characters = auth()->user()->characters;
+        $user = Auth::user();
+
+        if ($user) {
+            $characters = $user->characters;
             $posts = Post::orderBy('updated_at', 'desc')->get();
             $users = User::all();
             $allCharacters = Character::all();
@@ -102,18 +109,26 @@ class PostController extends Controller
     }
 
     public function editWindowWithCharacters(Post $post) {
-        if (auth()->user()) {
-            if (auth()->user()->id !== $post['user_id']) {
+        $user = Auth::user();
+
+        if ($user) {
+            if ($user->id !== $post['user_id'] && !$user->hasPermissionTo('edit-any-post')) {
                 return redirect('/roleplay');
             }
 
-            $characters = auth()->user()->characters;
+            $characters = $user->characters;
             return view('edit-post', compact('characters', 'post'));
         }
         return redirect('/home');
     }
 
     public function filterPosts(Request $request) {
+        $user = Auth::user();
+
+        if (!$user) {
+            return redirect('/home');
+        }
+
         $authors = $request->input('authors');
         $characters = $request->input('characters');
         $quests = $request->input('quests');
