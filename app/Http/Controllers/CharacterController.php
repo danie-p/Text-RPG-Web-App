@@ -59,6 +59,8 @@ class CharacterController extends Controller
                 return view('show-character', compact('character'));
             }
 
+            $character->posts()->delete();
+
             $character->delete();
 
             return redirect('/citizens');

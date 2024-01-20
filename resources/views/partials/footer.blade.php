@@ -8,6 +8,6 @@
                     Hľadaj</button>
             </form>
         </div>
-        <p class="text-center text-light footer-padding">Daniela Pavlíková | 2023</p>
+        <p class="text-center text-light footer-padding">Daniela Pavlíková | 2024</p>
     </footer>
 </div>

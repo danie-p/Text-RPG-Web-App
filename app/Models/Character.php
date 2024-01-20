@@ -32,4 +32,8 @@ class Character extends Model
     public function quests() {
         return $this->belongsToMany(Quest::class, 'chronicles');
     }
+
+    public function posts() {
+        return $this->hasMany(Post::class, 'character_id');
+    }
 }
