@@ -47,8 +47,8 @@
 }
 
 .title-headerless {
-    margin: 60px 0 40px 0;
     width: fit-content;
+    z-index: -9999;
 }
 
 .floatie {
@@ -113,14 +113,18 @@
 
 .nav-item-custom {
     margin: 0.3vw;
-    background-color: rgba(21, 31, 39, 0.7);
+    background-color: rgba(21, 31, 39);
     border-radius: 0.25rem;
     padding-left: 0.5vh;
     padding-right: 0.5vh;
 }
 
+.navbar-nav .nav-link.active, .navbar-nav .nav-link.show {
+    color: white;
+}
+
 .nav-item-custom:hover {
-    background-color: rgba(36, 53, 66, 0.7);
+    background-color: rgba(36, 53, 66, 0.8);
 }
 
 .navbar-toggler-custom {
@@ -128,7 +132,7 @@
 }
 
 .navbar-toggler-custom:hover {
-    background-color: rgba(36, 53, 66, 0.7);
+    background-color: rgba(36, 53, 66, 0.8);
 }
 
 .nav-item-highlight {
@@ -141,6 +145,10 @@
 
 .nav-link-highlight:hover {
     color: #151F27;
+}
+
+.container-navbar {
+    height: 85px;
 }
 
 .active {
@@ -265,8 +273,8 @@ hrad.html
 */
 .header {
     width: 100%;
-    overflow: hidden;
     position: relative;
+    z-index: 1;
 }
 
 .header-blue {
@@ -276,6 +284,7 @@ hrad.html
 .header img {
     width: 100%;
     height: auto;
+    z-index: 1;
 }
 
 #nav-header {
@@ -283,7 +292,6 @@ hrad.html
     top: 0;
     left: 50%;
     transform: translate(-50%, 0);
-    width: 100%;
 }
 
 .header-title {
@@ -297,6 +305,7 @@ hrad.html
 #content-subpage {
     position: relative;
     background-color: #151f27;
+    z-index: 0;
 }
 
 #content-subpage img {

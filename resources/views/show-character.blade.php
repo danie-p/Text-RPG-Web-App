@@ -54,11 +54,11 @@
             <div style="margin-bottom: 0" class="row">
                 <div class="col-md-6">
                     <label>Životopis</label>
-                    <p id="create-character-bio">{{ $character->bio }}</p>
+                    <p id="create-character-bio">{!! nl2br(e($character->bio)) !!}</p>
                 </div>
                 <div class="col-md-6">
                     <label>Opis</label>
-                    <p id="create-character-bio">{{ $character->description }}</p>
+                    <p id="create-character-bio">{!! nl2br(e($character->description)) !!}</p>
                 </div>
             </div>
             @auth

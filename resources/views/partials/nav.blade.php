@@ -1,5 +1,5 @@
 <nav id="nav-header" class="navbar navbar-expand-lg navbar-custom">
-    <div class="container-fluid">
+    <div class="container-fluid" style="z-index: 9999">
         <button class="navbar-toggler navbar-toggler-custom mx-auto" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon navbar-dark"></span>
         </button>

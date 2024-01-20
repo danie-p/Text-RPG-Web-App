@@ -20,7 +20,9 @@
 <body class="rp-body">
     @auth
     <div class="container">
-        @include('partials.nav')
+        <div class="container-navbar">
+            @include('partials.nav')
+        </div>
         <h1 class="rp-title title-headerless title-light">Roleplay - Hrad</h1>
 
         <div class="first-section">
@@ -28,7 +30,7 @@
             <form id="rp-post" class="needs-validation" novalidate action="/create-post" method="POST">
                 @csrf
                 <div class="input-group mb-3 input-quest">
-                    <select name="character" class="form-select" id="inputGroupSelect02" required>
+                    <select name="character" class="form-select" required>
                         <option disabled selected value>Vybrať postavu</option>
                         @foreach($characters as $character)
                             <option>{{ $character->name }}</option>
@@ -48,7 +50,7 @@
                     <input name="image" class="form-control" type="file" id="formFile">
                 </div>
                 <div class="input-group mb-3 input-quest">
-                    <select name="quest" class="form-select" id="inputGroupSelect02">
+                    <select name="quest" class="form-select">
                         <option selected>Splniť quest - žiadny</option>
                         @foreach($quests as $quest)
                             @if($quest->location === "Hrad")
