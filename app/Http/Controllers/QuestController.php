@@ -44,8 +44,8 @@ class QuestController extends Controller
         if ($image) {
             $imageName = 'quest-' . time() . '.' . $image->getClientOriginalExtension();
 
-            // uploadnuty subor je ulozeny do images adresaru lokalneho disku
-            $image_path = $image->storeAs('images', $imageName, 'local');
+            // uploadnuty subor je ulozeny do images adresaru lokalneho public disku
+            $image_path = $image->storeAs('images', $imageName, 'public');
             $incomingFields['image_path'] = $image_path;
         } else {
             $incomingFields['image_path'] = null;
