@@ -15,12 +15,12 @@
                         Rázcestie
                     </a>
                     <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="#">Les</a></li>
+                        <li><a class="dropdown-item" href="{{ route('forest') }}">Les</a></li>
                         <li>
                             <a class="dropdown-item" href="{{ route('castle') }}">Hrad
                             </a>
                         </li>
-                        <li><a class="dropdown-item" href="#">Podhradie</a></li>
+                        <li><a class="dropdown-item" href="{{ route('town') }}">Podhradie</a></li>
                     </ul>
                 </li>
                 <li class="nav-item nav-item-custom">
@@ -42,10 +42,10 @@
                             </li>
                             <li><a class="dropdown-item" href="{{ route('create-character-page') }}">Vytvoriť postavu</a></li>
                             @if (Auth::user()->hasPermissionTo('manage-quest'))
-                                <li><a class="dropdown-item" href="{{ route('create-quest-page') }}">Vytvoriť quest</a></li>
+                                <li><a class="dropdown-item" href="{{ route('manage-quest-page') }}">Spravovať quest</a></li>
                             @endif
                             @if (Auth::user()->hasPermissionTo('manage-item'))
-                                <li><a class="dropdown-item" href="{{ route('create-item-page') }}">Vytvoriť predmet</a></li>
+                                <li><a class="dropdown-item" href="{{ route('manage-item-page') }}">Spravovať predmet</a></li>
                             @endif
                             <li>
                                 <form action="/logout" method="POST" class="dropdown-item">

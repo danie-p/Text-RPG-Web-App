@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
     <link rel="stylesheet" href="{{ asset('css/form-validation.css') }}">
     <link rel="stylesheet" href="{{ asset('css/character.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/modal.css') }}">
 </head>
 
 <body class="register-body">
@@ -88,6 +89,69 @@
             </div>
         </div>
 
+        <div class="window-container">
+            <div class="register-window">
+                <div class="login-form">
+                    <h2>Odstráň quest</h2>
+                    <div class="container-fluid">
+                        <div class="col-md-12">
+                            <div class="row">
+                                <div class="col-md-7">
+                                    <div class="row">
+                                        <img src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/2d3c2e86-6d7f-47c3-a363-0f311e463d9a/dcn5qww-a1529c7c-dd39-4c46-a846-9684e6d24f78.jpg/v1/fill/w_1024,h_488,q_75,strp/settlers_of_the_fallen_city_by_ncorva_dcn5qww-fullview.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9NDg4IiwicGF0aCI6IlwvZlwvMmQzYzJlODYtNmQ3Zi00N2MzLWEzNjMtMGYzMTFlNDYzZDlhXC9kY241cXd3LWExNTI5YzdjLWRkMzktNGM0Ni1hODQ2LTk2ODRlNmQyNGY3OC5qcGciLCJ3aWR0aCI6Ijw9MTAyNCJ9XV0sImF1ZCI6WyJ1cm46c2VydmljZTppbWFnZS5vcGVyYXRpb25zIl19.g4zZvSgbvM9kPmq9a6MHMdGNesdevRpBDtNB6Xy9RvQ" alt="Delete Quest Image" style="object-fit: cover; width: 100%; height: 222px">
+                                    </div>
+                                </div>
+                                <div class="col-md-5">
+                                    <div class="row" style="margin-bottom: 0">
+                                        <div data-bs-theme="dark">
+                                            <label for="delete-quest">Quest na odstránenie</label>
+                                            <select name="name" id="delete-quest" class="form-select mb-3" size="5" required>
+                                                <option disabled selected value>Vybrať quest</option>
+                                                @foreach($quests as $quest)
+                                                    <option data-quest-id="{{ $quest->id }}">{{ $quest->name }}</option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="container-flex cont-flex2 login-form-el">
+                                            <button type="submit" class="btn btn-custom4 submit-textarea" style="margin-right: 0" data-bs-toggle="modal" data-bs-target="#myModal" onclick="openModal()">
+                                                Odstrániť quest
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        @if(Auth::user()->hasPermissionTo('manage-quest'))
+            <div id="myModal" class="modal fade modal-char" tabindex="-1">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title">Potvrdenie vymazania</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <p>Naozaj chceš odstrániť quest <span id="modal-quest-name"></span>?</p>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Späť</button>
+                            <form id="form-delete" method="POST">
+                                @csrf
+                                @method('DELETE')
+                                <button type="button" class="btn btn-custom1" onclick="deleteQuest()">Vymazať</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        @endif
+
         <div class="alert-box-sticky">
             @include('partials.alerts')
         </div>
@@ -105,6 +169,18 @@
     </div>
 @endauth
 
+<script>
+    function openModal() {
+        var selectedOption = document.getElementById('delete-quest');
+        var selectedQuestId = selectedOption.options[selectedOption.selectedIndex].getAttribute('data-quest-id');
+        document.getElementById('modal-quest-name').innerText = selectedOption.value;
+        document.getElementById('form-delete').action = '/delete-quest/' + selectedQuestId;
+    }
+
+    function deleteQuest() {
+        document.getElementById('form-delete').submit();
+    }
+</script>
 <script src="../js/form-validation.js"></script>
 <script src="../js/quest.js"></script>
 <script src="../js/dynamic-textarea.js"></script>

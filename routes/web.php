@@ -25,8 +25,10 @@ Route::get('/', function () {
 Route::get('/register-page', [PageController::class, 'register_page'])->name('register-page');
 Route::get('/home', [PageController::class, 'home'])->name('home');
 Route::get('/create-character-page', [PageController::class, 'create_character_page'])->name('create-character-page');
-Route::get('/create-quest-page', [PageController::class, 'create_quest_page'])->name('create-quest-page');
-Route::get('/create-item-page', [PageController::class, 'create_item_page'])->name('create-item-page');
+Route::get('/manage-quest-page', [PageController::class, 'manage_quest_page'])->name('manage-quest-page');
+Route::get('/manage-item-page', [PageController::class, 'manage_item_page'])->name('manage-item-page');
+Route::get('/forest', [PageController::class, 'forest'])->name('forest');
+Route::get('/town', [PageController::class, 'town'])->name('town');
 
 Route::post('/register', [UserController::class, 'register'])->name('register');
 Route::post('/logout', [UserController::class, 'logout'])->name('logout');
@@ -48,3 +50,4 @@ Route::any('/delete-character/{character}', [CharacterController::class, 'delete
 
 Route::get('/castle', [QuestController::class, 'showQuests'])->name('castle');
 Route::post('/create-quest', [QuestController::class, 'createQuest'])->name('create-quest');
+Route::delete('/delete-quest/{id}', [QuestController::class, 'deleteQuest'])->name('delete-quest');

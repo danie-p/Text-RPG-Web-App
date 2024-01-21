@@ -354,11 +354,21 @@ hrad.html
     z-index: 0;
 }
 
-#content-subpage img {
-    width: 40%;
-    filter: grayscale(50%);
+#content-subpage #img-castle {
     float: right;
     margin-left: 25px;
+}
+
+#content-subpage #img-forest, #content-subpage #img-town {
+    float: left;
+    margin-right: 25px;
+}
+
+#content-subpage img {
+    width: 50%;
+    filter: grayscale(50%);
+    object-fit: cover;
+    height: 350px;
 }
 
 #content-subpage img:hover {
@@ -536,6 +546,7 @@ roleplay.html
 }
 
 .popup.active, .popup-edit.active {
+    z-index: 2;
     top: 50%;
     opacity: 1;
     transform: translate(-50%, -50%) scale(1.2);

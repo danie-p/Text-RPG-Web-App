@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Post;
+use App\Models\Quest;
 use Illuminate\Http\Request;
 
 class PageController extends Controller
@@ -21,11 +22,22 @@ class PageController extends Controller
         return view('create-character');
     }
 
-    public function create_quest_page() {
-        return view('create-quest');
+    public function manage_quest_page() {
+        $quests = Quest::orderBy('name')->get();
+        return view('manage-quest', compact('quests'));
     }
 
-    public function create_item_page() {
-        return view('create-item');
+    public function manage_item_page() {
+        return view('manage-item');
+    }
+
+    public function forest() {
+        $quests = Quest::all();
+        return view('forest', compact('quests'));
+    }
+
+    public function town() {
+        $quests = Quest::all();
+        return view('town', compact('quests'));
     }
 }

@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Aetheria | Hrad</title>
+    <title>Aetheria | Les</title>
     <link rel="icon" type="image/svg" href="images/icon.svg">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-kQtW33rZJAHjgefvhyyzcGF3C5TFyBQBA13V1RKPf4uH+bwyzQxZ6CmMZHmNBEfJ" crossorigin="anonymous"></script>
@@ -18,7 +18,7 @@
 <body class="dark">
     <div class="header header-blue">
         @php
-            $lokacia = 'Hrad';
+            $lokacia = 'Les';
         @endphp
         <h1 class="header-title title title-light">{{ $lokacia }}</h1>
         <img id="header-img" src="images/header_cropped2.png" alt="Header">
@@ -35,29 +35,22 @@
                                 <a class="nav-link active nav-active-custom" href="#">Rázcestie</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#">Nádvorie</a>
+                                <a class="nav-link" href="#">Temné húštiny</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#">Veža</a>
+                                <a class="nav-link" href="#">Čistinka</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#">Trónna sieň</a>
+                                <a class="nav-link" href="#">Dedinka v stromoch</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#">Katakomby</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">Knižnica</a>
+                                <a class="nav-link" href="#">Zrúcaniny</a>
                             </li>
                         </ul>
                     </div>
                     <div class="col-md-auto">
                         <div class="btn-group" role="group" aria-label="Basic example">
-                            @auth
-                            <a href="{{ route('roleplay') }}" role="button" class="btn btn-nav-custom">Roleplay</a>
-                            @else
                             <a href="#" role="button" class="btn btn-nav-custom">Roleplay</a>
-                            @endauth
                             <button type="button" class="btn btn-nav-custom">
                                 <i class="bi bi-music-note-beamed"></i>
                             </button>
@@ -66,17 +59,7 @@
                 </div>
                 <div class="row">
                     <div class="">
-                        <img id="img-castle" src="images/hrad.jpg" alt="Hrad">
-                        <p>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi commodo nisi mauris,
-                            sed aliquam justo hendrerit a. Etiam neque libero, aliquet eget enim ut, faucibus
-                            imperdiet est. Aenean vitae nunc at magna pellentesque iaculis. Suspendisse potenti.
-                            Ut ultricies vel lectus iaculis luctus. Etiam faucibus commodo dignissim. Sed mi urna,
-                            eleifend id diam in, euismod vestibulum leo. Aliquam ligula ex, tristique ut tortor vel,
-                            rhoncus tempor tellus. Fusce tempus turpis non nulla volutpat ultrices. Morbi ultrices
-                            sed sem nec pulvinar. Nunc luctus consequat finibus. Ut ac dolor ante. Aliquam pulvinar massa
-                            quis ornare aliquam. Sed blandit lectus sed sapien aliquet, vitae rhoncus leo feugiat.
-                        </p>
+                        <img id="img-forest" src="images/les.jpg" alt="Les">
                         <p>
                             In sit amet laoreet nibh. In et ipsum ut quam finibus ornare. Donec placerat scelerisque
                             augue, sed aliquet nibh aliquam vitae. Proin quis ultricies risus. Nunc sollicitudin nisi
@@ -86,8 +69,19 @@
                             velit in posuere.
                         </p>
                         <p>
-                            Nullam non diam lacus. Mauris eu ex sed neque blandit dignissim. Morbi porttitor dignissim
-                            magna nec pulvinar. Integer gravida at elit quis pharetra. Donec sodales metus et ultricies
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi commodo nisi mauris,
+                            sed aliquam justo hendrerit a. Etiam neque libero, aliquet eget enim ut, faucibus
+                            imperdiet est. Aenean vitae nunc at magna pellentesque iaculis. Suspendisse potenti.
+                            Ut ultricies vel lectus iaculis luctus. Etiam faucibus commodo dignissim. Sed mi urna,
+                            eleifend id diam in, euismod vestibulum leo. Aliquam ligula ex, tristique ut tortor vel,
+                            rhoncus tempor tellus. Fusce tempus turpis non nulla volutpat ultrices. Morbi ultrices
+                            sed sem nec pulvinar. Nunc luctus consequat finibus. Ut ac dolor ante. Aliquam pulvinar massa
+                            quis ornare aliquam. Sed blandit lectus sed sapien aliquet, vitae rhoncus leo feugiat. Nullam
+                            non diam lacus. Mauris eu ex sed neque blandit dignissim. Morbi porttitor dignissim
+                            magna nec pulvinar.
+                        </p>
+                        <p>
+                            Integer gravida at elit quis pharetra. Donec sodales metus et ultricies
                             fermentum. Phasellus hendrerit elementum fringilla. Mauris dui justo, dignissim eget rutrum
                             id, porta ut dolor. Etiam aliquam sem eget ipsum pharetra tristique. Proin congue ex est,
                             sed accumsan turpis pharetra a. Suspendisse interdum, felis non malesuada bibendum, odio

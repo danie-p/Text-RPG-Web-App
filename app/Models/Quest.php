@@ -25,4 +25,8 @@ class Quest extends Model
     public function items() {
         return $this->belongsToMany(Item::class, 'rewards');
     }
+
+    public function posts() {
+        return $this->hasMany(Post::class, 'quest_id');
+    }
 }

@@ -63,4 +63,28 @@ class QuestController extends Controller
         $quests = Quest::all();
         return view('castle', compact('quests'));
     }
+
+    public function deleteQuest($id) {
+        $quest = Quest::findOrFail($id);
+        $user = Auth::user();
+
+        if (!$user) {
+            return redirect('/home')->withErrors(['error' => 'Používateľ bez autentifikácie!']);
+        }
+
+        if (!$user->hasPermissionTo('manage-quest')) {
+            return redirect('/home')->withErrors(['error' => 'Používateľ bez autorizácie!']);
+        }
+
+        // odstranit subor
+        if ($quest->image_path) {
+            Storage::disk('public')->delete($quest->image_path);
+        }
+
+        $quest->posts()->update(['quest_id' => null]);
+
+        $quest->delete();
+
+        return redirect('/home')->with('success','Quest bol úspešne vymazaný!');
+    }
 }
