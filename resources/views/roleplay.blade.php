@@ -29,8 +29,8 @@
             <label for="rp-post" class="form-label">Príspevok</label>
             <form id="rp-post" class="needs-validation" novalidate action="/create-post" method="POST">
                 @csrf
-                <div class="input-group mb-3 input-quest">
-                    <select name="character" class="form-select" required>
+                <div class="input-group mb-3 input-quest" style="z-index: 0">
+                    <select name="character" class="form-select" required style="z-index: 0">
                         <option disabled selected value>Vybrať postavu</option>
                         @foreach($characters as $character)
                             <option>{{ $character->name }}</option>

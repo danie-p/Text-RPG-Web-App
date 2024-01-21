@@ -90,6 +90,7 @@
 
 .navbar-custom {
     background-color: transparent;
+    z-index: 9999;
 }
 
 .navbar-custom-headerless {
@@ -604,6 +605,10 @@ roleplay.html
 .popup .login-form .login-form-el a, .popup-edit .login-form .login-form-el a {
     color: #D09125;
     text-decoration: none;
+}
+
+#container-posts .post .first-section {
+    padding-bottom: 25px;
 }
 
 /*

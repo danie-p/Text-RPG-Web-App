@@ -93,6 +93,7 @@
                 </div>
             </div>
 
+            @php($quote = 'Naturam expellas furca, tamen usque recurret.')
             @include('partials.flipbook')
         </div>
 

@@ -68,7 +68,7 @@
                     <div class="">
                         <img id="img-castle" src="images/hrad.jpg" alt="Hrad">
                         <p>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi commodo nisi mauris,
+                            Lorem ipsum dolor sit amet, conse ctetur adipi scing elit. Morbi commodo nisi mauris,
                             sed aliquam justo hendrerit a. Etiam neque libero, aliquet eget enim ut, faucibus
                             imperdiet est. Aenean vitae nunc at magna pellentesque iaculis. Suspendisse potenti.
                             Ut ultricies vel lectus iaculis luctus. Etiam faucibus commodo dignissim. Sed mi urna,
@@ -99,6 +99,7 @@
                 </div>
             </div>
 
+            @php($quote = 'Protectio trahit subjectionem, et subjectio protectionem.')
             @include('partials.flipbook')
         </div>
 

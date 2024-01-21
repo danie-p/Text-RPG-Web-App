@@ -96,6 +96,7 @@
                 </div>
             </div>
 
+            @php($quote = 'Per ardua at astra, hoc genus omne, multis e gentibus vires.')
             @include('partials.flipbook')
         </div>
 

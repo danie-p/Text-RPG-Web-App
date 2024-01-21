@@ -1,6 +1,6 @@
 <div class="flex-center">
     <div class="cont-background">
-        <p>Protectio trahit subjectionem,<br>et subjectio protectionem.</p>
+        <p>{{ $quote }}</p>
     </div>
     <div id="flipbook" class="flipbook">
         <div class="hard hide-when-back cover-page-outside"><h1>Questy</h1></div>
