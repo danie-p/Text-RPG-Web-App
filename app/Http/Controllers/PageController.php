@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\ItemCategory;
 use App\Models\Post;
 use App\Models\Quest;
 use Illuminate\Http\Request;
@@ -28,7 +29,8 @@ class PageController extends Controller
     }
 
     public function manage_item_page() {
-        return view('manage-item');
+        $itemCategories = ItemCategory::orderBy('name')->get();
+        return view('manage-item', compact('itemCategories'));
     }
 
     public function forest() {

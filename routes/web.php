@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CharacterController;
+use App\Http\Controllers\ItemController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\QuestController;
@@ -51,3 +52,5 @@ Route::any('/delete-character/{character}', [CharacterController::class, 'delete
 Route::get('/castle', [QuestController::class, 'showQuests'])->name('castle');
 Route::post('/create-quest', [QuestController::class, 'createQuest'])->name('create-quest');
 Route::delete('/delete-quest/{id}', [QuestController::class, 'deleteQuest'])->name('delete-quest');
+
+Route::post('/create-item', [ItemController::class, 'createItem'])->name('create-item');

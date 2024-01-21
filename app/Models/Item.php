@@ -9,6 +9,14 @@ class Item extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'name',
+        'price',
+        'effect',
+        'category_id',
+        'image_path'
+    ];
+
     // predmet patri do 1 kategorie
     public function category()
     {

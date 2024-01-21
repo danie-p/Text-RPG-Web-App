@@ -65,7 +65,7 @@
                                     <div class="col-md-12">
                                         <div id="quote" class="login-form-el" data-bs-theme="dark">
                                             <label for="create-character-quote">Motto</label>
-                                            <input name="quote" id="create-character-quote" type="text" placeholder="Zadaj motto" class="bg-light form-control" required min="20" max="85">
+                                            <input name="quote" id="create-character-quote" type="text" placeholder="Zadaj motto" class="bg-light form-control" required minlength="20" maxlength="85">
                                             <div class="invalid-feedback">
                                                 Zadaj, prosím, motto postavy o dĺžke 20 až 85 znakov.
                                             </div>

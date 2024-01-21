@@ -76,6 +76,10 @@ class QuestController extends Controller
             return redirect('/home')->withErrors(['error' => 'Používateľ bez autorizácie!']);
         }
 
+        if (!$quest) {
+            return redirect()->back()->withErrors(['error' => 'Nebol zvolený quest!']);
+        }
+
         // odstranit subor
         if ($quest->image_path) {
             Storage::disk('public')->delete($quest->image_path);

@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rule;
 use Nette\Schema\ValidationException;
+use Symfony\Component\Console\Input\Input;
 
 class UserController extends Controller
 {
@@ -51,6 +52,8 @@ class UserController extends Controller
 
         if (auth()->attempt(['name' => $incomingFields['login-name'], 'password' => $incomingFields['login-password']])) {
             $request->session()->regenerate();
+        } else {
+            return redirect()->back()->withErrors(['error' => 'Nesprávne prihlasovacie údaje']);
         }
 
         return redirect()->back();
