@@ -40,7 +40,7 @@
                                             </div>
                                         </div>
                                         <div class="row row-height">
-                                            <div class="mb-3"  data-bs-theme="dark" style="width: 60%; min-width: 135px">
+                                            <div class="mb-3" data-bs-theme="dark" style="width: 60%; min-width: 135px">
                                                 <label for="create-quest-location">Lokácia</label>
                                                 <select name="location" id="create-quest-location" class="form-select" required>
                                                     <option disabled selected value>Vybrať lokáciu</option>

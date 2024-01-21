@@ -96,6 +96,7 @@ class CharacterController extends Controller
             'image_url' => 'required|url',
             'bio' => 'required|min:300',
             'description' => 'required|min:300',
+            'quote' => 'required|min:20|max:85',
         ], [
             'name.required' => 'Pole pre meno je povinné.',
             'age.required' => 'Pole pre vek je povinné.',
@@ -107,13 +108,17 @@ class CharacterController extends Controller
             'bio.min' => 'Životopis musí mať aspoň 300 znakov.',
             'description.required' => 'Pole pre opis je povinné.',
             'description.min' => 'Opis musí mať aspoň 300 znakov.',
+            'quote.required' => 'Pole pre motto je povinné.',
+            'quote.min' => 'Motto musí mať aspoň 20 znakov.',
+            'quote.max' => 'Motto musí mať nanajvýš 85 znakov.',
         ]);
 
-        $incomingFields['name'] = strip_tags($incomingFields['name'], "<p></p> <br> <b></b> <i></i> <u></u>");
-        $incomingFields['surname'] = strip_tags($incomingFields['surname'], "<p></p> <br> <b></b> <i></i> <u></u>");
-        $incomingFields['image_url'] = strip_tags($incomingFields['image_url'], "<p></p> <br> <b></b> <i></i> <u></u>");
+        $incomingFields['name'] = strip_tags($incomingFields['name']);
+        $incomingFields['surname'] = strip_tags($incomingFields['surname']);
+        $incomingFields['image_url'] = strip_tags($incomingFields['image_url']);
         $incomingFields['bio'] = strip_tags($incomingFields['bio'], "<p></p> <br> <b></b> <i></i> <u></u>");
         $incomingFields['description'] = strip_tags($incomingFields['description'], "<p></p> <br> <b></b> <i></i> <u></u>");
+        $incomingFields['quote'] = strip_tags($incomingFields['quote'], "<br> <b></b> <i></i>");
         return $incomingFields;
     }
 }

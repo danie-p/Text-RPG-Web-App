@@ -16,7 +16,8 @@ class Character extends Model
         'age',
         'image_url',
         'bio',
-        'description'
+        'description',
+        'quote'
     ];
 
     public function user() {

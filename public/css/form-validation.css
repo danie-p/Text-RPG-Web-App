@@ -51,6 +51,7 @@ input:focus:valid {
 .form-control.is-valid,
 .was-validated .form-control:valid {
     background-color: #88b7b9;
+    color: black;
 }
 
 .form-select:invalid,

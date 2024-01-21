@@ -15,7 +15,6 @@ class PostController extends Controller
     public function createPost(Request $request) {
         $incomingFields = $request->validate([
             'body' => 'required|min:300',
-            'image' => 'nullable',
             'quest' => 'nullable',
             'character' => 'required'
         ]);

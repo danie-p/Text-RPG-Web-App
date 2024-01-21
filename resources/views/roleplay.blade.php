@@ -46,10 +46,7 @@
                         Zadaj, prosím, príspevok o dĺžke najmenej 300 znakov.
                     </div>
                 </div>
-                <div class="mb-3 post-container">
-                    <input name="image" class="form-control" type="file" id="formFile">
-                </div>
-                <div class="input-group mb-3 input-quest">
+                <div class="input-group mb-3 input-quest" data-bs-theme="dark">
                     <select name="quest" class="form-select">
                         <option selected>Splniť quest - žiadny</option>
                         @foreach($quests as $quest)
@@ -197,7 +194,7 @@
                                         Zadaj, prosím, príspevok o dĺžke najmenej 300 znakov.
                                     </div>
                                 </div>
-                                <div class="input-group mb-3 input-quest">
+                                <div class="input-group mb-3 input-quest" data-bs-theme="dark">
                                     <select name="character" class="form-select" required>
                                         <option selected>{{ $post->character->name }}</option>
                                         @foreach($characters as $character)
@@ -210,10 +207,7 @@
                                         Vyber, prosím, postavu.
                                     </div>
                                 </div>
-                                <div class="mb-3">
-                                    <input name="image" class="form-control" value="{{ $post->image }}" type="file" id="formFile">
-                                </div>
-                                <div class="input-group mb-3 input-quest">
+                                <div class="input-group mb-3 input-quest" data-bs-theme="dark">
                                     <select name="quest" class="form-select">
                                         @if($post->quest_id)
                                             <option selected>{{ $post->quest->name }}</option>

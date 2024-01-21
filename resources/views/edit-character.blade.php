@@ -64,6 +64,17 @@
                                     </div>
                                     <div class="row row-height">
                                         <div class="col-md-12">
+                                            <div id="quote" class="login-form-el" data-bs-theme="dark">
+                                                <label for="create-character-quote">Motto</label>
+                                                <input name="quote" id="create-character-quote" type="text" value="{{ $character->quote }}" class="bg-light form-control" required min="20" max="85">
+                                                <div class="invalid-feedback">
+                                                    Zadaj, prosím, motto postavy o dĺžke 20 až 85 znakov.
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row row-height">
+                                        <div class="col-md-12">
                                             <div id="imageurl" class="login-form-el" data-bs-theme="dark" style="margin-bottom: 0">
                                                 <label for="create-character-image-url">Obrázok</label>
                                                 <input name="image_url" id="create-character-image-url" type="url" value="{{ $character->image_url }}" class="bg-light form-control" required>

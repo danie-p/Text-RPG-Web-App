@@ -27,26 +27,27 @@
                     <img alt="Character Image" id="image-show" src={{ $character->image_url }}>
                 </div>
                 <div id="top-right" class="col-md-6">
-                    <div class="row">
-                        <div class="col-md-12">
-                        </div>
-                    </div>
-                    <div class="row">
+                    <div class="row row-height">
                         <div class="col-md-12">
                             <label>Meno</label>
                             <h3 id="create-character-name">{{ $character->name }} {{ $character->surname }}</h3>
                         </div>
                     </div>
-                    <div class="row">
+                    <div class="row row-height">
                         <div class="col-md-12">
                             <label>Vek</label>
                             <h3 id="create-character-age">{{ $character->age }} rokov</h3>
                         </div>
                     </div>
-                    <div class="row">
+                    <div class="row row-height">
                         <div class="col-md-12">
                             <label>Používateľ</label>
                             <h3 id="create-character-age">{{ $character->user->name }}</h3>
+                        </div>
+                    </div>
+                    <div class="row row-height" style="margin-bottom: 10px">
+                        <div class="col-md-12">
+                            <h2 id="create-character-age">{{ $character->quote }}</h2>
                         </div>
                     </div>
                 </div>
@@ -114,6 +115,7 @@
     @include('partials.login')
     @include('partials.edit-profile')
 
+    <script src="../js/show-character.js"></script>
     <script>
         function deleteCharacter() {
             document.getElementById('form-delete').submit();
